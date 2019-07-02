@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Index on Technical Notes</title>
+    <link>http://mooselumph.github.io/tags/index/</link>
+    <description>Recent content in Index on Technical Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://mooselumph.github.io/tags/index/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Posts</title>
+      <link>http://mooselumph.github.io/</link>
+      <pubDate>Tue, 11 Jun 2019 15:58:27 -0700</pubDate>
+      
+      <guid>http://mooselumph.github.io/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Posts</title>
+      <link>http://mooselumph.github.io/posts/</link>
+      <pubDate>Tue, 11 Jun 2019 15:50:31 -0700</pubDate>
+      
+      <guid>http://mooselumph.github.io/posts/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

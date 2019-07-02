@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Technical Notes</title>
+    <link>http://mooselumph.github.io/posts/</link>
+    <description>Recent content in Posts on Technical Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Jun 2019 15:50:31 -0700</lastBuildDate>
+    
+	<atom:link href="http://mooselumph.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Plenoptic Camera Notes</title>
+      <link>http://mooselumph.github.io/posts/plenoptic-camera-notes/</link>
+      <pubDate>Mon, 01 Jul 2019 19:30:13 -0700</pubDate>
+      
+      <guid>http://mooselumph.github.io/posts/plenoptic-camera-notes/</guid>
+      <description>&lt;p&gt;This working paper has two aims related to the implementation of plenoptic cameras as a situational-awareness diagnostic for autonomous vehicles. The first aim is to understand trade-offs in the plenoptic camera&amp;rsquo;s light field sampling. From a classical estimation perspective, we first wish to characterize the trade-off between the angular sampling of the camera and the lower bound on depth uncertainty. Secondly, from a Bayesian perspective, we wish to characterize the expected value of this uncertainty for typical scenes. Finally, we wish to answer the question of whether the appropriate use of light field priors will impact the optimal trade-off between angular and spatial sampling. The second aim is to develop an optimal algorithm for estimating depth from the sampled light field. There are many possible approaches to this problem. We plan to start by assessing the practicality of MLE and MAP estimators. Provided that such estimators are workable, we will compare them with more heuristic approaches found within the literature. Finally, approaches based on compressive sensing and machine learning will be addressed.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A machine learning taxonomy</title>
+      <link>http://mooselumph.github.io/posts/machine-learning-taxonomy/</link>
+      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://mooselumph.github.io/posts/machine-learning-taxonomy/</guid>
+      <description>&lt;p&gt;This post is meant as a sort of taxonomy for machine learning, with a natural focus on the sorts of areas in which I am interested from a research perspective. It is meant as a way of organizing my knowledge about machine learning and providing a place to organize the references that I have found useful.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

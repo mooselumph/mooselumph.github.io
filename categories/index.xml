@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Technical Notes</title>
-    <link>http://mooselumph.github.io/categories/</link>
+    <link>http://rayncloud.com/categories/</link>
     <description>Recent content in Categories on Technical Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://mooselumph.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://rayncloud.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Machine Learning</title>
-      <link>http://mooselumph.github.io/categories/machine-learning/</link>
+      <link>http://rayncloud.com/categories/machine-learning/</link>
       <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://mooselumph.github.io/categories/machine-learning/</guid>
+      <guid>http://rayncloud.com/categories/machine-learning/</guid>
       <description></description>
     </item>
     

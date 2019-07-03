@@ -13,7 +13,7 @@
     </title>
     
     
-    <meta name="description" property="og:description" content="This working paper has two aims related to the implementation of plenoptic cameras as a situational-awareness diagnostic for autonomous vehicles. The first aim is to understand trade-offs in the plenoptic camera&amp;rsquo;s light field sampling. From a classical estimation perspective, we first wish to characterize the trade-off between the angular sampling of the camera and the lower bound on depth uncertainty. Secondly, from a Bayesian perspective, we wish to characterize the expected value of this uncertainty for typical scenes. Finally, we wish to answer the question of whether the appropriate use of light field priors will impact the optimal trade-off between angular and spatial sampling. The second aim is to develop an optimal algorithm for estimating depth from the sampled light field. There are many possible approaches to this problem. We plan to start by assessing the practicality of MLE and MAP estimators. Provided that such estimators are workable, we will compare them with more heuristic approaches found within the literature. Finally, approaches based on compressive sensing and machine learning will be addressed.
+    <meta name="description" property="og:description" content="Working notes related to the use of a plenoptic camera for estimating depth within a scene.
 |Describe what your web page is about">
     
 
@@ -30,8 +30,8 @@
     <meta name="twitter:site" content="@your_twitter_id">
     <meta name="twitter:creator" content="@your_twitter_id">
     <meta name="twitter:title" content="Plenoptic Camera Notes | Technical Notes">
-    <meta name="twitter:description" content="This working paper has two aims related to the implementation of plenoptic cameras as a situational-awareness diagnostic for autonomous vehicles. The first aim is to understand trade-offs in the plenoptic camera&rsquo;s light field sampling. From a classical estimation perspective, we first wish to characterize the trade-off between the angular sampling of the camera and the lower bound on depth uncertainty. Secondly, from a Bayesian perspective, we wish to characterize the expected value of this uncertainty for typical scenes. Finally, we wish to answer the question of whether the appropriate use of light field priors will impact the optimal trade-off between angular and spatial sampling. The second aim is to develop an optimal algorithm for estimating depth from the sampled light field. There are many possible approaches to this problem. We plan to start by assessing the practicality of MLE and MAP estimators. Provided that such estimators are workable, we will compare them with more heuristic approaches found within the literature. Finally, approaches based on compressive sensing and machine learning will be addressed.|Describe what your web page is about">
-    <meta name="twitter:image" content="http://mooselumph.github.io/twitter-card.png">
+    <meta name="twitter:description" content="Working notes related to the use of a plenoptic camera for estimating depth within a scene.|Describe what your web page is about">
+    <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
     
 
 
@@ -46,7 +46,7 @@
 
       <div id="header" class="px-1 bg-white">
         <nav class="UnderlineNav UnderlineNav--right px-2">
-  <a class="UnderlineNav-actions muted-link h2" href="http://mooselumph.github.io/">
+  <a class="UnderlineNav-actions muted-link h2" href="http://rayncloud.com/">
     Technical Notes
   </a>
 
@@ -73,9 +73,9 @@
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2019-07-01. Published at: 2019-07-01.">
+      <span title="Lastmod: 2019-07-03. Published at: 2019-07-01.">
         
-          Lastmod: 2019-07-01
+          Lastmod: 2019-07-03
         
       </span>
     </div>
@@ -85,7 +85,11 @@
 <article>
   
   <section class="pb-6 mb-3 border-bottom">
-    <p>This working paper has two aims related to the implementation of plenoptic cameras as a situational-awareness diagnostic for autonomous vehicles. The first aim is to understand trade-offs in the plenoptic camera&rsquo;s light field sampling. From a classical estimation perspective, we first wish to characterize the trade-off between the angular sampling of the camera and the lower bound on depth uncertainty. Secondly, from a Bayesian perspective, we wish to characterize the expected value of this uncertainty for typical scenes. Finally, we wish to answer the question of whether the appropriate use of light field priors will impact the optimal trade-off between angular and spatial sampling. The second aim is to develop an optimal algorithm for estimating depth from the sampled light field. There are many possible approaches to this problem. We plan to start by assessing the practicality of MLE and MAP estimators. Provided that such estimators are workable, we will compare them with more heuristic approaches found within the literature. Finally, approaches based on compressive sensing and machine learning will be addressed.</p>
+    <p>Working notes related to the use of a plenoptic camera for estimating depth within a scene.</p>
+
+<h1 id="outline">Outline</h1>
+
+<p>This working paper has two aims related to the implementation of plenoptic cameras as a situational-awareness diagnostic for autonomous vehicles. The first aim is to understand trade-offs in the plenoptic camera&rsquo;s light field sampling. From a classical estimation perspective, we first wish to characterize the trade-off between the angular sampling of the camera and the lower bound on depth uncertainty. Secondly, from a Bayesian perspective, we wish to characterize the expected value of this uncertainty for typical scenes. Finally, we wish to answer the question of whether the appropriate use of light field priors will impact the optimal trade-off between angular and spatial sampling. The second aim is to develop an optimal algorithm for estimating depth from the sampled light field. There are many possible approaches to this problem. We plan to start by assessing the practicality of MLE and MAP estimators. Provided that such estimators are workable, we will compare them with more heuristic approaches found within the literature. Finally, approaches based on compressive sensing and machine learning will be addressed.</p>
 
 <h1 id="plenoptic-camera-trade-offs">Plenoptic Camera Trade-offs</h1>
 
@@ -220,7 +224,7 @@
 <p>Differentiating with respect to $z$ gives</p>
 
 <div>\begin{equation}
-    \frac{\partial\mu\_{ijkl}}{\partial{z}} =\frac{L\_0\Delta{t}\Delta{v}}{l^2}\int\_{u\_k}^{u\_{k+1}}\frac{ul}{z^2}du = \frac{L\_0\Delta{t}\Delta{v}\Delta{u}^2}{lz^2}(k+1/2)
+    \frac{\partial\mu_{ijkl}}{\partial{z}} =\frac{L_0\Delta{t}\Delta{v}}{l^2}\int_{u_k}^{u_{k+1}}\frac{ul}{z^2}du = \frac{L_0\Delta{t}\Delta{v}\Delta{u}^2}{lz^2}(k+1/2)
 \end{equation}</div>
 
 <p>This can be rewritten as follows,</p>
@@ -274,6 +278,7 @@ We can now solve for the fisher information via (\ref{eq:fisherinfo}),</p>
       <b>Plenoptic Camera Notes</b>
       <nav id="TableOfContents">
 <ul>
+<li><a href="#outline">Outline</a></li>
 <li><a href="#plenoptic-camera-trade-offs">Plenoptic Camera Trade-offs</a>
 <ul>
 <li><a href="#background">Background</a></li>

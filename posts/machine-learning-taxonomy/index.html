@@ -30,7 +30,7 @@
     <meta name="twitter:creator" content="@your_twitter_id">
     <meta name="twitter:title" content="A machine learning taxonomy | Technical Notes">
     <meta name="twitter:description" content="A machine learning taxonomy.|Describe what your web page is about">
-    <meta name="twitter:image" content="http://mooselumph.github.io/twitter-card.png">
+    <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
     
 
 
@@ -45,7 +45,7 @@
 
       <div id="header" class="px-1 bg-white">
         <nav class="UnderlineNav UnderlineNav--right px-2">
-  <a class="UnderlineNav-actions muted-link h2" href="http://mooselumph.github.io/">
+  <a class="UnderlineNav-actions muted-link h2" href="http://rayncloud.com/">
     Technical Notes
   </a>
 
@@ -76,9 +76,9 @@
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2019-06-26. Published at: 2019-06-11.">
+      <span title="Lastmod: 2019-07-02. Published at: 2019-06-11.">
         
-          Lastmod: 2019-06-26
+          Lastmod: 2019-07-02
         
       </span>
     </div>
@@ -88,7 +88,7 @@
 <article>
   
   <section class="pb-6 mb-3 border-bottom">
-    <p>This post is meant as a sort of taxonomy for machine learning, with a natural focus on the sorts of areas in which I am interested from a research perspective. It is meant as a way of organizing my knowledge about machine learning and providing a place to organize the references that I have found useful.</p>
+    <p>These working notes are meant as a sort of taxonomy for machine learning, with a natural focus on the sorts of areas in which I am interested from a research perspective. They is meant as a way of organizing my knowledge about machine learning and providing a place to organize the references that I have found useful. These are working notes in the sense that some of the content is a speculative verbal working out of ideas and hypothesis. Hopefully, sections of this type will be reworked as I gain more knowledge.</p>
 
 <h1 id="overview">Overview</h1>
 
@@ -168,9 +168,17 @@ R(g_n) = [R(g^∗) − R^∗] + [R(g_n) − R(g^∗)] + R^∗,
 
 <h2 id="bounds">Bounds</h2>
 
+<div class="flash mb-3 p-2">
+This section is a stub.
+</div>
+
 <p>It is possible to provide general bounds on some of the terms of this error decomposition. These bounds are discussed thoroughly in the two references provided. However, many of these bounds do not well capture the actual performance of learning architectures like deep neural networks (DNNs). Instead of discussing these general bounds, we will wait until the sections on specific architectures to discuss emerging approaches for characterizing the their performance.</p>
 
 <h3 id="information-theoretic-lower-bounds-on-minimax-risk">Information-Theoretic Lower Bounds on Minimax Risk</h3>
+
+<div class="flash mb-3 p-2">
+This section is a stub.
+</div>
 
 <p><a href="http://www.maths.lu.se/fileadmin/maths/forskning_research/Undervisningsmaterial/Inferensteori_MASC02/minimax_01.pdf">Reference 1</a>,
 <a href="http://www.stat.yale.edu/~yw562/teaching/598/lec02.pdf">Reference 2</a>,
@@ -197,7 +205,9 @@ P(\mathbf{y}|\mathbf{x};\theta,\sigma) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(
 
 <p>Given this probability distribution, various techniques are available for jointly estimating $\theta$ and $\sigma$. In this case, it is possible to find the minimum variance unbiased estimator.</p>
 
-<p>[TODO: Show derivation of MVUE]</p>
+<div class="flash mb-3 p-2">
+TODO: Show derivation of MVUE.
+</div>
 
 <h3 id="learning-perspective">Learning Perspective</h3>
 
@@ -213,13 +223,57 @@ P(\mathbf{y}|\mathbf{x};\theta,\sigma) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(
 
 <p>Minimizing the emprical risk for the least squares loss function is fairly straight-forward.</p>
 
-<p>TODO: Show how to minimize least squares.</p>
+<div class="flash mb-3 p-2">
+TODO: Show how to minimize least squares. 
+</div>
 
 <h1 id="classification">Classification</h1>
 
 <p>We now confine our discussion to problems of classification. In the formalism defined previously, classification involves problems in which $Y$ is a discrete random variable, generally called a label.</p>
 
-<p>There are chiefly two types of models that can be used for classification: so-called discriminative models and generative models. The difference between the two is that generative models</p>
+<h2 id="generative-models">Generative Models</h2>
+
+<!--- https://stats.stackexchange.com/questions/12421/generative-vs-discriminative --->
+
+<p>There are chiefly two types of models that can be used for classification: so-called discriminative models and generative models. The difference between the two is that the generative variety models the probability distribution of the data, $P(X,Y)$, as an intermediate step for performing inference, while discriminative models do not.</p>
+
+<p>Most of our discussion will center around discriminative models. For that reason, we take some time here to try to address questions specific to generative models.</p>
+
+<h3 id="why-a-generative-model">Why a generative model?</h3>
+
+<p>A strange thing about generative models is that they appear to model information that is not useful for the purpose of the express task of learning. For example, let&rsquo;s say we want to make a prediction using $P(X,Y)$. The first thing that we will do is find $P(Y|X)$. Since $P(X,Y) = P(Y|X)P(X)$, we only need to divide $P(X,Y)$ by $P(X)$, which is obtained by marginalizing over $Y$. Thus, it seems that we are learning information, namely the marginal distribution of $X$, which we don&rsquo;t need in order to make the prediction. What possible advantage could there be in learning this additional information?</p>
+
+<p>As an initial starting point, let&rsquo;s note that while $P(X)$ is not used in performing inference, it does affect the risk, which is an expectation over $P(X,Y)$. This is important, as the risk is what we ultimately wish to minimize. One way of putting this is that it matters more to correctly label a commonly occuring $X$ than an $X$ that is uncommon. (Why not just find a model that fits all training data well? Remember, the constraints that allow learnability and prevent overfitting often require a certain amount of bias, or approximation error.)</p>
+
+<p>A descriminitive model trained by minimizing the empirical risk will naturally pay less attention to uncommon $X$&rsquo;s, as they will be less prevalent in the training set. But how does a generative model handle the same issue?</p>
+
+<p>To answer this question, it seems that we must take a closer look at how a generative model is trained. There is no reason that minimizing the empirical loss should yield any information about $P(X)$. As noted, $P(X)$ does not play a role in the inference step which is performed in calculating the loss. Therfore, it would seem that a generative model is trained not by minimizing the empirical loss, as it has been defined, but by minimizing the loss between the modeled probability distribution and the empirical distribution represented by the training data.</p>
+
+<p>My hypothesis is that it is in these details that the difference between a discriminitve and generative model lies, from a statistical learning perspective. Andrew Ng and Michael Jordan have a paper which appears to discuss these details, which I still need to read.<sup class="footnote-ref" id="fnref:ng-discriminative"><a href="#fn:ng-discriminative">4</a></sup></p>
+
+<h3 id="what-is-an-example-of-a-generative-model">What is an example of a generative model?</h3>
+
+<div class="flash mb-3 p-2">
+This section is a stub.
+</div>
+
+<p>Graphical models tend to be generative. Example: Naive Bayes, Deep Boltzman Machine.</p>
+
+<h3 id="what-about-generative-adversarial-networks-gans-are-these-actually-generative-in-the-sense-presented-here">What about Generative Adversarial Networks (GANs)? Are these actually generative in the sense presented here?</h3>
+
+<div class="flash mb-3 p-2">
+This section is a stub.
+</div>
+
+<p>This is an answer that may depend on the context.</p>
+
+<h2 id="discriminative-models">Discriminative Models</h2>
+
+<p>A discriminitive model is one which does not explicitly model $P(X,Y)$. Within this class of models, a further division can be made between probabilistic and non-probabalistic models. A probabalistic model, while it does not learn the full probability distribution $P(X,Y)$, does learn the factor, $P(Y|X)$, needed to perform inference. Non-probabilistic models do not learn probabilities.</p>
+
+<p>Since non-probabilistic models are defined negatively, many different flavors and shapes of models fit into this category. Commonly, these models learn functions that map directly from $X$ to $Y$ (Example?). Another common approach is known as energy minimization, which differs from probabilistic models chiefly in terms of normalization. Yann LeCun has a detailed tutorial which discusses such models in detail.<sup class="footnote-ref" id="fnref:energy"><a href="#fn:energy">5</a></sup></p>
+
+<p>We begin by noting that</p>
 <div class="footnotes">
 
 <hr />
@@ -231,6 +285,10 @@ P(\mathbf{y}|\mathbf{x};\theta,\sigma) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(
  <a class="footnote-return" href="#fnref:shalev-shwartz"><sup>[return]</sup></a></li>
 <li id="fn:kay">Kay, S. M. (1993). Fundamentals of statistical signal processing. Prentice Hall PTR.
  <a class="footnote-return" href="#fnref:kay"><sup>[return]</sup></a></li>
+<li id="fn:ng-discriminative">Ng, A. Y., &amp; Jordan, M. I. (2002). <a href="http://robotics.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf">On discriminative vs. generative classifiers: A comparison of logistic regression and naive bayes. In Advances in neural information processing systems</a> (pp. 841-848).
+ <a class="footnote-return" href="#fnref:ng-discriminative"><sup>[return]</sup></a></li>
+<li id="fn:energy">Y. LeCun, S. Chopra, R. Hadsell, M. Ranzato, and F. J. Huang, “<a href="https://pdfs.semanticscholar.org/c01a/26af2cffdd0f6d20b01ef4d47f25ec7ff3d3.pdf">A Tutorial on Energy-Based Learning</a>,” p. 59.
+ <a class="footnote-return" href="#fnref:energy"><sup>[return]</sup></a></li>
 </ol>
 </div>
   </section>
@@ -271,7 +329,16 @@ P(\mathbf{y}|\mathbf{x};\theta,\sigma) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(
 <li><a href="#learning-perspective">Learning Perspective</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#classification">Classification</a></li>
+<li><a href="#classification">Classification</a>
+<ul>
+<li><a href="#generative-models">Generative Models</a>
+<ul>
+<li><a href="#why-a-generative-model">Why a generative model?</a></li>
+<li><a href="#what-is-an-example-of-a-generative-model">What is an example of a generative model?</a></li>
+<li><a href="#what-about-generative-adversarial-networks-gans-are-these-actually-generative-in-the-sense-presented-here">What about Generative Adversarial Networks (GANs)? Are these actually generative in the sense presented here?</a></li>
+</ul></li>
+<li><a href="#discriminative-models">Discriminative Models</a></li>
+</ul></li>
 </ul>
 </nav>
     </div>

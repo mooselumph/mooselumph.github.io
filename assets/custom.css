@@ -23,4 +23,8 @@
     content: "";
     clear: both;
     display: table;
-  }
+}
+
+.homepage #main{
+    max-width: initial;
+}

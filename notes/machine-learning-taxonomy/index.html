@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  A machine learning taxonomy &ndash; Rayncloud.com
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="A machine learning taxonomy.|Describe what your web page is about">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Rayncloud.com">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="A machine learning taxonomy | Rayncloud.com">
+    <meta name="twitter:description" content="A machine learning taxonomy.|Describe what your web page is about">
+    <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="http://rayncloud.com/">
+    Rayncloud.com
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">A machine learning taxonomy</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/machine-learning' class="muted-link">
+  <span class="Label Label--gray-darker">Machine Learning</span>
+</a>
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-07-03. Published at: 2019-06-11.">
+        
+          Lastmod: 2019-07-03
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p>These working notes are meant as a sort of taxonomy for machine learning, with a natural focus on the sorts of areas in which I am interested from a research perspective. They is meant as a way of organizing my knowledge about machine learning and providing a place to organize the references that I have found useful. These are working notes in the sense that some of the content is a speculative verbal working out of ideas and hypothesis. Hopefully, sections of this type will be reworked as I gain more knowledge.</p>
+
+<h1 id="overview">Overview</h1>
+
+<p>Machine learning addresses a variety of different types of problems. Three of the most common problems are Classification, Regression, and Clustering. The first two problems are often referred to as Supervised Learning problems while the last is referred to as Unsupervised Learning. My focus herein will be on Supervised Learning.</p>
+
+<p>I will start by reviewing the general statistical learning framework within which the problem of supervised learning is best understood. I will then discuss the specific problems of classification and regression, discussing how these problems compare to related problems like statistical inference, suggesting general frameworks which are helpful for building intuition and high level understanding of various techniques, and finally reviewing popular architectures with the aim of identifying how these architectures fit into the frameworks discussed elsewhere and addressing possible research questions.</p>
+
+<h1 id="statistical-learning-theory">Statistical Learning Theory</h1>
+
+<p><em>References</em>: <sup class="footnote-ref" id="fnref:bousquet"><a href="#fn:bousquet">1</a></sup> <sup class="footnote-ref" id="fnref:shalev-shwartz"><a href="#fn:shalev-shwartz">2</a></sup></p>
+
+<h2 id="the-elements">The Elements</h2>
+
+<p>The learning problem starts with an input space $\mathcal{X}$ and an output space $\mathcal{Y}$. The elements of the input space represent the objects which the learning algorithm is hoping to map to an element within the output space, which is discrete in the case of classification and continuous in the case of regression.</p>
+
+<p>Some assumptions are contained in this statement of the problem of statistical learning. For example, we assume that an element of $\mathcal{Y}$ is in fact associated with each of the objects represented by the elements of $\mathcal{X}$. Therefore, there is a &ldquo;right&rdquo; answer to the learning problem. At the same time, this answer may be impossible to reliably predict. In other words, the relationship between $X$ and $Y$ may not be <em>deterministic</em> or <em>functional</em>.</p>
+
+<p>To put this formally, it is assumed that there exists a joint probability distribution, $P$, over the space $\mathcal{X} \times \mathcal{Y}$. For objects represented by $X$, $Y$ is a random variable distributed according to $P(Y|X)$.</p>
+
+<p>This formulation of the problem is the most general, encapsulating the deterministic case when the conditional probability distribution $P(Y|X)$ is nonzero for only one value of $Y$. Philosophically, the fact that $P$ is not deterministic may simply indicate that $\mathcal{X}$ is the result of a process, like imaging, which discards information about $\mathcal{Y}$. We will explore the relationship between the achievable performance of a learning algorithm and the information contained in $\mathcal{X}$ about $\mathcal{Y}$, but we must first define what we mean by performance.</p>
+
+<h3 id="risk">Risk</h3>
+
+<p>To quantify the performance of a learning algorithm, we must first define some penalty for the case when the learner predicts a value $\hat{Y}$ which is different from the true realization of the random variable $Y$. This penalty, denoted $L(Y,\hat{Y})$ is known as the loss.</p>
+
+<p>The goal of a statistical learning algorithm is to produce predictions that minimize the expected loss, also known as the risk. Given some learning algorithm, $g$, which provides a prediction $\hat{Y} = g(X)$, the risk associated with that algorithm is given by</p>
+
+<p>$$\begin{equation}
+    R(g) = \mathbb{E}[L(Y,\hat{Y})] = \int\int P(X,Y)L(Y,g(X))dXdY
+\end{equation}$$</p>
+
+<p>An estimator, $t$, which minimizes the risk such that</p>
+
+<p>$$\begin{equation}
+    R(t) = \inf_g R(g)
+\end{equation}$$</p>
+
+<p>is known as the Bayes optimal estimator, while $R(t)$ is known as the Bayes risk. This nomenclature is due to the fact that $R$ is dependent on the prior distribution of $Y$, since $P(X,Y) = P(X|Y)P(Y)$. It may be contrasted with the minimax risk, a frequentist counterpart to the Bayesian risk which assumes the worst possible case behavior of the data.</p>
+
+<p>Note the relationship between statistical learning and statistical inference: In statistical inference problems, it is common that the governing distribution which relates the parameter being estimated, $\theta$, to the observed data, $X$, is known. If priors on $\theta$ can also be assumed, then the Bayes risk, as a lower bound on estimation error, represents the primary quantity of importance. This will prove not to be the full story for the case of statistical learning, where $P$ is <em>not</em> known (See <a href="#error-decomposition">Error Decomposition</a>).</p>
+
+<p>Much of the additional complexity in statistical learning stems from the fact that, as $P$ is unknown, we do not have access to the true risk. We may not directly minimize the true risk but only an estimate of the risk calculated using the available training data. Thie <em>empirical risk</em> is given by</p>
+
+<p>$$\begin{equation}
+    R_n(g) = \frac{1}{n}\sum_1^n L(Y,g(Y)).
+\end{equation}$$</p>
+
+<h3 id="regularization">Regularization</h3>
+
+<p>The fact that the true risk may never be minimized directly opens the door for the problem of overfitting. To put the matter simply, it is possible to find a function that both minimizes the empirical risk and maximizes (or otherwise fails to minimize) the true risk. In this case, the learned function is said to generalize poorly.</p>
+
+<p>The possibility of overfitting is not possible to eliminate entirely, but it can be made less likely. This is done principally by narrowing the space of functions which a learning algorithm is allowed to entertain as it seeks to minimize the empirical risk. This can be done by restricting the learned function $g$ to a dictionary of functions, $G$, often represented by a model with variable parameters (Note: This is an obvious feature of any machine learning solution; the model must be selected before it can be trained). It is also possible to supply a term which explicitly penalizes some functions, such that the pool of functions under consideration is effectively reduced. Of the two techniques, this later approach is what is often referred to as regularization, though regularization is implicit in any choice of a model.</p>
+
+<p>The process of learning via empirical risk minimization with a restricted set of candidate functions and regularization can be written,</p>
+
+<p>$$\begin{equation}
+g_n = \arg \min_{g\in\mathcal{G}} R_n(g) + \lambda(g),
+\end{equation}$$</p>
+
+<p>where $\lambda(g)$ is the regularization term.</p>
+
+<p>Regularization introduces bias into the learning process. In other words, once regularization is introduced, the learning process is being affected by more than simply the training data. Thus, it is contingent on the architect of the machine learning engineer to ensure that this bias is in line with prior knowledge about the problem at hand.</p>
+
+<p><a name="error-docomposition"></a></p>
+
+<h3 id="error-decomposition">Error Decomposition</h3>
+
+<p>Take $R^*$ to be the Bayes risk and $g^* \in \mathcal{G}$ to be the function with minimal risk. Then, the error resulting from empirical risk minimization can be decomposed into three terms,</p>
+
+<p>$$\begin{equation}
+R(g_n) = [R(g^∗) − R^∗] + [R(g_n) − R(g^∗)] + R^∗,
+\end{equation}$$</p>
+
+<p>known respectively as the approximation error, the estimation error (or generalization error), and the Bayes error.</p>
+
+<p>As previously noted, the Bayes error is strictly a property of the governing probability distribution. The behavior of the estimation error is largely dependent on the dictionary of functions or model that has been chosen. Finally, the approximation error depends on the fit between the two.</p>
+
+<h2 id="bounds">Bounds</h2>
+
+<div class="flash mb-3 p-2">
+This section is a stub.
+</div>
+
+<p>It is possible to provide general bounds on some of the terms of this error decomposition. These bounds are discussed thoroughly in the two references provided. However, many of these bounds do not well capture the actual performance of learning architectures like deep neural networks (DNNs). Instead of discussing these general bounds, we will wait until the sections on specific architectures to discuss emerging approaches for characterizing the their performance.</p>
+
+<h3 id="information-theoretic-lower-bounds-on-minimax-risk">Information-Theoretic Lower Bounds on Minimax Risk</h3>
+
+<div class="flash mb-3 p-2">
+This section is a stub.
+</div>
+
+<p><a href="http://www.maths.lu.se/fileadmin/maths/forskning_research/Undervisningsmaterial/Inferensteori_MASC02/minimax_01.pdf">Reference 1</a>,
+<a href="http://www.stat.yale.edu/~yw562/teaching/598/lec02.pdf">Reference 2</a>,
+<a href="https://pdfs.semanticscholar.org/8c2a/7047cfd87268b8f480e5ba6472974beb66b4.pdf">Reference 3</a>,
+<a href="https://homes.cs.washington.edu/~jrogers3/resources/Minimax_Lower_Bound_Notes.pdf">Reference 4</a></p>
+
+<h2 id="statistical-learning-vs-statistical-inference">Statistical Learning vs. Statistical Inference</h2>
+
+<p>The fact that the paradigms of statistical learning and statistical inference can be used to solve virtually identical problems can lead to confusion about the differences between them. Here we examine one such problem in an attempt to clarify differences in perspective.</p>
+
+<p>Lets imagine two variables, $x$ and $y$ which have a nominally linear relationship (linear, with white Gaussian noise). We have several pairs $(x_i,y_i)$ illustrating this correlation, and we wish to predict the $y$ associated with an unknown $x$. Let&rsquo;s look at the approach to this problem from the perspectives of both statistical inference and statistical learning.</p>
+
+<h3 id="inference-perspective">Inference Perspective</h3>
+
+<p><em>References</em>: <sup class="footnote-ref" id="fnref:kay"><a href="#fn:kay">3</a></sup></p>
+
+<p>From the statistical inference perspective, the problem is framed by the knowledge that the variables are related linearly, i.e., $y_i = \theta x_i + n_i$, where $n_i$ represents white Gaussian noise. If we can estimate the value of $\theta$, then we can use the linear relationship to make a prediction.</p>
+
+<p>Once again, the assumed linear relationship allows us write down the probability of the data, $\mathbf{y} = [y_1,y_2,&hellip;,y_N]^T$, as class of distributions parameterized by both $\theta$ and $\sigma$:</p>
+
+<p>$$\begin{equation}
+P(\mathbf{y}|\mathbf{x};\theta,\sigma) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{1}{2\sigma^2}\sum_i(y_i-\theta x_i)^2\right).
+\end{equation}$$</p>
+
+<p>Given this probability distribution, various techniques are available for jointly estimating $\theta$ and $\sigma$. In this case, it is possible to find the minimum variance unbiased estimator.</p>
+
+<div class="flash mb-3 p-2">
+TODO: Show derivation of MVUE.
+</div>
+
+<h3 id="learning-perspective">Learning Perspective</h3>
+
+<p>As we move to the case of statistical learning, let us first note that it is impossible to formulate the inference problem without a statement of the model. If there were not a model, there would be no parameter(s) to infer. This is not the case for statistical learning. We can more or less completely formulate the learning problem without defining a model. The statement of a model almost seems an afterthought&mdash;an addition with the purpose of helping to avoid overfitting. So we proceed.</p>
+
+<p>In the case of statistical learning, we are chiefly concerned with making good predictions&mdash;good in the sense of minimizing the risk. But the risk remains undefined until a loss function is specified. So, while models are paramount for statistical inference, it might be said that loss functions are paramount for statistical learning, as they provide the gauge of what constitutes a good prediction. For this example, we select the sum of squares loss function and move onward.</p>
+
+<p>As the true risk is unknowable, we must concern ourselves with the emprical risk. Unfortunately, we are aware that if there are no restrictions on the functions that can be learned, it is not unlikely that we will learn a function that overfits to the training data.</p>
+
+<p>Thus, we introduce a model as a type of restriction on the space of functions under consideration. In choosing a model, we have two considerations in mind: 1) The model must be learnable; in other words, the estimation error must diminish as the size of the training set increases. 2) The model should be able to well-approximate the physical process.</p>
+
+<p>Note that the first consideration is solely a feature of the model, and its sample complexity. However, the second consideration is a matter of the fit between the model and the physical process underlying the learning problem. At this point, we use our knowledge of the problem&mdash;the fact that the data are linearly related&mdash;to choose a model that meets both of these criteria, namely, the linear model.</p>
+
+<p>Minimizing the emprical risk for the least squares loss function is fairly straight-forward.</p>
+
+<div class="flash mb-3 p-2">
+TODO: Show how to minimize least squares. 
+</div>
+
+<h1 id="classification">Classification</h1>
+
+<p>We now confine our discussion to problems of classification. In the formalism defined previously, classification involves problems in which $Y$ is a discrete random variable, generally called a label.</p>
+
+<h2 id="generative-models">Generative Models</h2>
+
+<!--- https://stats.stackexchange.com/questions/12421/generative-vs-discriminative --->
+
+<p>There are chiefly two types of models that can be used for classification: so-called discriminative models and generative models. The difference between the two is that the generative variety models the probability distribution of the data, $P(X,Y)$, as an intermediate step for performing inference, while discriminative models do not.</p>
+
+<p>Most of our discussion will center around discriminative models. For that reason, we take some time here to try to address questions specific to generative models.</p>
+
+<h3 id="why-a-generative-model">Why a generative model?</h3>
+
+<p>A strange thing about generative models is that they appear to model information that is not useful for the purpose of the express task of learning. For example, let&rsquo;s say we want to make a prediction using $P(X,Y)$. The first thing that we will do is find $P(Y|X)$. Since $P(X,Y) = P(Y|X)P(X)$, we only need to divide $P(X,Y)$ by $P(X)$, which is obtained by marginalizing over $Y$. Thus, it seems that we are learning information, namely the marginal distribution of $X$, which we don&rsquo;t need in order to make the prediction. What possible advantage could there be in learning this additional information?</p>
+
+<p>As an initial starting point, let&rsquo;s note that while $P(X)$ is not used in performing inference, it does affect the risk, which is an expectation over $P(X,Y)$. This is important, as the risk is what we ultimately wish to minimize. One way of putting this is that it matters more to correctly label a commonly occuring $X$ than an $X$ that is uncommon. (Why not just find a model that fits all training data well? Remember, the constraints that allow learnability and prevent overfitting often require a certain amount of bias, or approximation error.)</p>
+
+<p>A descriminitive model trained by minimizing the empirical risk will naturally pay less attention to uncommon $X$&rsquo;s, as they will be less prevalent in the training set. But how does a generative model handle the same issue?</p>
+
+<p>To answer this question, it seems that we must take a closer look at how a generative model is trained. There is no reason that minimizing the empirical loss should yield any information about $P(X)$. As noted, $P(X)$ does not play a role in the inference step which is performed in calculating the loss. Therfore, it would seem that a generative model is trained not by minimizing the empirical loss, as it has been defined, but by minimizing the loss between the modeled probability distribution and the empirical distribution represented by the training data.</p>
+
+<p>My hypothesis is that it is in these details that the difference between a discriminitve and generative model lies, from a statistical learning perspective. Andrew Ng and Michael Jordan have a paper which appears to discuss these details, which I still need to read.<sup class="footnote-ref" id="fnref:ng-discriminative"><a href="#fn:ng-discriminative">4</a></sup></p>
+
+<h3 id="what-is-an-example-of-a-generative-model">What is an example of a generative model?</h3>
+
+<div class="flash mb-3 p-2">
+This section is a stub.
+</div>
+
+<p>Graphical models tend to be generative. Example: Naive Bayes, Deep Boltzman Machine.</p>
+
+<h3 id="what-about-generative-adversarial-networks-gans-are-these-actually-generative-in-the-sense-presented-here">What about Generative Adversarial Networks (GANs)? Are these actually generative in the sense presented here?</h3>
+
+<div class="flash mb-3 p-2">
+This section is a stub.
+</div>
+
+<p>This is an answer that may depend on the context.</p>
+
+<h2 id="discriminative-models">Discriminative Models</h2>
+
+<p>A discriminitive model is one which does not explicitly model $P(X,Y)$. Within this class of models, a further division can be made between probabilistic and non-probabalistic models. A probabalistic model, while it does not learn the full probability distribution $P(X,Y)$, does learn the factor, $P(Y|X)$, needed to perform inference. Non-probabilistic models do not learn probabilities.</p>
+
+<p>Since non-probabilistic models are defined negatively, many different flavors and shapes of models fit into this category. Commonly, these models learn functions that map directly from $X$ to $Y$ (Example?). Another common approach is known as energy minimization, which differs from probabilistic models chiefly in terms of normalization. Yann LeCun has a detailed tutorial which discusses such models in detail.<sup class="footnote-ref" id="fnref:energy"><a href="#fn:energy">5</a></sup></p>
+
+<p>We begin by noting that</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:bousquet">O. Bousquet, S. Boucheron, and G. Lugosi, <a href="http://www.econ.upf.edu/~lugosi/mlss_slt.pdf">Introduction to Statistical Learning Theory</a>, vol. 3176. Berlin, Heidelberg: Springer Berlin Heidelberg, 2004.
+ <a class="footnote-return" href="#fnref:bousquet"><sup>[return]</sup></a></li>
+<li id="fn:shalev-shwartz">S. Shalev-Shwartz and S. Ben-David, <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf">Understanding Machine Learning: From Theory to Algorithms</a>. Cambridge: Cambridge University Press, 2014.
+ <a class="footnote-return" href="#fnref:shalev-shwartz"><sup>[return]</sup></a></li>
+<li id="fn:kay">Kay, S. M. (1993). Fundamentals of statistical signal processing. Prentice Hall PTR.
+ <a class="footnote-return" href="#fnref:kay"><sup>[return]</sup></a></li>
+<li id="fn:ng-discriminative">Ng, A. Y., &amp; Jordan, M. I. (2002). <a href="http://robotics.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf">On discriminative vs. generative classifiers: A comparison of logistic regression and naive bayes. In Advances in neural information processing systems</a> (pp. 841-848).
+ <a class="footnote-return" href="#fnref:ng-discriminative"><sup>[return]</sup></a></li>
+<li id="fn:energy">Y. LeCun, S. Chopra, R. Hadsell, M. Ranzato, and F. J. Huang, “<a href="https://pdfs.semanticscholar.org/c01a/26af2cffdd0f6d20b01ef4d47f25ec7ff3d3.pdf">A Tutorial on Energy-Based Learning</a>,” p. 59.
+ <a class="footnote-return" href="#fnref:energy"><sup>[return]</sup></a></li>
+</ol>
+</div>
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>A machine learning taxonomy</b>
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#statistical-learning-theory">Statistical Learning Theory</a>
+<ul>
+<li><a href="#the-elements">The Elements</a>
+<ul>
+<li><a href="#risk">Risk</a></li>
+<li><a href="#regularization">Regularization</a></li>
+<li><a href="#error-decomposition">Error Decomposition</a></li>
+</ul></li>
+<li><a href="#bounds">Bounds</a>
+<ul>
+<li><a href="#information-theoretic-lower-bounds-on-minimax-risk">Information-Theoretic Lower Bounds on Minimax Risk</a></li>
+</ul></li>
+<li><a href="#statistical-learning-vs-statistical-inference">Statistical Learning vs. Statistical Inference</a>
+<ul>
+<li><a href="#inference-perspective">Inference Perspective</a></li>
+<li><a href="#learning-perspective">Learning Perspective</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#classification">Classification</a>
+<ul>
+<li><a href="#generative-models">Generative Models</a>
+<ul>
+<li><a href="#why-a-generative-model">Why a generative model?</a></li>
+<li><a href="#what-is-an-example-of-a-generative-model">What is an example of a generative model?</a></li>
+<li><a href="#what-about-generative-adversarial-networks-gans-are-these-actually-generative-in-the-sense-presented-here">What about Generative Adversarial Networks (GANs)? Are these actually generative in the sense presented here?</a></li>
+</ul></li>
+<li><a href="#discriminative-models">Discriminative Models</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by 
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+    });
+</script>
+      </div>
+    </div>
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
+</html>

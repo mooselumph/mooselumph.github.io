@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Links on Rayncloud.com</title>
+    <link>http://rayncloud.com/link/</link>
+    <description>Recent content in Links on Rayncloud.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://rayncloud.com/link/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Exploratory Writing</title>
+      <link>http://rayncloud.com/link/mooselumph/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/link/mooselumph/</guid>
+      <description>My blog.</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>http://rayncloud.com/link/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/link/publications/</guid>
+      <description>Publications on Google Scholar.</description>
+    </item>
+    
+  </channel>
+</rss>

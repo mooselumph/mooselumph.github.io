@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Featured Content on Rayncloud.com</title>
-    <link>http://rayncloud.com/</link>
-    <description>Recent content in Featured Content on Rayncloud.com</description>
+    <title>Technical Notes on Rayncloud.com</title>
+    <link>http://rayncloud.com/notes/</link>
+    <description>Recent content in Technical Notes on Rayncloud.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jul 2019 22:38:38 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jul 2019 22:38:43 -0700</lastBuildDate>
     
-	<atom:link href="http://rayncloud.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://rayncloud.com/notes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -27,24 +27,6 @@
       
       <guid>http://rayncloud.com/notes/machine-learning-taxonomy/</guid>
       <description>&lt;p&gt;These working notes are meant as a sort of taxonomy for machine learning, with a natural focus on the sorts of areas in which I am interested from a research perspective. They is meant as a way of organizing my knowledge about machine learning and providing a place to organize the references that I have found useful. These are working notes in the sense that some of the content is a speculative verbal working out of ideas and hypothesis. Hopefully, sections of this type will be reworked as I gain more knowledge.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Exploratory Writing</title>
-      <link>http://rayncloud.com/link/mooselumph/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://rayncloud.com/link/mooselumph/</guid>
-      <description>My blog.</description>
-    </item>
-    
-    <item>
-      <title>Publications</title>
-      <link>http://rayncloud.com/link/publications/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://rayncloud.com/link/publications/</guid>
-      <description>Publications on Google Scholar.</description>
     </item>
     
   </channel>

@@ -16,6 +16,7 @@
 
 .featured-box:hover{
     max-height:300%;
+    z-index: 5;
 }
 
 .clearfix::after {

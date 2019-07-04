@@ -10,13 +10,13 @@
     position:relative; 
     max-height:100%;
     min-height: 100%;
-    transition: max-height 0.5s;
     background-color: white;
 }
 
 .featured-box:hover{
     max-height:300%;
     z-index: 5;
+    transition: max-height 0.5s;
 }
 
 .clearfix::after {

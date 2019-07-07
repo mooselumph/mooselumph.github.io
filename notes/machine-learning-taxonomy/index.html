@@ -76,9 +76,9 @@
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2019-07-04. Published at: 2019-06-11.">
+      <span title="Lastmod: 2019-07-07. Published at: 2019-06-11.">
         
-          Lastmod: 2019-07-04
+          Lastmod: 2019-07-07
         
       </span>
     </div>
@@ -271,9 +271,47 @@ This section is a stub.
 
 <p>A discriminitive model is one which does not explicitly model $P(X,Y)$. Within this class of models, a further division can be made between probabilistic and non-probabalistic models. A probabalistic model, while it does not learn the full probability distribution $P(X,Y)$, does learn the factor, $P(Y|X)$, needed to perform inference. Non-probabilistic models do not learn probabilities.</p>
 
-<p>Since non-probabilistic models are defined negatively, many different flavors and shapes of models fit into this category. Commonly, these models learn functions that map directly from $X$ to $Y$ (Example?). Another common approach is known as energy minimization, which differs from probabilistic models chiefly in terms of normalization. Yann LeCun has a detailed tutorial which discusses such models in detail.<sup class="footnote-ref" id="fnref:energy"><a href="#fn:energy">5</a></sup></p>
+<p>Since non-probabilistic models are defined negatively, many different flavors and shapes of models fit into this category. Commonly, these models learn functions that map directly from $X$ to $Y$ (Example?).</p>
 
-<p>We begin by noting that</p>
+<h3 id="energy-minimization">Energy Minimization</h3>
+
+<p>Another important class of models is composed of energy minimization models, discussed thoroughly in a tutorial by Yann LeCun<sup class="footnote-ref" id="fnref:energy"><a href="#fn:energy">5</a></sup>.</p>
+
+<p>It is not uncommon to relate probabalistic models to energy models by writing the conditional probability in terms of a Boltzman distribution.</p>
+
+<p>\begin{equation}
+    P(Y|X) = \frac{P(X|Y)P(Y)}{P(X)} = \frac{1}{N(X)}e^{H_Y(X)+\mu_Y}.
+\end{equation}</p>
+
+<p>The possibililty of such a representation is sometimes taken to imply that energy minimization models learn what amounts to a non-normalized conditional probability distribution. See Lin<sup class="footnote-ref" id="fnref:deep-cheap-learning"><a href="#fn:deep-cheap-learning">6</a></sup>. However, LeCun points out that whether such a transformation from energy to probability yields meaningful probabilities depends on how the energy minimization model has been trained. An interesting question is whether an energy learned via empirical risk minimization will actually converge toward the negative log likelihood. The question is related to the question of whether a conditional probability distribution can be learned via empirical risk minimization, with predictions made with a maximum a posteriori estimator (rather than an estimator which minimizes the expected value of the loss.)</p>
+
+<h1 id="regression">Regression</h1>
+
+<p>We now turn from problems of classification to problems of regression. In the formalism defined of statistcal learning theory, classification involves problems in which $Y$ is a conntinuously defined random variable.</p>
+
+<p>The types of problems with which I will be concerned are primarily restoration problems and inverse problems. These problems involve some kind of operation or random process by which the input, $X$, is transformed into the output, $Y$. The task of the learning algorithm is to learn to invert this process.</p>
+
+<h2 id="energy-minimization-1">Energy Minimization</h2>
+
+<p>Within the field of image processing and computational imagery, these types of problems have traditionally been approached within an energy minimization framework, absent of machine learning. This is difficult in the case of classification becaues the likelihood $P(X|Y)$ is an unknown and complicated function that cannot but be learned from data. In contrast, for the case of regression, $P(X|Y)$ can often be modeled directly based on knowledge of the physical process.</p>
+
+<p>What role does learning have to play in this? It is possible that learning tools might be used in such a framework to learn either the likelihood term or the prior term. However, it is also common&mdash;particularly in the case of deep learning&mdash;for an end-to-end learning framework to supplant the entire energy minimization framework. In such cases, the discriminative model learns a function that maps directly from $X$ to $Y$. This prompts questions of whether the operation of a deep convolutional neural netwrok somehow mimics the operation of iterative, energy minimization framework. This question will be addressed in the section devoted to deep learning.</p>
+
+<h1 id="deep-neural-networks-deep-learning">Deep Neural Networks (Deep Learning)</h1>
+
+<p>Deep neural networks represent an interesting puzzle when viewed from the perspective of statistical learning theory. Machine learning algorithms achieve good generalization either through restricting the hypothesis class (e.g., to a set with low VC dimension), or by employing some kind of regularization. Deep neural networks presumably have a very high VC dimension, which implies that something else is helping them to generalize well&mdash;e.g. regularization.</p>
+
+<p>If I had to try to summarize what I think is going on with DNNs, it would be two things:</p>
+
+<ol>
+<li><p>The algorithms that exist for training neural networks are performing a sort of implicit regularization&mdash;restricting the set of combinations of parameters able to be learned, and therefore allowing for generalization much better than implied by the VC dimension. Information theory seems to have a lot to say about this regularization, and I&rsquo;m doing my best to obtain the background to understand some of the papers.<sup class="footnote-ref" id="fnref:emergence-of-invariance"><a href="#fn:emergence-of-invariance">7</a></sup>,<sup class="footnote-ref" id="fnref:information-theoretic-deep-learning"><a href="#fn:information-theoretic-deep-learning">8</a></sup></p></li>
+
+<li><p>There is good alignment between the deep neural network architecture and the random physical processes responsible for generating much of the imagery and other data on which deep learning is being used. (I don&rsquo;t understand whether this specifically relates to generalization; I would guess that it more explains why deep neural networks achieve good approximation error, i.e., can achieve a very good fit to training data).<sup class="footnote-ref" id="fnref:deep-cheap-learning"><a href="#fn:deep-cheap-learning">6</a></sup></p></li>
+</ol>
+
+<p>So, how do we improve the generalization capabilities of deep neural networks? I think it requires having a robust understanding of the two points above. Perhaps better performance will require stronger, explicit regularization (#1)&ndash;but this must not interfere with #2.  Essentially, if we understand the nature of both #1 and #2, then perhaps we can couple that with knowledge of the problem to design regularization that clamps down the generalization error with a smaller training set.</p>
+
+<p>Image reconstruction problems (regression), as opposed to classification problems, are perhaps one of the best sandboxes for exploring these questions, because the degradation process that the DNN is trying to invert can be explicitly modeled much more easily than the generative process being inverted in classification problems. So there is plenty of &ldquo;knowledge&rdquo;&mdash;the issue is how to incorporate this knowledge into the learner. A good first step in this area may trying to understand the relationship between DNNs and Bayesian techniques/energy minimization techniques that have become common in the context of image reconstruction. These techniques often make explicit use of knowledge of the process by which the data was generated. There is some work connecting Deep Learning to energy minimization techniques, but it is difficult to decipher without a strong background in functional analysis.<sup class="footnote-ref" id="fnref:cnn-inverse-problems"><a href="#fn:cnn-inverse-problems">9</a></sup></p>
 <div class="footnotes">
 
 <hr />
@@ -289,6 +327,14 @@ This section is a stub.
  <a class="footnote-return" href="#fnref:ng-discriminative"><sup>[return]</sup></a></li>
 <li id="fn:energy">Y. LeCun, S. Chopra, R. Hadsell, M. Ranzato, and F. J. Huang, “<a href="https://pdfs.semanticscholar.org/c01a/26af2cffdd0f6d20b01ef4d47f25ec7ff3d3.pdf">A Tutorial on Energy-Based Learning</a>,” p. 59.
  <a class="footnote-return" href="#fnref:energy"><sup>[return]</sup></a></li>
+<li id="fn:deep-cheap-learning">H. W. Lin, M. Tegmark, and D. Rolnick, “<a href="https://arxiv.org/pdf/1608.08225.pdf">Why Does Deep and Cheap Learning Work So Well?</a>,” Journal of Statistical Physics, vol. 168, no. 6, pp. 1223–1247, Sep. 2017.
+ <a class="footnote-return" href="#fnref:deep-cheap-learning"><sup>[return]</sup></a></li>
+<li id="fn:emergence-of-invariance">[1]A. Achille and S. Soatto, “<a href="https://arxiv.org/abs/1706.01350">Emergence of Invariance and Disentanglement in Deep Representations</a>,” arXiv:1706.01350 [cs, stat], Jun. 2017.
+ <a class="footnote-return" href="#fnref:emergence-of-invariance"><sup>[return]</sup></a></li>
+<li id="fn:information-theoretic-deep-learning">J. Zhang, T. Liu, and D. Tao, “<a href="https://arxiv.org/abs/1804.09060">An Information-Theoretic View for Deep Learning</a>,” arXiv:1804.09060 [cs, stat], Apr. 2018.
+ <a class="footnote-return" href="#fnref:information-theoretic-deep-learning"><sup>[return]</sup></a></li>
+<li id="fn:cnn-inverse-problems">K. H. Jin, M. T. McCann, E. Froustey, and M. Unser, “<a href="https://arxiv.org/pdf/1611.03679">Deep Convolutional Neural Network for Inverse Problems in Imaging</a>,” IEEE Trans. on Image Process., vol. 26, no. 9, pp. 4509–4522, Sep. 2017.
+ <a class="footnote-return" href="#fnref:cnn-inverse-problems"><sup>[return]</sup></a></li>
 </ol>
 </div>
   </section>
@@ -337,8 +383,16 @@ This section is a stub.
 <li><a href="#what-is-an-example-of-a-generative-model">What is an example of a generative model?</a></li>
 <li><a href="#what-about-generative-adversarial-networks-gans-are-these-actually-generative-in-the-sense-presented-here">What about Generative Adversarial Networks (GANs)? Are these actually generative in the sense presented here?</a></li>
 </ul></li>
-<li><a href="#discriminative-models">Discriminative Models</a></li>
+<li><a href="#discriminative-models">Discriminative Models</a>
+<ul>
+<li><a href="#energy-minimization">Energy Minimization</a></li>
 </ul></li>
+</ul></li>
+<li><a href="#regression">Regression</a>
+<ul>
+<li><a href="#energy-minimization-1">Energy Minimization</a></li>
+</ul></li>
+<li><a href="#deep-neural-networks-deep-learning">Deep Neural Networks (Deep Learning)</a></li>
 </ul>
 </nav>
     </div>

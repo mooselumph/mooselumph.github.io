@@ -6,10 +6,19 @@
     <description>Recent content in Machine Learning on Rayncloud.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jul 2019 16:27:30 -0700</lastBuildDate>
     
 	<atom:link href="http://rayncloud.com/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Deep Learning Generalization</title>
+      <link>http://rayncloud.com/notes/deep-learning-generalization/</link>
+      <pubDate>Sun, 07 Jul 2019 16:27:30 -0700</pubDate>
+      
+      <guid>http://rayncloud.com/notes/deep-learning-generalization/</guid>
+      <description>&lt;p&gt;Deep neural networks represent an interesting puzzle when viewed from the perspective of statistical learning theory. Specifically, it is difficult to account for their ability to generalize well.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>A machine learning taxonomy</title>

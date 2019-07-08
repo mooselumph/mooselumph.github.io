@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Generalization on Rayncloud.com</title>
+    <link>http://rayncloud.com/tags/generalization/</link>
+    <description>Recent content in Generalization on Rayncloud.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Jul 2019 16:27:30 -0700</lastBuildDate>
+    
+	<atom:link href="http://rayncloud.com/tags/generalization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deep Learning Generalization</title>
+      <link>http://rayncloud.com/notes/deep-learning-generalization/</link>
+      <pubDate>Sun, 07 Jul 2019 16:27:30 -0700</pubDate>
+      
+      <guid>http://rayncloud.com/notes/deep-learning-generalization/</guid>
+      <description>&lt;p&gt;Deep neural networks represent an interesting puzzle when viewed from the perspective of statistical learning theory. Specifically, it is difficult to account for their ability to generalize well.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

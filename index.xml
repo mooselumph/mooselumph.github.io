@@ -6,19 +6,10 @@
     <description>Recent content in My Stuff on Rayncloud.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Jul 2019 08:54:06 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2020 13:21:05 -0700</lastBuildDate>
     
 	<atom:link href="http://rayncloud.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Deep Learning Generalization</title>
-      <link>http://rayncloud.com/notes/deep-learning-generalization/</link>
-      <pubDate>Sun, 07 Jul 2019 16:27:30 -0700</pubDate>
-      
-      <guid>http://rayncloud.com/notes/deep-learning-generalization/</guid>
-      <description>&lt;p&gt;Deep neural networks represent an interesting puzzle when viewed from the perspective of statistical learning theory. Specifically, it is difficult to account for their ability to generalize well.&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Plenoptic Camera Notes</title>
@@ -27,15 +18,6 @@
       
       <guid>http://rayncloud.com/notes/plenoptic-camera-notes/</guid>
       <description>&lt;p&gt;Working notes related to the use of a plenoptic camera for estimating depth within a scene.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>A machine learning taxonomy</title>
-      <link>http://rayncloud.com/notes/machine-learning-taxonomy/</link>
-      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://rayncloud.com/notes/machine-learning-taxonomy/</guid>
-      <description>&lt;p&gt;These working notes are formatted as a taxonomy of machine learning, with a natural focus on research areas of interest to me. They are meant as a way of organizing my knowledge, open questions, and useful references related to machine learning.&lt;/p&gt;</description>
     </item>
     
     <item>

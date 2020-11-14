@@ -7,6 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://rayncloud.com/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Learning and Uniform Convergence</title>
+      <link>http://rayncloud.com/notes/learning-uniform-convergence/</link>
+      <pubDate>Wed, 11 Nov 2020 21:25:28 -0800</pubDate>
+      
+      <guid>http://rayncloud.com/notes/learning-uniform-convergence/</guid>
+      <description>&lt;p&gt;First post in a series on generalization in machine learning.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Plenoptic Camera Notes</title>
       <link>http://rayncloud.com/notes/plenoptic-camera-notes/</link>
       <pubDate>Mon, 01 Jul 2019 19:30:13 -0700</pubDate>

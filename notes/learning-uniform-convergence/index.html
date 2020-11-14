@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Learning and Uniform Convergence &ndash; Rayncloud.com
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="First post in a series on generalization in machine learning.
+|Describe what your web page is about">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Rayncloud.com">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="Learning and Uniform Convergence | Rayncloud.com">
+    <meta name="twitter:description" content="First post in a series on generalization in machine learning.|Describe what your web page is about">
+    <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom.css">
+    <script defer src="/assets/scripts.js"></script>
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="http://rayncloud.com/">
+    Rayncloud.com
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Learning and Uniform Convergence</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2020-11-13. Published at: 2020-11-11.">
+        
+          Lastmod: 2020-11-13
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p>First post in a series on generalization in machine learning.</p>
+<p>$
+\gdef\R{\mathbb{R}}
+\gdef\E{\mathbb{E}}
+\gdef\P{\mathbb{P}}
+\gdef\D{\mathcal{D}}
+\gdef\X{\mathcal{X}}
+\gdef\Y{\mathcal{Y}}
+\gdef\Z{\mathcal{Z}}
+\gdef\H{\mathcal{H}}
+\gdef\A{\mathcal{A}}
+\gdef\I{\mathbb{I}}
+$</p>
+<h2 id="introduction">Introduction</h2>
+<p>A general machine learning problem starts with an known domain of interest, $\Z$, and an unknown distribution over that domain, $\D$. Our access to $\D$ consists only in the ability to generate a finite number of i.i.d. samples from it. In addition to the distribution, we have a class of hypotheses, $\H$, from which we hope to choose an element which characterizes the distribution. Finally, we have a risk functional, $f: \H \times \Z \to \R$, to quantify the goodness of fit between our hypothesis and an individual sample from $\D$. We wish to find the hypothesis which minimizes the population risk, defined as</p>
+<p>$$\tag{}R(h) = \mathbb{E}_{z\sim\mathcal{D}}[f(h;z)]$$</p>
+<p>We denote the risk of this optimal solution as $R(h^\star) = \inf_{h \in \mathcal{H}}R(h)$. For the special cases of classification and regression, we let $\Z = \X \times \Y$, where $\X \subseteq \R^d$ and $\Y \subseteq \R$ are respectively the input and output domains. Then, naturally $\H \subseteq \Y^\X$ and $f(h,z) \equiv \ell(h(x),y)$ for a suitable loss function $\ell : \Y \times \Y \to \R$.</p>
+<p>A machine learning task may be identified with the pair $(\H,f)$. The distribution $\D$ is excluded from the task definition since, formally, we know nothing about the distribution before we begin to sample it. Thus, the questions that we seek to ask and answer with respect to the learnability of a task must apply over all possible distributions. (When a practitioner does have access to some knowledge about the structure of $\D$, she can make use of this by judiciously choosing $\H$.)</p>
+<p>Given a machine learning task, a learning algorithm is a function $\mathcal{A}: \bigcup_{n=1}^\infty \Z^n \to \mathcal{H}$, from a set of points $S = \{z_1,&hellip;,z_n\}$ to a hypothesis. Ideally, the learning algorithm outputs a hypothesis whose risk is close to optimal. An algorithm producing hypothesis whose risks converge toward the minimum risk is called a <em>consistent</em> algorithm, and a problem or which a consistent algorithm exists is called a <em>learnable</em> problem.</p>
+
+
+<div class="flash bg-gray mb-3 p-2">
+<p><strong>Definition (Learnability and Consistency):</strong> An algorithm is called consistent if for any $\epsilon &gt; 0$,
+$$\tag{}\lim_{m \to 0}\P_{S \sim \D^m} [R(\A[S]) - R(h^\star) &gt; \epsilon] = 0$$
+and a task is called learnable if a consistent algorithm exists for that task.</p>
+
+</div>
+
+<p>In this series, we will use the weak notion of convergence in probability, as defined above. However, in the literature, stronger notions such as convergence in mean can also be found.</p>
+<p>In this post, we will explore a series of sufficient conditions for learnability, which while ultimately lead us to conditions, such as the the finitude of the VC dimension, which can be straightforwardly calculated given $\H$. In the next post, we will see that some of these sufficient conditions can also be shown to be necessary.</p>
+<p>The roadmap of topics is as follows:</p>
+<ul>
+<li>Empirical Risk Minimization (ERM)</li>
+<li>Uniform Convergence</li>
+<li>VC Dimension and Related concepts</li>
+</ul>
+<p>We will show that</p>
+<p>$$ \text{Finite VC Dimension} \implies \text{Uniform Convergence} \implies \text{Learnable with ERM} \implies \text{Learnable}$$</p>
+<h2 id="uniform-convergence-and-empirical-risk-minimization">Uniform Convergence and Empirical Risk Minimization</h2>
+<p>First, let us introduce the notion of empirical risk minimization (ERM). ERM is a strategy for learning, which selects the member of $\H$ which displays the smallest empirical risk, $R_S(h)$ on the training set, S:</p>
+<p>$$\tag{} R_S(h) = \frac{1}{|S|}\sum_{z \in S} f(h;z)$$</p>
+<p>Since ERM is simply a specific type of learning algorithm, clearly if a task is learnable with ERM, then it is learnable. Note that the ERM algorithm directly gives us a form of convergence via the law of large numbers (LLN). Specifically, we have that for any $h \in \H$, as $m \to \infty$, $R_S(h) \to R(h)$ in probability. Sadly, this isn&rsquo;t enough: since each $f(h,z)$ in the sum depends on $h$, and $h$ in turn depends on $S$, we lose statistical independence in the sum, and LLN no longer applies. Thus, we need to consider the stronger uniform convergence guarantee that as $m \to \infty$</p>
+<p>$$ P_{S \sim \D^m}( \exists h \in \H,\text{ s.t. }|R_S(h) - R(h)| &gt; \epsilon) = P_{S \sim \D^m}\left( \sup_{h \in \H}|R_S(h) - R(h)| &gt; \epsilon\right) \to 0$$</p>
+<p>We now have our first basic result:</p>
+
+
+<div class="flash bg-gray mb-3 p-2">
+<p><strong>Proposition (Uniform Convergence implies ERM Learnability):</strong> If uniform convergence holds for a given hypothesis class, $\H$, then that class is ERM learnable.</p>
+<p><em>Proof:</em> Let $h_S$ denote $\A[S]$. Since $h_S$ is the minimizer of $R_S$, it follows that $R_S(h^\star) - R_S(h_S) &gt; 0$. Thus</p>
+<p>$$
+\tag{}R(h_S) - R(h^\star)  \leq R(h_s) - R_s(h_s) + R_S(h^\star) - R(h^\star) \leq 2 \sup_{h\in \H} |R(h) - R_S(h)|
+$$</p>
+
+</div>
+
+<p>Notice that if $\H$ is of finite cardinality, then uniform convergence follows the LLN directly via the union bound. This motivates the strategy of considering the <em>effective size</em> of the hypothesis class.</p>
+<h2 id="bounded-hypothesis-class-complexity-and-uniform-convergence">Bounded Hypothesis Class Complexity and Uniform Convergence</h2>
+<h3 id="binary-classification">Binary Classification</h3>
+<p>In the case of binary classification, we progress toward uniform convergence by noting that there are always a finite number of ways to classify the elements of a sample $S$ (even for an uncountable $\H$). By upper bounding this number, and employing a statistical trick known as symmetrization, we are again able to use the union bound to show uniform convergence as in the case of finite $\H$.</p>
+<p>First, let us formalize the above number:</p>
+
+
+<div class="flash bg-gray mb-3 p-2">
+<p><strong>Definition (Growth Function):</strong> For a given sample, $S = \{z_1,&hellip;,z_m\}$, let $\H(S)$ be the set of &lsquo;projections&rsquo; of $h \in \H$ onto $S$:</p>
+<p>$$\tag{} \H(S) = \{(h(z_1),&hellip;h(x_m)),h \in \H\}$$</p>
+<p>The growth function is defined to be the maximum size of $\H(S)$ over all samples $S$:</p>
+<p>$$\tag{} S_{\H}(m) = \sup_{S \in \Z^m} |\H(S)|$$</p>
+
+</div>
+
+<p>The following theorem by Vapnik and Chervonenkis shows that the growth function can serve as an the effective size of the hypothesis class.</p>
+
+
+<div class="flash bg-gray mb-3 p-2">
+<p><strong>Theorem (Vapnik and Chervonenkis):</strong> For any $\delta &gt; 0$, with probability at least $1 - \delta$ over $S \sim \D^m$:</p>
+<p>$$\tag{} \sup_{h \in \H}|R_S(h) - R(h)| \le 2\sqrt{2\frac{\log(S_\H(2m) + \log(2/\delta)}{m}}$$</p>
+
+</div>
+
+
+
+<div class="flash bg-white mb-3 p-2">
+    <div class="toggle-proof">&#9656; Proof</div>
+    <div class="proof"><p>The quantity $\sup_{h \in \H}|R_S(h) - R(h)|$ seems to depend on the full object $\H$ which could be uncountable; this isn&rsquo;t appropriate for the use of the union bound. We need to upper bound this quantity (probabilistically) in a way that depends only on a finite &ldquo;sampling&rdquo; or &ldquo;projection&rdquo; of $\H$&mdash;i.e. on $\H_S$. We do this by using the symmetrization lemma:</p>
+<p><strong>Lemma (Symmetrization)</strong>: For any $t &gt; 0$, such that $nt^2 \ge 2$,
+$$\tag{} \P_{S \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; t\right] \le 2\P_{S,S' \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R_{S'}(h) &gt; t/2\right]$$</p>
+<p><em>Proof of lemma:</em>
+Fix $S$ and $S'$, and let $h'$ be the hypothesis achieving the supremum on the left hand side. Then</p>
+<p>$$ \I_{R(h') - R_S(h') &gt; t}\I_{R(h') - R_{S'}(h') &lt; t/2} =  \I_{R(h') - R_S(h') &gt; t \; \land \;  R_{S'}(h') - R(h') \ge -t/2} \le \I_{R_{S'}(h') - R_S(h') &gt; t/2}$$</p>
+<p>Taking expecation with respect to the second sample gives</p>
+<p>$$ \I_{R(h') - R_S(h') &gt; t}\P_{S'}(R(h') - R_{S'}(h') &lt; t/2) \le \E_{S'}[\I_{R_{S'}(h') - R_S(h') &gt; t/2}]$$</p>
+<p>But by Chebyshev&rsquo;s inequality and that for binary classification, $\text{range}(h') \subseteq [0,1] \implies \textrm{var}(h') \le 1/4$</p>
+<p>$$\P'(R(h') - R_{S'}(h') \ge t/2) \le \frac{4 \textrm{var}(h')}{nt^2} \le \frac{1}{nt^2} \le 1/2$$</p>
+<p>Thus taking expectation with respect to $S$, we have</p>
+<p>$$\tag{} \P_S(R(h') - R_{S'}(h') &gt; t) \le 2 \P_{S,S'}(R_{S'}(h') - R_S(h') &gt; t/2)$$</p>
+<p>But by the choice of $h'$, the left hand side of (9) is equal to the left hand side of (8) and the right hand side of (9) is less than or equal to the right hand side of (8).  $\blacksquare$</p>
+<p>With the symmetrization lemma in hand, our desired result follows quite quickly. We need merely make note that because $\H_{S \cup S'}$ contains all possible projections of $h \in \H$ onto the sets $S$ and $S'$,</p>
+<p>$$ \sup_{h \in \H}R_S(h) - R_{S'}(h) = \sup_{h \in \H_{S \cup S'}}R_S(h) - R_{S'}(h)$$</p>
+<p>But $\H_{S \cup S'}$ has bounded size! We will also make use of a symmetric form of Hoeffding&rsquo;s inequality for a random variable bounded by $[0,1]$ (This can be derived via minor adjustments in the derivation of the usual form):</p>
+<p>$$\P_{S,S' \sim \D^m} [R_S - R_{S'} &gt; \epsilon] \le e^{-m\epsilon^2}$$</p>
+<p>With these two facts, along with the symmetrization lemma, we have,</p>
+<p>$$
+\begin{aligned}
+\P_S \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; \epsilon \right] &amp;\le 2 \P_{S,S'} \left[\sup_{h \in \H}R_S(h) - R_{S'}(h)  &gt; \epsilon/2 \right] \\  &amp;= 2 \P_{S,S'} \left[\sup_{h \in \H_{S\cup S'}}R_S(h) - R_{S'}(h)  &gt; \epsilon/2 \right] \\ &amp;\le 2 S_\H(2m) \P_{S,S'} \left[R_S(h) - R_{S'}(h)  &gt; \epsilon/2 \right] \\ &amp;\le 2 S_\H(2m)e^{-m\epsilon^2/4}
+\end{aligned}
+$$</p>
+</div>
+</div>
+<p>How does this result help us? Notice that clearly, $S_\H(m) \le 2^m$, since there only $2^m$ distinct classifications of $m$ objects. But plugging this bound into (7) does not achieve uniform convergence: we need $S_\H(m)$ to have sub-exponential growth for the bound to be non-vacuous. This is where the VC dimension comes into play: The growth function of a hypothesis class with bounded VC dimension will exhibit polynomial growth for a high enough $m$.</p>
+<p>When $S_\H(m) = 2^m$, it implies that there exists a set $S$ of size $m$ such that all possible classifications of $S$ are allowed by $\H$. In this situation, $\H$ is said to *shatter* S. The VC dimension of is the size of the largest set which is shattered by $\H$. Formally:</p>
+
+
+<div class="flash bg-gray mb-3 p-2">
+<p><strong>Definition (VC Dimension):</strong> The VC dimension of a class $\H$ is the largest $m$ such that</p>
+<p>$$S_\H(m) = 2^m$$</p>
+
+</div>
+
+<p>The importance of the VC dimension comes from a lemma, often known as Sauer&rsquo;s lemma:</p>
+
+
+<div class="flash bg-gray mb-3 p-2">
+<p><strong>Lemma (Sauer, Vapnik and Chervonenkis):</strong> Let $\H$ be a class of functions with finite VC dimension $h$. Then for all $m \in \N$,</p>
+<p>$$S_\H(m) \le \sum_{i=0}^{h}{m \choose i}$$</p>
+<p>and for $m \ge h$,</p>
+<p>$$S_\H(m) \le \left(\frac{em}{h}\right)^h$$</p>
+<p>We recommend [1] for the proof.</p>
+
+</div>
+
+<h2 id="further-reading">Further Reading</h2>
+<p>[1] S. Shalev-Shwartz and S. Ben-David, <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf"><em>Understanding Machine Learning: From Theory to Algorithms</em></a>. Cambridge: Cambridge University Press, 2014.</p>
+<p>[2] O. Bousquet, S. Boucheron, and G. Lugosi, <a href="http://www.econ.upf.edu/~lugosi/mlss_slt.pdf"><em>Introduction to Statistical Learning Theory</em></a>, vol. 3176. Berlin, Heidelberg: Springer Berlin Heidelberg, 2004.</p>
+<p>[3] M. Anthony and P. L. Bartlett, <em>Neural Network Learning: Theoretical Foundations</em>, 1st ed. Cambridge University Press, 1999.</p>
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Learning and Uniform Convergence</b>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#uniform-convergence-and-empirical-risk-minimization">Uniform Convergence and Empirical Risk Minimization</a></li>
+    <li><a href="#bounded-hypothesis-class-complexity-and-uniform-convergence">Bounded Hypothesis Class Complexity and Uniform Convergence</a>
+      <ul>
+        <li><a href="#binary-classification">Binary Classification</a></li>
+      </ul>
+    </li>
+    <li><a href="#further-reading">Further Reading</a></li>
+  </ul>
+</nav>
+    </div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by 
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+    
+ <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body,{delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+        ]});
+    });
+</script>
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

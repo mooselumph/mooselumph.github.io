@@ -1,3 +1,24 @@
+body {
+  counter-reset: eqn;
+}
+
+article > section:first-child{
+    padding-bottom: 200px !important;
+}
+
+.toggle-proof{
+  cursor: pointer;
+}
+.proof {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.tag .mord:first-child::after {
+    counter-increment: eqn;
+    content: counter(eqn);
+}
 
 .featured-box-holder{
     width:240px; 

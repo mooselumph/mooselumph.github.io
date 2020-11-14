@@ -1,6 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://rayncloud.com/categories/</loc>
+    <lastmod>2019-07-07T17:03:58-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rayncloud.com/tags/inverse-problems/</loc>
+    <lastmod>2019-07-07T17:03:58-07:00</lastmod>
+  </url>
   
   <url>
     <loc>http://rayncloud.com/notes/plenoptic-camera-notes/</loc>
@@ -8,8 +18,13 @@
   </url>
   
   <url>
-    <loc>http://rayncloud.com/categories/</loc>
-    <priority>0</priority>
+    <loc>http://rayncloud.com/categories/statistical-inference/</loc>
+    <lastmod>2019-07-07T17:03:58-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rayncloud.com/tags/</loc>
+    <lastmod>2019-07-07T17:03:58-07:00</lastmod>
   </url>
   
   <url>
@@ -18,20 +33,13 @@
   </url>
   
   <url>
-    <loc>http://rayncloud.com/tags/inverse-problems/</loc>
-    <lastmod>2019-07-07T17:03:58-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://rayncloud.com/link/</loc>
-    <lastmod>2019-07-03T22:27:49-07:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-07-04T09:41:05-07:00</lastmod>
   </url>
   
   <url>
     <loc>http://rayncloud.com/</loc>
-    <lastmod>2020-06-19T13:21:05-07:00</lastmod>
+    <lastmod>2020-11-11T22:14:54-08:00</lastmod>
   </url>
   
   <url>
@@ -40,20 +48,8 @@
   </url>
   
   <url>
-    <loc>http://rayncloud.com/categories/statistical-inference/</loc>
-    <lastmod>2019-07-07T17:03:58-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://rayncloud.com/tags/</loc>
-    <lastmod>2019-07-07T17:03:58-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://rayncloud.com/notes/</loc>
-    <lastmod>2019-07-03T22:38:43-07:00</lastmod>
+    <lastmod>2020-11-11T22:14:24-08:00</lastmod>
   </url>
   
 </urlset>

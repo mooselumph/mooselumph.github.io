@@ -9,15 +9,10 @@ article > section:first-child{
 .toggle-proof{
   cursor: pointer;
 }
-.proof {
+.proof.active {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-}
-
-.tag .mord:first-child::after {
-    counter-increment: eqn;
-    content: counter(eqn);
 }
 
 .featured-box-holder{

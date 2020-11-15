@@ -75,9 +75,9 @@
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2020-11-13. Published at: 2020-11-11.">
+      <span title="Lastmod: 2020-11-15. Published at: 2020-11-11.">
         
-          Lastmod: 2020-11-13
+          Lastmod: 2020-11-15
         
       </span>
     </div>
@@ -116,7 +116,7 @@ and a task is called learnable if a consistent algorithm exists for that task.</
 </div>
 
 <p>In this series, we will use the weak notion of convergence in probability, as defined above. However, in the literature, stronger notions such as convergence in mean can also be found.</p>
-<p>In this post, we will explore a series of sufficient conditions for learnability, which while ultimately lead us to conditions, such as the the finitude of the VC dimension, which can be straightforwardly calculated given $\H$. In the next post, we will see that some of these sufficient conditions can also be shown to be necessary.</p>
+<p>In this post, we will explore a series of sufficient conditions for learnability, which while ultimately lead us to a condition, the finitude of the VC dimension, which can be straightforwardly calculated given $\H$. Finally, we will see that this condition is in fact <em>required</em> for learnability.</p>
 <p>The roadmap of topics is as follows:</p>
 <ul>
 <li>Empirical Risk Minimization (ERM)</li>
@@ -124,12 +124,12 @@ and a task is called learnable if a consistent algorithm exists for that task.</
 <li>VC Dimension and Related concepts</li>
 </ul>
 <p>We will show that</p>
-<p>$$ \text{Finite VC Dimension} \implies \text{Uniform Convergence} \implies \text{Learnable with ERM} \implies \text{Learnable}$$</p>
+<p>$$ \begin{matrix}\text{Finite VC} \\ \text{Dimension}\end{matrix} \implies \begin{matrix}\text{Uniform} \\ \text{Convergence}\end{matrix} \implies \begin{matrix}\text{Learnable} \\ \text{with ERM}\end{matrix} \implies \text{Learnable}$$</p>
 <h2 id="uniform-convergence-and-empirical-risk-minimization">Uniform Convergence and Empirical Risk Minimization</h2>
 <p>First, let us introduce the notion of empirical risk minimization (ERM). ERM is a strategy for learning, which selects the member of $\H$ which displays the smallest empirical risk, $R_S(h)$ on the training set, S:</p>
 <p>$$\tag{} R_S(h) = \frac{1}{|S|}\sum_{z \in S} f(h;z)$$</p>
 <p>Since ERM is simply a specific type of learning algorithm, clearly if a task is learnable with ERM, then it is learnable. Note that the ERM algorithm directly gives us a form of convergence via the law of large numbers (LLN). Specifically, we have that for any $h \in \H$, as $m \to \infty$, $R_S(h) \to R(h)$ in probability. Sadly, this isn&rsquo;t enough: since each $f(h,z)$ in the sum depends on $h$, and $h$ in turn depends on $S$, we lose statistical independence in the sum, and LLN no longer applies. Thus, we need to consider the stronger uniform convergence guarantee that as $m \to \infty$</p>
-<p>$$ P_{S \sim \D^m}( \exists h \in \H,\text{ s.t. }|R_S(h) - R(h)| &gt; \epsilon) = P_{S \sim \D^m}\left( \sup_{h \in \H}|R_S(h) - R(h)| &gt; \epsilon\right) \to 0$$</p>
+<p>$$\tag{\htmlId{eq-uniform}{}}P_{S \sim \D^m}( \exists h \in \H,\text{ s.t. }|R_S(h) - R(h)| &gt; \epsilon) = P_{S \sim \D^m}\left( \sup_{h \in \H}|R_S(h) - R(h)| &gt; \epsilon\right) \to 0$$</p>
 <p>We now have our first basic result:</p>
 
 
@@ -144,6 +144,7 @@ $$</p>
 
 <p>Notice that if $\H$ is of finite cardinality, then uniform convergence follows the LLN directly via the union bound. This motivates the strategy of considering the <em>effective size</em> of the hypothesis class.</p>
 <h2 id="bounded-hypothesis-class-complexity-and-uniform-convergence">Bounded Hypothesis Class Complexity and Uniform Convergence</h2>
+<p>We now specialize to the case of binary classification; other cases can be handled with variations of the techniques handled here. See [3] for a thorough treatment.</p>
 <h3 id="binary-classification">Binary Classification</h3>
 <p>In the case of binary classification, we progress toward uniform convergence by noting that there are always a finite number of ways to classify the elements of a sample $S$ (even for an uncountable $\H$). By upper bounding this number, and employing a statistical trick known as symmetrization, we are again able to use the union bound to show uniform convergence as in the case of finite $\H$.</p>
 <p>First, let us formalize the above number:</p>
@@ -162,7 +163,7 @@ $$</p>
 
 <div class="flash bg-gray mb-3 p-2">
 <p><strong>Theorem (Vapnik and Chervonenkis):</strong> For any $\delta &gt; 0$, with probability at least $1 - \delta$ over $S \sim \D^m$:</p>
-<p>$$\tag{} \sup_{h \in \H}|R_S(h) - R(h)| \le 2\sqrt{2\frac{\log(S_\H(2m) + \log(2/\delta)}{m}}$$</p>
+<p>$$\tag{\htmlId{eq-gf-bound}{}} \sup_{h \in \H}|R_S(h) - R(h)| \le 2\sqrt{2\frac{\log(S_\H(2m)) + \log(2/\delta)}{m}}$$</p>
 
 </div>
 
@@ -170,9 +171,9 @@ $$</p>
 
 <div class="flash bg-white mb-3 p-2">
     <div class="toggle-proof">&#9656; Proof</div>
-    <div class="proof"><p>The quantity $\sup_{h \in \H}|R_S(h) - R(h)|$ seems to depend on the full object $\H$ which could be uncountable; this isn&rsquo;t appropriate for the use of the union bound. We need to upper bound this quantity (probabilistically) in a way that depends only on a finite &ldquo;sampling&rdquo; or &ldquo;projection&rdquo; of $\H$&mdash;i.e. on $\H_S$. We do this by using the symmetrization lemma:</p>
+    <div class='proof  active }'><p>The quantity $\sup_{h \in \H}|R_S(h) - R(h)|$ seems to depend on the full object $\H$ which could be uncountable; this isn&rsquo;t appropriate for the use of the union bound. We need to upper bound this quantity (probabilistically) in a way that depends only on a finite &ldquo;sampling&rdquo; or &ldquo;projection&rdquo; of $\H$&mdash;i.e. on $\H_S$. We do this by using the symmetrization lemma:</p>
 <p><strong>Lemma (Symmetrization)</strong>: For any $t &gt; 0$, such that $nt^2 \ge 2$,
-$$\tag{} \P_{S \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; t\right] \le 2\P_{S,S' \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R_{S'}(h) &gt; t/2\right]$$</p>
+$$\tag{\htmlId{eq-symmetric}{}} \P_{S \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; t\right] \le 2\P_{S,S' \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R_{S'}(h) &gt; t/2\right]$$</p>
 <p><em>Proof of lemma:</em>
 Fix $S$ and $S'$, and let $h'$ be the hypothesis achieving the supremum on the left hand side. Then</p>
 <p>$$ \I_{R(h') - R_S(h') &gt; t}\I_{R(h') - R_{S'}(h') &lt; t/2} =  \I_{R(h') - R_S(h') &gt; t \; \land \;  R_{S'}(h') - R(h') \ge -t/2} \le \I_{R_{S'}(h') - R_S(h') &gt; t/2}$$</p>
@@ -182,7 +183,7 @@ Fix $S$ and $S'$, and let $h'$ be the hypothesis achieving the supremum on the l
 <p>$$\P'(R(h') - R_{S'}(h') \ge t/2) \le \frac{4 \textrm{var}(h')}{nt^2} \le \frac{1}{nt^2} \le 1/2$$</p>
 <p>Thus taking expectation with respect to $S$, we have</p>
 <p>$$\tag{} \P_S(R(h') - R_{S'}(h') &gt; t) \le 2 \P_{S,S'}(R_{S'}(h') - R_S(h') &gt; t/2)$$</p>
-<p>But by the choice of $h'$, the left hand side of (9) is equal to the left hand side of (8) and the right hand side of (9) is less than or equal to the right hand side of (8).  $\blacksquare$</p>
+<p>But by the choice of $h'$, the left hand side $\htmlClass{eq-ref eq-symmetric}{}$ is equal to the left hand side of this equation and the right hand side of $\htmlClass{eq-ref eq-symmetric}{}$ is less than or equal to the right hand side of this equation.  $\blacksquare$</p>
 <p>With the symmetrization lemma in hand, our desired result follows quite quickly. We need merely make note that because $\H_{S \cup S'}$ contains all possible projections of $h \in \H$ onto the sets $S$ and $S'$,</p>
 <p>$$ \sup_{h \in \H}R_S(h) - R_{S'}(h) = \sup_{h \in \H_{S \cup S'}}R_S(h) - R_{S'}(h)$$</p>
 <p>But $\H_{S \cup S'}$ has bounded size! We will also make use of a symmetric form of Hoeffding&rsquo;s inequality for a random variable bounded by $[0,1]$ (This can be derived via minor adjustments in the derivation of the usual form):</p>
@@ -217,6 +218,77 @@ $$</p>
 
 </div>
 
+<h2 id="learnability-and-bounded-hypothesis-complexity">Learnability and Bounded Hypothesis Complexity</h2>
+<p>We have now seen that a finite VC dimension implies learnability, via uniform convergence and the consistency of ERM. The final step is to show that</p>
+<p>$$\text{Learnability} \implies \text{Finite VC Dimension}$$</p>
+<p>The proof is a corollary of a particular version of the &ldquo;No Free Lunch Theorem&rdquo; given in [1].</p>
+
+
+<div class="flash bg-gray mb-3 p-2">
+<p><strong>Theorem (No Free Lunch)</strong>: Let $\A$ be any learning algorithm for the task of binary classification with respect to the 0-1 loss over domain $\X$. Let $m$ be any number smaller than $|\X|/2$, representing a training set size. Then, there exists a distribution $\D$ over $\X \times \{0,1\}$ such that $\P_{S\sim \D^m}(R(\A[S]) \ge 1/8) \ge 1/7$.</p>
+
+</div>
+
+
+
+<div class="flash bg-white mb-3 p-2">
+    <div class="toggle-proof">&#9656; Proof</div>
+    <div class='proof  active }'><p>The proof depends on constructing a family of finite support distributions having the property $(P)$ that, on average, an &ldquo;unseen&rdquo; point is equally likely to belong either class. We then note that the maximum loss over this class of distributions is greater than the average loss, and thus there must exist a distribution in this class which achieves a large loss.</p>
+<p>Recall that since our context is binary classification, $\Y = \{0,1\}$, and $\ell(h(x),y) = \I_{h(x) \neq y}$.</p>
+<p>Let $C \subseteq \X$ with $|C| = 2m$. We let $\Y^C = \{h_1,&hellip;,h_T\}$ denote the $T = 2^{2m}$ possible functions from $C$ to $\Y$. With each $i \in [T]$ we associate a distribution $\D_i$ such that</p>
+<p>$$ \D_i(\{(x,y)\}) \equiv \P_{(s,t) \sim \D_i}(s=x,t=y) = \begin{cases} 1/|C| &amp;\text{if } x \in C \land y=h_i(x) \\ 0 &amp;\text{o.w.} \end{cases}$$</p>
+<p>Notice that under this family of distributions, the learning algorithm will never see points outside of $C$.</p>
+<p>We now consider the quantity</p>
+<p>$$\tag{} \max_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])]  \ge \frac{1}{T} \sum_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])],  $$</p>
+<p>which we want to show to be large. Our goal is to make use the of property, $P$, to be formalized later. But to do this, we will need bring the summation over $i$ inside of the expectations that depend on it. We progress in this direction by expanding these expectations.</p>
+<p>Notice that there are $k = (2m)^m$ possible sequences of length $m$ contained in $C$. We denote these sequences $X_j = (x^j_1,&hellip;,x^j_m)$, for $j \in [k]$. For a given distribution $\D_i$, we let $Z_j^i = ((x^j_1,f_i(x^j_1)),&hellip;,(x^j_m,f_i(x^j_m)))$ denote the labeled sequence corresponding to $X_j$. Each such sequence has equal probability $1/k$ under $\D_i$. Thus, we have</p>
+<p>$$\tag{} \E_{S \sim D_i^m} [ R_{D_i}(A[S])] = \frac{1}{k}\sum_{j\in[k]}R_{D_i}(\A[Z_j^i])$$</p>
+<p>We also have that for each $i$,</p>
+<p>$$\tag{} R_{D_i}(h) = \frac{1}{2m}\sum_{x\in C}\I_{h(x)\neq h_i(x)}$$</p>
+<p>Combining (12) and (13) with (11), and interchanging the orders of the summations, we have,</p>
+<p>$$\tag{}
+\begin{aligned}
+\max_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])] &amp;\ge  \frac{1}{k}\sum_{j\in[k]}\frac{1}{2m}\sum_{x\in C}\frac{1}{T} \sum_{i \in [T]}\I_{\A[Z_j^i](x)\neq h_i(x)} \\ &amp;\ge \frac{1}{k}\sum_{j\in[k]}\frac{1}{2m}\sum_{x\in C\setminus X_j}\frac{1}{T} \sum_{i \in [T]}\I_{\A[Z_j^i](x)\neq h_i(x)}
+\end{aligned}$$</p>
+<p>In the second equality, we make it so that $\A[Z_j^i]$ is only evaluated on unseen points. Now we are ready to formally state property $P$: for any $\A$ and $x \notin X_j$,</p>
+<p>$$\tag{} \frac{1}{T}\sum_{i\in[T]} \I_{\A[Z_j^i](x) \neq h_i(x)}  = \frac{1}{2}$$</p>
+<p>To see this, note that there exists a bijection $\pi : [T] \to [T]$, such that $h_i$ and $h_{\pi(i)}$ differ only at $x$. Since $x \notin X_j$, we must have $\A[Z_j^i](x) = \A[Z_j^{\pi(i)}](x)$. Thus, we must have</p>
+<p>$$\I_{\A[Z_j^i](x) \neq h_i(x)} + \I_{\A[Z_j^{\pi(i)}](x) \neq h_{\pi(i)}(x)} = 1$$</p>
+<p>or</p>
+<p>$$2\sum_{i\in[T]} \I_{\A[Z_j^i](x) \neq h_i(x)} = \sum_{i\in[T]}\I_{\A[Z_j^i](x) \neq h_i(x)} + \sum_{i\in[T]}\I_{\A[Z_j^{\pi(i)}](x) \neq h_{\pi(i)}(x)} = T$$</p>
+<p>which gives (14). Combining (14) and (13), we have</p>
+<p>$$\tag{}
+\max_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])] \ge  \frac{1}{k}\sum_{j\in[k]}\frac{1}{2m}\sum_{x\in C\setminus X_j}\frac{1}{2} \ge \frac{1}{4}
+$$</p>
+<p>since $|C\setminus X_j| \ge m$.</p>
+<p>We have shown that there exists a distribution $\D$ such that $\E_{S \sim D^m} [ R(A[S])] \ge \frac{1}{4}$. To get the statement of the theorem, we need only apply a proper form of Markov&rsquo;s inequality. Since $R(A[S]) \in [0,1]$, $Y = 1 - R(A[S])$ is a positive random variable with $\E[Y] \le 3/4$. We thus have,</p>
+<p>$$P(R(A[S]) \ge 1/8) = P(Y &lt; 7/8) = 1 - P(Y \ge 7/8) \ge 1 - \frac{\E[Y]}{7/8} \ge 1 - \frac{3/4}{7/8} = \frac{1}{7}$$</p>
+</div>
+</div>
+<p>We can use the no free lunch theorem to show that a hypothesis class having unbounded VC dimension is not learnable.</p>
+
+
+<div class="flash bg-gray mb-3 p-2">
+<p><strong>Corollary:</strong> Let $\H$ be a class of functions with unbounded VC dimension $h$. Then $\H$ is not learnable.</p>
+<p><em>Proof</em>: Suppose to the contrary that $\H$ is learnable and has unbounded VC dimension. Since $\H$ is learnable, there exists an algorithm $\A$ and $m \in \N$ such that for $\epsilon = 1/8$ and $\delta = 1/7$,</p>
+<p>$$\P_{S \sim \D^m}[R(\A[S]) - R(h^\star) &gt; \epsilon] &lt; \delta$$</p>
+<p>Since $\H$ has unbounded VC dimension, there exists a set denoted $C \in Z^{2m}$ which $\H$ shatters. But by the no free lunch theorem, there exists a distribution $\D$ having support $C$ such that</p>
+<p>$$\P_{S \sim \D^m}[R(\A[S]) &gt; \epsilon] \ge \delta$$</p>
+<p>furthermore since $\H$ shatters $C$, $R(h^\star) = 0$. Thus, we have</p>
+<p>$$\P_{S \sim \D^m}[R(\A[S]) - R(h^\star) &gt; \epsilon] \ge \delta$$</p>
+<p>which gives the contradiction.</p>
+
+</div>
+
+<h2 id="an-interpretation">An Interpretation</h2>
+<p>The final implication of the previous section is incredibly important, since it tells us that finite VC dimension, uniform convergence, learnability by ERM, and learnability in general, are all equivalent notions for the learning problems that we have considered (though we only showed the results for binary classfication, similar results hold for general classification and regression). We can use this characterization to build an intuitive interpretation of what learning means and how it works.</p>
+<p>Let us consider the ERM algorithm: The ERM algorithm works by testing each hypothesis on the training data, and selecting the hypothesis which fits the data the best. We now know that this approach fails when we do not have enough samples to ensure uniform convergence. What happens then?  From $\htmlClass{eq-ref eq-uniform}{}$, the answer is that there may exist a sample drawn from $\D^m$ such that for some $h \in \H$, $R_S(h)$ is far from $R(h)$. Indeed, we might find that $R_S(\A[S]) \gg R(h^\star)$. In such an event, we say that $\A$ has <em>overfit</em> to the training data.</p>
+<p>The bound given in $\htmlClass{eq-ref eq-gf-bound}{}$ further tells us that there essentially two requirements to ensure uniform convergence, and minimize the probability of overfitting:</p>
+<ul>
+<li>We need enough samples to ensure that each time we independently test a hypothesis, we get a good estimate of loss with high probability. This requirement corresponds to the second term in the radical on the right hand side of $\htmlClass{eq-ref eq-gf-bound}{}$.</li>
+<li>We need enough samples to ensure that, among the &ldquo;independent&rdquo; hypothesis that we wish to test, there is not a coincidental match between the hypothesis and our sample. We can roughly equate this requirement to the first term in the radical.</li>
+</ul>
+<p>It is interesting to observe that either of these terms may potentially dominate the sample complexity bounds implied by $\htmlClass{eq-ref eq-gf-bound}{}$. For example, the VC dimension of the set of half-spaces in $\R^d$ is $d+1$. Thus, taking $\delta = 0.001$ and $d = 5$, we have $d \approx \log(2/\delta)$. Thus we might suggest that for $d &lt; 5$, most of sample complexity requirement comes from concentration requirements on a single hypothesis; whereas for $d &raquo; 5$, the need to avoid overfitting is the biggest driver of sample complexity.</p>
 <h2 id="further-reading">Further Reading</h2>
 <p>[1] S. Shalev-Shwartz and S. Ben-David, <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf"><em>Understanding Machine Learning: From Theory to Algorithms</em></a>. Cambridge: Cambridge University Press, 2014.</p>
 <p>[2] O. Bousquet, S. Boucheron, and G. Lugosi, <a href="http://www.econ.upf.edu/~lugosi/mlss_slt.pdf"><em>Introduction to Statistical Learning Theory</em></a>, vol. 3176. Berlin, Heidelberg: Springer Berlin Heidelberg, 2004.</p>
@@ -247,6 +319,8 @@ $$</p>
         <li><a href="#binary-classification">Binary Classification</a></li>
       </ul>
     </li>
+    <li><a href="#learnability-and-bounded-hypothesis-complexity">Learnability and Bounded Hypothesis Complexity</a></li>
+    <li><a href="#an-interpretation">An Interpretation</a></li>
     <li><a href="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
@@ -296,11 +370,14 @@ $$</p>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
     
  <script>
+    const event = new Event('KatexRendered');
+ 
     document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body,{delimiters: [
+        renderMathInElement(document.body,{trust:true,delimiters: [
             {left: "$$", right: "$$", display: true},
             {left: "$", right: "$", display: false},
         ]});
+        document.dispatchEvent(event);
     });
 </script>
 

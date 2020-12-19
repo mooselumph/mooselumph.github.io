@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Generalization on Rayncloud.com</title>
@@ -6,18 +6,23 @@
     <description>Recent content in Generalization on Rayncloud.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Jul 2019 16:27:30 -0700</lastBuildDate>
-    
-	<atom:link href="http://rayncloud.com/tags/generalization/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sun, 13 Dec 2020 14:31:55 -0800</lastBuildDate><atom:link href="http://rayncloud.com/tags/generalization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Differential Privacy and Generalization</title>
+      <link>http://rayncloud.com/notes/differential-privacy-generalization/</link>
+      <pubDate>Sun, 13 Dec 2020 14:31:55 -0800</pubDate>
+      
+      <guid>http://rayncloud.com/notes/differential-privacy-generalization/</guid>
+      <description>&lt;p&gt;How differential privacy can be used to help solve problems of overfitting in adaptive data analysis.&lt;/p&gt;</description>
+    </item>
     
     <item>
-      <title>Deep Learning Generalization</title>
-      <link>http://rayncloud.com/notes/deep-learning-generalization/</link>
-      <pubDate>Sun, 07 Jul 2019 16:27:30 -0700</pubDate>
+      <title>Learning and Uniform Convergence</title>
+      <link>http://rayncloud.com/notes/learning-uniform-convergence/</link>
+      <pubDate>Wed, 11 Nov 2020 21:25:28 -0800</pubDate>
       
-      <guid>http://rayncloud.com/notes/deep-learning-generalization/</guid>
-      <description>&lt;p&gt;Deep neural networks represent an interesting puzzle when viewed from the perspective of statistical learning theory. Specifically, it is difficult to account for their ability to generalize well.&lt;/p&gt;</description>
+      <guid>http://rayncloud.com/notes/learning-uniform-convergence/</guid>
+      <description>&lt;p&gt;First post in a series on generalization in machine learning.&lt;/p&gt;</description>
     </item>
     
   </channel>

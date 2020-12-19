@@ -69,15 +69,23 @@
     
 
 
+<a href='/categories/statistical-learning' class="muted-link">
+  <span class="Label Label--gray-darker">Statistical Learning</span>
+</a>
 
+
+
+<a href='/tags/generalization' class="muted-link">
+  <span class="Label Label--gray">Generalization</span>
+</a>
 
 
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2020-11-15. Published at: 2020-11-11.">
+      <span title="Lastmod: 2020-12-18. Published at: 2020-11-11.">
         
-          Lastmod: 2020-11-15
+          Lastmod: 2020-12-18
         
       </span>
     </div>
@@ -288,7 +296,7 @@ $$</p>
 <li>We need enough samples to ensure that each time we independently test a hypothesis, we get a good estimate of loss with high probability. This requirement corresponds to the second term in the radical on the right hand side of $\htmlClass{eq-ref eq-gf-bound}{}$.</li>
 <li>We need enough samples to ensure that, among the &ldquo;independent&rdquo; hypothesis that we wish to test, there is not a coincidental match between the hypothesis and our sample. We can roughly equate this requirement to the first term in the radical.</li>
 </ul>
-<p>It is interesting to observe that either of these terms may potentially dominate the sample complexity bounds implied by $\htmlClass{eq-ref eq-gf-bound}{}$. For example, the VC dimension of the set of half-spaces in $\R^d$ is $d+1$. Thus, taking $\delta = 0.001$ and $d = 5$, we have $d \approx \log(2/\delta)$. Thus we might suggest that for $d &lt; 5$, most of sample complexity requirement comes from concentration requirements on a single hypothesis; whereas for $d &raquo; 5$, the need to avoid overfitting is the biggest driver of sample complexity.</p>
+<p>It is interesting to observe that either of these terms may potentially dominate the sample complexity bounds implied by $\htmlClass{eq-ref eq-gf-bound}{}$. For example, the VC dimension of the set of half-spaces in $\R^d$ is $d+1$. Thus, taking $\delta = 0.001$ and $d = 5$, we have $d \approx \log(2/\delta)$. Thus we might suggest that for $d &lt; 5$, most of sample complexity requirement comes from concentration requirements on a single hypothesis; whereas for $d \gg 5$, the need to avoid overfitting is the biggest driver of sample complexity.</p>
 <h2 id="further-reading">Further Reading</h2>
 <p>[1] S. Shalev-Shwartz and S. Ben-David, <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf"><em>Understanding Machine Learning: From Theory to Algorithms</em></a>. Cambridge: Cambridge University Press, 2014.</p>
 <p>[2] O. Bousquet, S. Boucheron, and G. Lugosi, <a href="http://www.econ.upf.edu/~lugosi/mlss_slt.pdf"><em>Introduction to Statistical Learning Theory</em></a>, vol. 3176. Berlin, Heidelberg: Springer Berlin Heidelberg, 2004.</p>
@@ -375,6 +383,7 @@ $$</p>
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement(document.body,{trust:true,delimiters: [
             {left: "$$", right: "$$", display: true},
+            {left: "@(", right: ")@", display: true},
             {left: "$", right: "$", display: false},
         ]});
         document.dispatchEvent(event);

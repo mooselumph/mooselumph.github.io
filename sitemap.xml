@@ -3,13 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://rayncloud.com/notes/learning-uniform-convergence/</loc>
-    <lastmod>2020-11-15T14:09:58-08:00</lastmod>
+    <loc>http://rayncloud.com/categories/</loc>
+    <lastmod>2020-12-18T23:55:47-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://rayncloud.com/categories/</loc>
-    <lastmod>2019-07-07T17:03:58-07:00</lastmod>
+    <loc>http://rayncloud.com/notes/differential-privacy-generalization/</loc>
+    <lastmod>2020-12-18T23:55:47-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rayncloud.com/tags/generalization/</loc>
+    <lastmod>2020-12-18T23:55:47-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rayncloud.com/tags/mechanism-design/</loc>
+    <lastmod>2020-12-18T23:55:47-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rayncloud.com/tags/privacy/</loc>
+    <lastmod>2020-12-18T23:55:47-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rayncloud.com/categories/statistical-learning/</loc>
+    <lastmod>2020-12-18T23:55:47-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rayncloud.com/tags/</loc>
+    <lastmod>2020-12-18T23:55:47-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://rayncloud.com/notes/learning-uniform-convergence/</loc>
+    <lastmod>2020-12-18T21:10:02-08:00</lastmod>
   </url>
   
   <url>
@@ -24,11 +54,6 @@
   
   <url>
     <loc>http://rayncloud.com/categories/statistical-inference/</loc>
-    <lastmod>2019-07-07T17:03:58-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://rayncloud.com/tags/</loc>
     <lastmod>2019-07-07T17:03:58-07:00</lastmod>
   </url>
   

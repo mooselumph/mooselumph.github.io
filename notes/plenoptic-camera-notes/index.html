@@ -167,22 +167,39 @@ I(z) = -E\left(\frac{\partial^2\mathrm{ln}p(\mathbf{\Phi};z)}{\partial{z}^2}\rig
 \mu_{ijkl} = \frac{1}{z^2}\int_{u_k}^{u_{k+1}}\int_{v_l}^{v_{l+1}}\int_{x_i(u,z)}^{x_{i+1}(u,z)}\int_{y_i(v,z)}^{y_{j+1}(v,z)}L_O(x,y,z)dxdy,
 \end{equation}</p>
 <p>such that it explicitly shows the sampling of the radiance from an object located at a fixed depth, $z$. However, taking the derivative of (\ref{eq:objectmodel}) reveals a number of competing radiometric effects, namely the decreasing solid angle of the pupil vs the increasing field of view of the detector. Demonstrating that these effects cancel out is cumbersome. It is much easier to use (\ref{eq:lfexpectedvalue}) directly, making use of the equivalence of radiance indicated in (\ref{eq:lfrelationships}). To evaluate the integral, we define the edge model,</p>
-<!-- raw HTML omitted -->
+<div>\begin{equation}
+    L_O(x,y,z) = 
+    \begin{cases} 
+      L_0 & x < 0 \\
+      0 & o.w.
+   \end{cases}.
+\end{equation}</div>
 <p>We can then use (\ref{eq:objectslope}) to show that $L_I$ is equal to</p>
-<!-- raw HTML omitted -->
+<div>\begin{equation}
+    L_I(s,t,u,v) = 
+    \begin{cases} 
+      L_0 & s < u\left(\frac{l}{L}-\frac{l}{z}\right) \\
+      0 & o.w.
+   \end{cases}.
+\end{equation}</div>
 <p>Note that for samples which do not contain the edge, the expected value of $\mu_{ijkl}$ does not change with $z$. For the $N_tN_v$ samples which contain the edge, the expected value simplifies to</p>
 <p>\begin{equation}
 \mu_{ijkl} = \frac{\Delta{t}\Delta{v}}{l^2}\int_{u_k}^{u_{k+1}}\int_{s_i}^{u\left(\frac{l}{L}-\frac{l}{z}\right)}L_0dsdu = \frac{L_0\Delta{t}\Delta{v}}{l^2}\int_{u_k}^{u_{k+1}}\left[u\left(\frac{l}{L}-\frac{l}{z}\right)-s_i\right]du
 \end{equation}</p>
 <p>Differentiating with respect to $z$ gives</p>
-<!-- raw HTML omitted -->
+<div>\begin{equation}
+	\frac{\partial\mu_{ijkl}}{\partial{z}} =\frac{L_0\Delta{t}\Delta{v}}{l^2}\int_{u_k}^{u_{k+1}}\frac{ul}{z^2}du = \frac{L_0\Delta{t}\Delta{v}\Delta{u}^2}{lz^2}(k+1/2)
+\end{equation}</div>
 <p>This can be rewritten as follows,</p>
 <p>\begin{equation}
 \frac{\partial\mu_{ijkl}}{\partial{z}} = \frac{L_0\Delta{t}\Delta{s}\Delta{u}\Delta{v}}{l^2}\frac{l}{z^2}\frac{\Delta{u}}{\Delta{s}}k = L_0\Delta{q}^2(FN)^2\frac{l}{z^2}\frac{\Delta{u}}{\Delta{s}}k,
 \end{equation}</p>
 <p>where the factor $\Delta{L}\Delta{q}^2(FN)^2$ can be considered the average signal detected due to the step $\Delta{L}$ given a conventional camera with detector size $\Delta{q}$.
 We can now solve for the fisher information via (\ref{eq:fisherinfo}),</p>
-<!-- raw HTML omitted -->
+<div>\begin{multline}
+    I_{total}(z) = \left(\frac{L_0\Delta{q}^2(FN)^2}{\sigma}\frac{l}{z^2}\frac{\Delta{u}}{\Delta{s}}\right)^2N_tN_v\sum_k^{N_u}(k+1/2)^2 \\
+     = \left(SNR\frac{l}{z^2}\frac{\Delta{u}}{\Delta{s}}\right)^2N_tN_v\left(\frac{N_u^3}{3}+N_u^2+\frac{11N_u}{12}\right),
+\end{multline}</div>
 <p>where we have interpretted the first factor in parenthesis as the SNR resulting from the edge discrepancy in a conventional camera. This is the information about the depth of the entire surface as a whole. Since this information was derived from the information in the $N_t$ pixels containing the edge, we would do better to divide the information up among these pixels giving $I(z) = I_{total}(z)/N_t$ if we wish to come closer to the understanding the performance of independent point estimation.</p>
 <p>The final step is to invert the Fisher information and substitute for $\Delta{u}/\Delta{s}$ to obtain the lower bound on variance:</p>
 <p>\begin{equation}

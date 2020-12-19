@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Technical Notes on Rayncloud.com</title>
-    <link>http://rayncloud.com/notes/</link>
-    <description>Recent content in Technical Notes on Rayncloud.com</description>
+    <title>Statistical Learning on Rayncloud.com</title>
+    <link>http://rayncloud.com/categories/statistical-learning/</link>
+    <description>Recent content in Statistical Learning on Rayncloud.com</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://rayncloud.com/notes/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 13 Dec 2020 14:31:55 -0800</lastBuildDate><atom:link href="http://rayncloud.com/categories/statistical-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Differential Privacy and Generalization</title>
       <link>http://rayncloud.com/notes/differential-privacy-generalization/</link>
@@ -22,15 +23,6 @@
       
       <guid>http://rayncloud.com/notes/learning-uniform-convergence/</guid>
       <description>&lt;p&gt;First post in a series on generalization in machine learning.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Plenoptic Camera Notes</title>
-      <link>http://rayncloud.com/notes/plenoptic-camera-notes/</link>
-      <pubDate>Mon, 01 Jul 2019 19:30:13 -0700</pubDate>
-      
-      <guid>http://rayncloud.com/notes/plenoptic-camera-notes/</guid>
-      <description>&lt;p&gt;Working notes related to the use of a plenoptic camera for estimating depth within a scene.&lt;/p&gt;</description>
     </item>
     
   </channel>

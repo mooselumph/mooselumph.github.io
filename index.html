@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       
-  My Stuff &ndash; Rayncloud.com
+  Robert Raynor &ndash; Rayncloud.com
 
     </title>
     
@@ -29,8 +29,8 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@your_twitter_id">
     <meta name="twitter:creator" content="@your_twitter_id">
-    <meta name="twitter:title" content="My Stuff | Rayncloud.com">
-    <meta name="twitter:description" content="I&#39;m Robert Raynor. Welcome to my homepage. I&#39;m a former Air Force Officer, now a PhD student at University of Washington studying machine learning. Google Scholar / LinkedIn / Twitter / Pocket / GitHub|Describe what your web page is about">
+    <meta name="twitter:title" content="Robert Raynor | Rayncloud.com">
+    <meta name="twitter:description" content="Hi, I&#39;m Robert Raynor! Welcome to my homepage. I&#39;m formerly an Air Force Officer, and now a PhD student at University of Washington studying machine learning. Google Scholar / LinkedIn / Twitter / Pocket / GitHubAcademic InterestsAt the topic level, I am interested in over-parametrized neural networks, representation learning, transfer-learning, optimal transport, compressed sensing, inverse problems, differential privacy, kernel methods, and general learning theory.|Describe what your web page is about">
     <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
     
 
@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="/assets/primer-build.css">
     <link rel="stylesheet" href="/assets/style.css">
     <link rel="stylesheet" href="/assets/custom.css">
+    <script defer src="/assets/scripts.js"></script>
   </head>
 
 
@@ -67,20 +68,73 @@
 
 <div class="d-flex flex-column flex-md-row flex-md-items-center">
   <div class="pr-0 pr-md-5 mb-3 mb-md-0 d-flex flex-justify-center flex-md-justify-start">
-    <img style="max-width:200px; max-height:200px;" src="images/me.jpg" />
+    <img style="max-width:220px; max-height:300px;" src="images/me2.jpg" />
   </div>
   <div>
-    <p>I'm Robert Raynor. Welcome to my homepage. </p>
+    <p>Hi, I'm Robert Raynor! Welcome to my homepage. </p>
 
-    <p>I'm a former Air Force Officer, now a PhD student at University of Washington studying machine learning. </p>
+    <p>I'm formerly an Air Force Officer, and now a PhD student at University of Washington studying machine learning. </p>
+
+    
+    
+    
 
     <a href="https://scholar.google.com/citations?user=0ayRzZUAAAAJ">Google Scholar</a> / <a href="https://www.linkedin.com/in/robert-raynor/">LinkedIn</a> / <a href="https://twitter.com/mooselumph">Twitter</a> / <a href="https://getpocket.com/@082A4g4fd141cT1b07p9c35p5fT4d57d39bB2dP8e8V3emY142bT8ED8Jb4ByfnR">Pocket</a> / <a href="https://github.com/mooselumph">GitHub</a>
   </div>
 
 </div>
+
+<h2>Academic Interests</h2>
+
+At the topic level, I am interested in over-parametrized neural networks, representation learning, transfer-learning, optimal transport, compressed sensing, inverse problems, differential privacy, kernel methods, and general learning theory.<br/><br/> 
+
+To me, the true mirth of research comes from beholding some fact, process, or algorithm with a sense of utter bewilderment about why it is true, why it happens, or how it can possibly work&mdash;and then chipping away at that mystery until the full answer fits into one's head both logically, mathematically, and emotionally. <br/><br/> 
+
+<div>
+Recently, I've found deep learning to be a great source of mysteries that inspire bewilderment. Read on for a few of my special bewilderments. (<a style='color:#0366d6;' class="toggle-proof">Show/Hide</a>)
+    <div class='proof active'>
+    <br/>
+Those who have thought carefully about the endeavor of science or at all familiarized themselves with the thinkers who have will usually admit that the products of science are less "laws which govern nature" than they are mental models operating in the minds of scientists by which they can predict experimental observations. (At the very least, if there are such things as laws of nature, the relationship of those models to the models of physicists is <a href="https://mooselumph.com/husserl-and-external-reality/">impossible to know</a>.)<br/><br/>
+
+As a culture, over time the scientific community has progressed toward a set of biases with respect to scientific models that we know take entirely for granted (to the extent that we find it difficult to imagine models not conforming to these biases). For example, we favor reductionist models, wherein all effects that emerge at large scales can be traced to elemental interactions at smaller scales, rather than <a href="https://en.wikipedia.org/wiki/Emergence#Strong_and_weak_emergence">emergentist models</a> which allow for the existence of scale-dependent causal entities. We've arrived at this set of biases for the simple pragmatic reason that when we assemble models which accord with their principles, they tend to give predictions that hold true for new observations (that is, they generalize well). And after all, this property is what makes science useful.<br/><br/>
+
+Modern machine learning is fascinating for me because, in a way, it represents a playground for some of the ideas that have done battle over the centuries in the philosophy of science. In machine learning, we are acutely aware of the need to generalize, and also of the fact that without constraining the space of explanations which we are willing to consider, learning is impossible in general.<br/><br/>
+
+In this setting, along comes a technology like deep learning. Together with common training protocols, the simple architecture of a deep neural network represents a form of inductive bias that has proven broadly sufficient to find good models of a host of different phenomenon across innumerable scales and domains. While there are hints of explanations as to why this is the case, I personally remain far from the desired state: fitting the full force and mathematical truth of the explanation in my head. And this is enticing.<br/><br/>
+
+A problem domain in which I continue to find the application of deep learning to be fascinating is that of inverse problems. An example: I bounce a laser beam off of an object, and send the reflected light through a scattering medium. When I record the scattered light with a camera, the result will look uniformly scrambled---with no residual features of the original object that you or I might recognize. Yet a deep neural network can successfully learn to recreate the source object, generalizing reasonably well to unseen scatterers and sources.<br/><br/>
+
+This impressive feat has stuck with me partly because, unlike the image classification setting, we cannot readily analogize to our own experience and imagine a decomposition of features by which the neural network solves the inverse problem. But perhaps more so, I like the example  because it gives rise to a beautiful idea about what is the promise of learning, generally: That under statistical regularity, hard problems become easy. There is also, I think, a more fascinating interpretation of what is happening here: Assuming statistical regularity, for "typical" events, deep learning can automatically give us the "emergent models" which operate at the scale in question. Thus, in some ways, it provides a method of knowledge transformation across scales!<br/><br/>
+    
+    </div>
+</div>
+
+<h2>Current Research</h2> 
+
+I am currently working with <a href="https://infotheory.ece.uw.edu/bio.html">Prof. Sreeram Kannan</a>, who is a visionary with respect to the role that modern decentralized information systems can play in improving societal equilibria. Our current research looks at the key barrier of trust bottlenecks which inhibit the efficient exchange of high quality data between those who can access/produce it and those who need it for a machine learning task. A key part of this research concerns using the combined discriminative power of a small validation set with the inductive bias of a well-selected model to valuate data from untrusted sources. 
+ 
+<h2>Writing</h2>
+ 
+I enjoy <a href="https://mooselumph.com">writing</a> when I have inspiration. Here's something that I wrote, which I like:<br/><br/>
+ 
+<div style="max-width:500px; margin-left:10px">
+ 
+She is a flock of starlings, floating, billowing, pulsing. Never settling. Always finding new patterns and configurations. Diffuse more than water but not beyond vapor.<br/><br/>
+
+What thought may persist in these writhing folds and fomenting currents? What sober knowing hardens beneath?<br/><br/>
+
+She knows only this:<br/>
+No, she cannot even speak it. She cannot cast it into a mold of words. Indeed, she only knows it in part.<br/><br/>
+
+In fact, knowing is not hard and firm. Rather, it is tenuous and giving. It is a multiplicity of glances of glints from the wings of the starlings. Though each may in turn wink away, the overpowering force of the knowledge remains, reassuring her of the truth. And here is what it tells her: nothing. Nothing at all.<br/><br/>
+
+So, she flits on.<br/>
+
+</div>
+ 
   </div>
 
-  <h2>My Stuff</h2>
+  <h2>Links</h2>
 
   <div class="d-flex flex-wrap">
 
@@ -99,6 +153,17 @@
         <div class="p-1 featured-box-holder flex-auto">
     <div class="featured-box p-2 border">
         <div>
+        <a class="link-gray" href="/notes/">
+            <h4 class="mt-0">Technical Notes</h4>
+        </a>
+        </div>
+        Technical notes on various topics, often related to machine learning. Many of these are working notes.
+    </div>
+</div>
+    
+        <div class="p-1 featured-box-holder flex-auto">
+    <div class="featured-box p-2 border">
+        <div>
         <a class="link-gray" href="https://scholar.google.com/citations?user=0ayRzZUAAAAJ">
             <h4 class="mt-0">Publications</h4>
         </a>
@@ -110,11 +175,11 @@
         <div class="p-1 featured-box-holder flex-auto">
     <div class="featured-box p-2 border">
         <div>
-        <a class="link-gray" href="/notes/">
-            <h4 class="mt-0">Technical Notes</h4>
+        <a class="link-gray" href="https://ranycloud.com/files/cv.pdf">
+            <h4 class="mt-0">Curiculum Vitae</h4>
         </a>
         </div>
-        Technical notes on various topics, often related to machine learning. Many of these are working notes.
+        A work in progress.
     </div>
 </div>
     

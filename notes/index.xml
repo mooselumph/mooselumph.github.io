@@ -5,7 +5,8 @@
     <link>http://rayncloud.com/notes/</link>
     <description>Recent content in Technical Notes on Rayncloud.com</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://rayncloud.com/notes/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://rayncloud.com/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Differential Privacy and Generalization</title>
       <link>http://rayncloud.com/notes/differential-privacy-generalization/</link>

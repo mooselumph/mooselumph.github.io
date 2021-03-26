@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My Stuff on Rayncloud.com</title>
+    <title>Robert Raynor on Rayncloud.com</title>
     <link>http://rayncloud.com/</link>
-    <description>Recent content in My Stuff on Rayncloud.com</description>
+    <description>Recent content in Robert Raynor on Rayncloud.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://rayncloud.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Curiculum Vitae</title>
+      <link>http://rayncloud.com/link/cv/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/link/cv/</guid>
+      <description>A work in progress.</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>http://rayncloud.com/link/publications/</link>
+      <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/link/publications/</guid>
+      <description>Publications on Google Scholar.</description>
+    </item>
+    
+    <item>
+      <title>Exploratory Writing</title>
+      <link>http://rayncloud.com/link/mooselumph/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/link/mooselumph/</guid>
+      <description>Convergent and Divergent Thinking Blog</description>
+    </item>
+    
     <item>
       <title>Differential Privacy and Generalization</title>
       <link>http://rayncloud.com/notes/differential-privacy-generalization/</link>
@@ -31,24 +58,6 @@
       
       <guid>http://rayncloud.com/notes/plenoptic-camera-notes/</guid>
       <description>&lt;p&gt;Working notes related to the use of a plenoptic camera for estimating depth within a scene.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Exploratory Writing</title>
-      <link>http://rayncloud.com/link/mooselumph/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://rayncloud.com/link/mooselumph/</guid>
-      <description>Convergent and Divergent Thinking Blog</description>
-    </item>
-    
-    <item>
-      <title>Publications</title>
-      <link>http://rayncloud.com/link/publications/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://rayncloud.com/link/publications/</guid>
-      <description>Publications on Google Scholar.</description>
     </item>
     
   </channel>

@@ -1,3 +1,11 @@
+/* .katex-html{
+    display: none
+} */
+
+body.single div.summary{
+    display: none
+}
+
 body {
   counter-reset: eqn;
 }

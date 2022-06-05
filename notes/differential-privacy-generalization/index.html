@@ -13,8 +13,7 @@
     </title>
     
     
-    <meta name="description" property="og:description" content="How differential privacy can be used to help solve problems of overfitting in adaptive data analysis.
-|Describe what your web page is about">
+    <meta name="description" property="og:description" content="How differential privacy can be used to help solve problems of overfitting in adaptive data analysis. |Describe what your web page is about">
     
 
     <meta name="apple-mobile-web-app-title" content="Rayncloud.com">
@@ -30,7 +29,9 @@
     <meta name="twitter:site" content="@your_twitter_id">
     <meta name="twitter:creator" content="@your_twitter_id">
     <meta name="twitter:title" content="Differential Privacy and Generalization | Rayncloud.com">
-    <meta name="twitter:description" content="How differential privacy can be used to help solve problems of overfitting in adaptive data analysis.|Describe what your web page is about">
+    <meta name="twitter:description" content="
+How differential privacy can be used to help solve problems of overfitting in adaptive data analysis. 
+|Describe what your web page is about">
     <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
     
 
@@ -43,8 +44,8 @@
   </head>
 
 
-  <body class="bg-gray">
-    <div id="holy" class="container-lg bg-white h-100">
+  <body class="single">
+    <div id="holy" class="container-md bg-white h-100">
 
       <div id="header" class="px-1 bg-white">
         <nav class="UnderlineNav UnderlineNav--right px-2">
@@ -58,7 +59,7 @@
 
       </div>
 
-      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white mt-5">
         
 
 <div class="Subhead">
@@ -75,25 +76,17 @@
 
 
 
-<a href='/tags/mechanism-design' class="muted-link">
-  <span class="Label Label--gray">Mechanism Design</span>
-</a>
-
-<a href='/tags/generalization' class="muted-link">
-  <span class="Label Label--gray">Generalization</span>
-</a>
-
-<a href='/tags/privacy' class="muted-link">
-  <span class="Label Label--gray">Privacy</span>
+<a href='/tags/generalization-sequence' class="muted-link">
+  <span class="Label Label--gray">Generalization-Sequence</span>
 </a>
 
 
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2020-12-18. Published at: 2020-12-13.">
+      <span title="Lastmod: 2022-04-27. Published at: 2020-12-13.">
         
-          Lastmod: 2020-12-18
+          Lastmod: 2022-04-27
         
       </span>
     </div>
@@ -103,8 +96,11 @@
 <article>
   
   <section class="pb-6 mb-3 border-bottom">
-    <p>How differential privacy can be used to help solve problems of overfitting in adaptive data analysis.</p>
-<p>$
+    <div class="summary">
+How differential privacy can be used to help solve problems of overfitting in adaptive data analysis. 
+</div>
+<div style="overflow:hidden; height: 0;" >
+$
 \gdef\R{\mathbb{R}}
 \gdef\E#1{\underset{#1}{\mathbb{E}}}
 \gdef\P{\mathbb{P}}
@@ -120,7 +116,8 @@
 \gdef\errx{\text{err}_\x}
 \gdef\errp{\text{err}^\D}
 \gdef\x{\mathbf{x}}
-$</p>
+$
+</div>
 <h2 id="introduction">Introduction</h2>
 <p>In a previous post on <a href="http://rayncloud.com/notes/learning-uniform-convergence/">Learnability and Uniform Convergence</a>, we saw that the finite VC-dimension of a hypothesis class $\H$ was both a necessary and sufficient condition for learnability of $\H$ for classification and regression problems, where $\H \subseteq \Y^\X$. This would seem to be a complete characterization of learnability for such problems, but there are important cases which it does not cover. For example, the characterization implicitly assumes that we are learning a function from a fixed (prespecified) hypothesis class, $\H$. What if we want to pose a different constraint? For example, consider the following constraint: &ldquo;We will consider up to $N$ hypotheses, adaptively chosen from the space of all functions from $\X$ to $\Y$. Is learning possible in this context? Without pre-specifying anything beyond the number of hypotheses which we will consider, are we not bound to overfit?</p>
 <p>The answer to this question is indeed, yes. That is, if we stick with empirical risk minimization (ERM) algorithms. When ERM is used under such a constraint, overfitting arises as the hypotheses chosen by the analyst lose independence from the data used to validate the hypotheses. Without this independence, we can not easily upper-bound the probability of large deviations between the true and estimated accuracy of any given hypothesis.</p>
@@ -394,55 +391,6 @@ $$ n \ge \left(\frac{\sqrt{k\log\log k}\log^{1/2}(1/\delta}{\epsilon \alpha}\rig
 
       </div>
 
-      <div id="side" class="pr-1 bg-white">
-        <aside class="pr-3">
-          
-  
-    <div id="toc" class="Box Box--blue mb-3">
-      <b>Differential Privacy and Generalization</b>
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#main-contributions">Main Contributions</a></li>
-    <li><a href="#overview-of-the-proof">Overview of the Proof</a></li>
-    <li><a href="#details-of-the-proof">Details of the Proof</a>
-      <ul>
-        <li><a href="#technical-lemma">Technical Lemma</a></li>
-        <li><a href="#main-transfer-theorem-proof-via-monitoring-algorithm">Main Transfer Theorem Proof via Monitoring Algorithm</a></li>
-        <li><a href="#corollaries">Corollaries</a></li>
-      </ul>
-    </li>
-    <li><a href="#further-reading">Further Reading</a></li>
-  </ul>
-</nav>
-    </div>
-  
-
-  
-    
-    
-      <div>
-        
-          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        
-
-        
-          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-        
-
-        
-
-        
-          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
-          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
-        
-
-      </div>
-    
-  
-
-        </aside>
-      </div>
 
       <div id="footer" class="pt-2 pb-3 bg-white text-center">
         

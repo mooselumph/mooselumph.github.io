@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blurbs on Rayncloud.com</title>
+    <link>http://rayncloud.com/blurbs/</link>
+    <description>Recent content in Blurbs on Rayncloud.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://rayncloud.com/blurbs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Research</title>
+      <link>http://rayncloud.com/blurbs/research/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/blurbs/research/</guid>
+      <description>I am currently working with Prof. Sreeram Kannan, who is a visionary with respect to the role that modern decentralized information systems can play in improving societal equilibria. Our current research looks at the key barrier of trust bottlenecks which inhibit the efficient exchange of high quality data between those who can access/produce it and those who need it for a machine learning task. A key part of this research concerns using the combined discriminative power of a small validation set with the inductive bias of a well-selected model to valuate data from untrusted sources.</description>
+    </item>
+    
+    <item>
+      <title>Interests</title>
+      <link>http://rayncloud.com/blurbs/interests/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/blurbs/interests/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Why Deep Learning is Cool</title>
+      <link>http://rayncloud.com/blurbs/why-deep-learning-is-cool/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/blurbs/why-deep-learning-is-cool/</guid>
+      <description>&lt;p&gt;Some thoughts about why deep learning is interesting.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

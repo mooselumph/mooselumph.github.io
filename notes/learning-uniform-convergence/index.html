@@ -13,8 +13,7 @@
     </title>
     
     
-    <meta name="description" property="og:description" content="First post in a series on generalization in machine learning.
-|Describe what your web page is about">
+    <meta name="description" property="og:description" content="First post in a series on generalization in machine learning. |Describe what your web page is about">
     
 
     <meta name="apple-mobile-web-app-title" content="Rayncloud.com">
@@ -30,7 +29,9 @@
     <meta name="twitter:site" content="@your_twitter_id">
     <meta name="twitter:creator" content="@your_twitter_id">
     <meta name="twitter:title" content="Learning and Uniform Convergence | Rayncloud.com">
-    <meta name="twitter:description" content="First post in a series on generalization in machine learning.|Describe what your web page is about">
+    <meta name="twitter:description" content="
+First post in a series on generalization in machine learning. 
+|Describe what your web page is about">
     <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
     
 
@@ -43,8 +44,8 @@
   </head>
 
 
-  <body class="bg-gray">
-    <div id="holy" class="container-lg bg-white h-100">
+  <body class="single">
+    <div id="holy" class="container-md bg-white h-100">
 
       <div id="header" class="px-1 bg-white">
         <nav class="UnderlineNav UnderlineNav--right px-2">
@@ -58,7 +59,7 @@
 
       </div>
 
-      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white mt-5">
         
 
 <div class="Subhead">
@@ -75,17 +76,17 @@
 
 
 
-<a href='/tags/generalization' class="muted-link">
-  <span class="Label Label--gray">Generalization</span>
+<a href='/tags/generalization-sequence' class="muted-link">
+  <span class="Label Label--gray">Generalization-Sequence</span>
 </a>
 
 
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2020-12-18. Published at: 2020-11-11.">
+      <span title="Lastmod: 2022-04-27. Published at: 2020-11-11.">
         
-          Lastmod: 2020-12-18
+          Lastmod: 2022-04-27
         
       </span>
     </div>
@@ -95,8 +96,11 @@
 <article>
   
   <section class="pb-6 mb-3 border-bottom">
-    <p>First post in a series on generalization in machine learning.</p>
-<p>$
+    <div class="summary">
+First post in a series on generalization in machine learning. 
+</div>
+<div style="overflow:hidden; height: 0;" >
+$
 \gdef\R{\mathbb{R}}
 \gdef\E{\mathbb{E}}
 \gdef\P{\mathbb{P}}
@@ -107,7 +111,8 @@
 \gdef\H{\mathcal{H}}
 \gdef\A{\mathcal{A}}
 \gdef\I{\mathbb{I}}
-$</p>
+$
+</div>
 <h2 id="introduction">Introduction</h2>
 <p>A general machine learning problem starts with an known domain of interest, $\Z$, and an unknown distribution over that domain, $\D$. Our access to $\D$ consists only in the ability to generate a finite number of i.i.d. samples from it. In addition to the distribution, we have a class of hypotheses, $\H$, from which we hope to choose an element which characterizes the distribution. Finally, we have a risk functional, $f: \H \times \Z \to \R$, to quantify the goodness of fit between our hypothesis and an individual sample from $\D$. We wish to find the hypothesis which minimizes the population risk, defined as</p>
 <p>$$\tag{}R(h) = \mathbb{E}_{z\sim\mathcal{D}}[f(h;z)]$$</p>
@@ -312,54 +317,6 @@ $$</p>
 
       </div>
 
-      <div id="side" class="pr-1 bg-white">
-        <aside class="pr-3">
-          
-  
-    <div id="toc" class="Box Box--blue mb-3">
-      <b>Learning and Uniform Convergence</b>
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#uniform-convergence-and-empirical-risk-minimization">Uniform Convergence and Empirical Risk Minimization</a></li>
-    <li><a href="#bounded-hypothesis-class-complexity-and-uniform-convergence">Bounded Hypothesis Class Complexity and Uniform Convergence</a>
-      <ul>
-        <li><a href="#binary-classification">Binary Classification</a></li>
-      </ul>
-    </li>
-    <li><a href="#learnability-and-bounded-hypothesis-complexity">Learnability and Bounded Hypothesis Complexity</a></li>
-    <li><a href="#an-interpretation">An Interpretation</a></li>
-    <li><a href="#further-reading">Further Reading</a></li>
-  </ul>
-</nav>
-    </div>
-  
-
-  
-    
-    
-      <div>
-        
-          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        
-
-        
-          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-        
-
-        
-
-        
-          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
-          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
-        
-
-      </div>
-    
-  
-
-        </aside>
-      </div>
 
       <div id="footer" class="pt-2 pb-3 bg-white text-center">
         

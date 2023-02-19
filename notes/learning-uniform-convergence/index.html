@@ -13,7 +13,7 @@
     </title>
     
     
-    <meta name="description" property="og:description" content="First post in a series on generalization in machine learning. |Describe what your web page is about">
+    <meta name="description" property="og:description" content=" First post in a series on generalization in machine learning. |Describe what your web page is about">
     
 
     <meta name="apple-mobile-web-app-title" content="Rayncloud.com">
@@ -84,9 +84,9 @@ First post in a series on generalization in machine learning.
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2022-04-27. Published at: 2020-11-11.">
+      <span title="Lastmod: 2022-10-29. Published at: 2020-11-11.">
         
-          Lastmod: 2022-04-27
+          Lastmod: 2022-10-29
         
       </span>
     </div>
@@ -186,31 +186,31 @@ $$</p>
     <div class="toggle-proof">&#9656; Proof</div>
     <div class='proof  active }'><p>The quantity $\sup_{h \in \H}|R_S(h) - R(h)|$ seems to depend on the full object $\H$ which could be uncountable; this isn&rsquo;t appropriate for the use of the union bound. We need to upper bound this quantity (probabilistically) in a way that depends only on a finite &ldquo;sampling&rdquo; or &ldquo;projection&rdquo; of $\H$&mdash;i.e. on $\H_S$. We do this by using the symmetrization lemma:</p>
 <p><strong>Lemma (Symmetrization)</strong>: For any $t &gt; 0$, such that $nt^2 \ge 2$,
-$$\tag{\htmlId{eq-symmetric}{}} \P_{S \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; t\right] \le 2\P_{S,S' \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R_{S'}(h) &gt; t/2\right]$$</p>
+$$\tag{\htmlId{eq-symmetric}{}} \P_{S \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; t\right] \le 2\P_{S,S&rsquo; \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R_{S&rsquo;}(h) &gt; t/2\right]$$</p>
 <p><em>Proof of lemma:</em>
-Fix $S$ and $S'$, and let $h'$ be the hypothesis achieving the supremum on the left hand side. Then</p>
-<p>$$ \I_{R(h') - R_S(h') &gt; t}\I_{R(h') - R_{S'}(h') &lt; t/2} =  \I_{R(h') - R_S(h') &gt; t \; \land \;  R_{S'}(h') - R(h') \ge -t/2} \le \I_{R_{S'}(h') - R_S(h') &gt; t/2}$$</p>
+Fix $S$ and $S&rsquo;$, and let $h&rsquo;$ be the hypothesis achieving the supremum on the left hand side. Then</p>
+<p>$$ \I_{R(h&rsquo;) - R_S(h&rsquo;) &gt; t}\I_{R(h&rsquo;) - R_{S&rsquo;}(h&rsquo;) &lt; t/2} =  \I_{R(h&rsquo;) - R_S(h&rsquo;) &gt; t \; \land \;  R_{S&rsquo;}(h&rsquo;) - R(h&rsquo;) \ge -t/2} \le \I_{R_{S&rsquo;}(h&rsquo;) - R_S(h&rsquo;) &gt; t/2}$$</p>
 <p>Taking expecation with respect to the second sample gives</p>
-<p>$$ \I_{R(h') - R_S(h') &gt; t}\P_{S'}(R(h') - R_{S'}(h') &lt; t/2) \le \E_{S'}[\I_{R_{S'}(h') - R_S(h') &gt; t/2}]$$</p>
-<p>But by Chebyshev&rsquo;s inequality and that for binary classification, $\text{range}(h') \subseteq [0,1] \implies \textrm{var}(h') \le 1/4$</p>
-<p>$$\P'(R(h') - R_{S'}(h') \ge t/2) \le \frac{4 \textrm{var}(h')}{nt^2} \le \frac{1}{nt^2} \le 1/2$$</p>
+<p>$$ \I_{R(h&rsquo;) - R_S(h&rsquo;) &gt; t}\P_{S&rsquo;}(R(h&rsquo;) - R_{S&rsquo;}(h&rsquo;) &lt; t/2) \le \E_{S&rsquo;}[\I_{R_{S&rsquo;}(h&rsquo;) - R_S(h&rsquo;) &gt; t/2}]$$</p>
+<p>But by Chebyshev&rsquo;s inequality and that for binary classification, $\text{range}(h&rsquo;) \subseteq [0,1] \implies \textrm{var}(h&rsquo;) \le 1/4$</p>
+<p>$$\P&rsquo;(R(h&rsquo;) - R_{S&rsquo;}(h&rsquo;) \ge t/2) \le \frac{4 \textrm{var}(h&rsquo;)}{nt^2} \le \frac{1}{nt^2} \le 1/2$$</p>
 <p>Thus taking expectation with respect to $S$, we have</p>
-<p>$$\tag{} \P_S(R(h') - R_{S'}(h') &gt; t) \le 2 \P_{S,S'}(R_{S'}(h') - R_S(h') &gt; t/2)$$</p>
-<p>But by the choice of $h'$, the left hand side $\htmlClass{eq-ref eq-symmetric}{}$ is equal to the left hand side of this equation and the right hand side of $\htmlClass{eq-ref eq-symmetric}{}$ is less than or equal to the right hand side of this equation.  $\blacksquare$</p>
-<p>With the symmetrization lemma in hand, our desired result follows quite quickly. We need merely make note that because $\H_{S \cup S'}$ contains all possible projections of $h \in \H$ onto the sets $S$ and $S'$,</p>
-<p>$$ \sup_{h \in \H}R_S(h) - R_{S'}(h) = \sup_{h \in \H_{S \cup S'}}R_S(h) - R_{S'}(h)$$</p>
-<p>But $\H_{S \cup S'}$ has bounded size! We will also make use of a symmetric form of Hoeffding&rsquo;s inequality for a random variable bounded by $[0,1]$ (This can be derived via minor adjustments in the derivation of the usual form):</p>
-<p>$$\P_{S,S' \sim \D^m} [R_S - R_{S'} &gt; \epsilon] \le e^{-m\epsilon^2}$$</p>
+<p>$$\tag{} \P_S(R(h&rsquo;) - R_{S&rsquo;}(h&rsquo;) &gt; t) \le 2 \P_{S,S&rsquo;}(R_{S&rsquo;}(h&rsquo;) - R_S(h&rsquo;) &gt; t/2)$$</p>
+<p>But by the choice of $h&rsquo;$, the left hand side $\htmlClass{eq-ref eq-symmetric}{}$ is equal to the left hand side of this equation and the right hand side of $\htmlClass{eq-ref eq-symmetric}{}$ is less than or equal to the right hand side of this equation.  $\blacksquare$</p>
+<p>With the symmetrization lemma in hand, our desired result follows quite quickly. We need merely make note that because $\H_{S \cup S&rsquo;}$ contains all possible projections of $h \in \H$ onto the sets $S$ and $S&rsquo;$,</p>
+<p>$$ \sup_{h \in \H}R_S(h) - R_{S&rsquo;}(h) = \sup_{h \in \H_{S \cup S&rsquo;}}R_S(h) - R_{S&rsquo;}(h)$$</p>
+<p>But $\H_{S \cup S&rsquo;}$ has bounded size! We will also make use of a symmetric form of Hoeffding&rsquo;s inequality for a random variable bounded by $[0,1]$ (This can be derived via minor adjustments in the derivation of the usual form):</p>
+<p>$$\P_{S,S&rsquo; \sim \D^m} [R_S - R_{S&rsquo;} &gt; \epsilon] \le e^{-m\epsilon^2}$$</p>
 <p>With these two facts, along with the symmetrization lemma, we have,</p>
 <p>$$
 \begin{aligned}
-\P_S \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; \epsilon \right] &amp;\le 2 \P_{S,S'} \left[\sup_{h \in \H}R_S(h) - R_{S'}(h)  &gt; \epsilon/2 \right] \\  &amp;= 2 \P_{S,S'} \left[\sup_{h \in \H_{S\cup S'}}R_S(h) - R_{S'}(h)  &gt; \epsilon/2 \right] \\ &amp;\le 2 S_\H(2m) \P_{S,S'} \left[R_S(h) - R_{S'}(h)  &gt; \epsilon/2 \right] \\ &amp;\le 2 S_\H(2m)e^{-m\epsilon^2/4}
+\P_S \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; \epsilon \right] &amp;\le 2 \P_{S,S&rsquo;} \left[\sup_{h \in \H}R_S(h) - R_{S&rsquo;}(h)  &gt; \epsilon/2 \right] \\  &amp;= 2 \P_{S,S&rsquo;} \left[\sup_{h \in \H_{S\cup S&rsquo;}}R_S(h) - R_{S&rsquo;}(h)  &gt; \epsilon/2 \right] \\ &amp;\le 2 S_\H(2m) \P_{S,S&rsquo;} \left[R_S(h) - R_{S&rsquo;}(h)  &gt; \epsilon/2 \right] \\ &amp;\le 2 S_\H(2m)e^{-m\epsilon^2/4}
 \end{aligned}
 $$</p>
 </div>
 </div>
 <p>How does this result help us? Notice that clearly, $S_\H(m) \le 2^m$, since there only $2^m$ distinct classifications of $m$ objects. But plugging this bound into (7) does not achieve uniform convergence: we need $S_\H(m)$ to have sub-exponential growth for the bound to be non-vacuous. This is where the VC dimension comes into play: The growth function of a hypothesis class with bounded VC dimension will exhibit polynomial growth for a high enough $m$.</p>
-<p>When $S_\H(m) = 2^m$, it implies that there exists a set $S$ of size $m$ such that all possible classifications of $S$ are allowed by $\H$. In this situation, $\H$ is said to *shatter* S. The VC dimension of is the size of the largest set which is shattered by $\H$. Formally:</p>
+<p>When $S_\H(m) = 2^m$, it implies that there exists a set $S$ of size $m$ such that all possible classifications of $S$ are allowed by $\H$. In this situation, $\H$ is said to <em>shatter</em> S. The VC dimension of is the size of the largest set which is shattered by $\H$. Formally:</p>
 
 
 <div class="flash bg-gray mb-3 p-2">

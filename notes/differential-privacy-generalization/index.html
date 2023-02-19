@@ -13,7 +13,7 @@
     </title>
     
     
-    <meta name="description" property="og:description" content="How differential privacy can be used to help solve problems of overfitting in adaptive data analysis. |Describe what your web page is about">
+    <meta name="description" property="og:description" content=" How differential privacy can be used to help solve problems of overfitting in adaptive data analysis. |Describe what your web page is about">
     
 
     <meta name="apple-mobile-web-app-title" content="Rayncloud.com">
@@ -84,9 +84,9 @@ How differential privacy can be used to help solve problems of overfitting in ad
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2022-04-27. Published at: 2020-12-13.">
+      <span title="Lastmod: 2022-10-29. Published at: 2020-12-13.">
         
-          Lastmod: 2022-04-27
+          Lastmod: 2022-10-29
         
       </span>
     </div>
@@ -141,7 +141,7 @@ $$q(\D) = \E{x \sim \D}[q(x)] \quad \text{and} \quad q(\x) = \frac{1}{n}\sum_{i 
 
 
 <div class="flash bg-gray mb-3 p-2">
-<p><strong>Definition ($\Delta$-sensitive Query):</strong> For $\Delta$ $\in [0,1]$, $n \in \N$, a $\Delta$-sensitive query is a function $q : \X^n \to \R$ satisfying $|q(\x)-q(\x')| \leq \Delta$ for every pair $\x,\x' \in \X^n$ differing by only one entry. In this case, we have $q(\D) = \E{\x \sim \D^n}[q(\x)]$.</p>
+<p><strong>Definition ($\Delta$-sensitive Query):</strong> For $\Delta$ $\in [0,1]$, $n \in \N$, a $\Delta$-sensitive query is a function $q : \X^n \to \R$ satisfying $|q(\x)-q(\x&rsquo;)| \leq \Delta$ for every pair $\x,\x&rsquo; \in \X^n$ differing by only one entry. In this case, we have $q(\D) = \E{\x \sim \D^n}[q(\x)]$.</p>
 
 </div>
 
@@ -161,8 +161,8 @@ $$q(\D) = \E{x \sim \D}[q(x)] \quad \text{and} \quad q(\x) = \frac{1}{n}\sum_{i 
 
 
 <div class="flash bg-gray mb-3 p-2">
-<p><strong>Definition (Differential Privacy):</strong> Let $\W : \X^n \to \mathcal{R}$ be a randomized algorithm. We say that $\W$ is $(\epsilon,\delta)$-<em>differentially private</em> if for every pair of samples $\x$, $\x'$ that differ by exactly one element, and every $R \subseteq \mathcal{R}$,</p>
-<p>$$\P[\W(\x) \in R] \le e^\epsilon \cdot \P[\W(\x') \in R] + \delta$$</p>
+<p><strong>Definition (Differential Privacy):</strong> Let $\W : \X^n \to \mathcal{R}$ be a randomized algorithm. We say that $\W$ is $(\epsilon,\delta)$-<em>differentially private</em> if for every pair of samples $\x$, $\x&rsquo;$ that differ by exactly one element, and every $R \subseteq \mathcal{R}$,</p>
+<p>$$\P[\W(\x) \in R] \le e^\epsilon \cdot \P[\W(\x&rsquo;) \in R] + \delta$$</p>
 
 </div>
 
@@ -184,7 +184,7 @@ $$ \P \left[ \max_{j \in [k]} \big|\errp(q_j,a_j)\big| \le \alpha \right] \ge 1 
 <p><strong>Theorem (Main Transfer Theorem):</strong> Let $Q$ be a family of $\Delta$-sensitive queries on $\X$. Assume that for some $\alpha,\beta \in (0,.1)$, $\M$ is</p>
 <ol>
 <li>$(\epsilon = \alpha/60\Delta n,\delta = \alpha\beta/32\Delta n)$-differentially private for k adaptively chosen queries from $Q$* and</li>
-<li>$(\alpha'=\alpha/8,\beta'=\alpha\beta/16\Delta n)$-accurate with respect to its sample for n samples from $\X$ for $k$ adaptively chosen queries from $Q$</li>
+<li>$(\alpha&rsquo;=\alpha/8,\beta&rsquo;=\alpha\beta/16\Delta n)$-accurate with respect to its sample for n samples from $\X$ for $k$ adaptively chosen queries from $Q$</li>
 </ol>
 <p>Then $\M$ is $(\alpha,\beta)$-accurate with respect to the population for $k$ adaptively chosen queries from $Q$ given n samples from $\X$.</p>
 <p>* This is a variant of the definition given above, which I will highlight in the proof details section.</p>
@@ -225,9 +225,9 @@ $$</p>
 
 <div class="flash bg-gray mb-3 p-2">
 <p><strong>Lemma (Differential Privacy to Stability):</strong> Let $Q$ be a family of functions from $\X$ to $[0,d]$ and let $\W: \X \to Q$
-be $(\epsilon,\delta)$-differentially private. Let $X$ and $X'$ be i.i.d. but constrained to be neighbors. $Z$ may depend on both $X$ and $X'$. Then,</p>
+be $(\epsilon,\delta)$-differentially private. Let $X$ and $X&rsquo;$ be i.i.d. but constrained to be neighbors. $Z$ may depend on both $X$ and $X&rsquo;$. Then,</p>
 <p>$$
-\tag{\htmlId{eq-dp-stability}{}} \left| \E{X,Z}[q(Z) | q = \W(X)] - \E{X',Z}[q(Z) | q = \W(X')] \right|  \le (e^\epsilon - 1 + \delta)d
+\tag{\htmlId{eq-dp-stability}{}} \left| \E{X,Z}[q(Z) | q = \W(X)] - \E{X&rsquo;,Z}[q(Z) | q = \W(X&rsquo;)] \right|  \le (e^\epsilon - 1 + \delta)d
 $$</p>
 
 </div>
@@ -236,7 +236,7 @@ $$</p>
 
 <div class="flash bg-white mb-3 p-2">
     <div class="toggle-proof">&#9656; Proof</div>
-    <div class='proof }'><p>For use later on, we will define $F : \X \times \X \to [0,d]$ as  $F(Z,X) = q(Z)$ where $q = \W(X)$. Then we need to show that $$\left|\E{X,Z}[F(Z,X)] - \E{X',Z}[F(Z,X')] \right|  \le (e^\epsilon - 1 + \delta)d$$</p>
+    <div class='proof }'><p>For use later on, we will define $F : \X \times \X \to [0,d]$ as  $F(Z,X) = q(Z)$ where $q = \W(X)$. Then we need to show that $$\left|\E{X,Z}[F(Z,X)] - \E{X&rsquo;,Z}[F(Z,X&rsquo;)] \right|  \le (e^\epsilon - 1 + \delta)d$$</p>
 <p>Since $F$ is non-negative, we can write the expectation as</p>
 <p>$$
 \begin{aligned}
@@ -247,14 +247,14 @@ $$</p>
 <p>But from the differential privacy of $\W$, we have</p>
 <p>$$
 \begin{aligned}
-&amp;\le \int_{0}^{d} (e^\epsilon\underset{X',Z}{\P}[q(Z) \ge s| q = \W(X')] + \delta)ds  \cr
-&amp;= \int_{0}^{d} e^\epsilon\underset{X',Z}{\P}[F(Z,X') \ge s]ds + \delta d  \cr
-&amp;= e^\epsilon\E{X',Z}F(Z,X') + \delta d
+&amp;\le \int_{0}^{d} (e^\epsilon\underset{X&rsquo;,Z}{\P}[q(Z) \ge s| q = \W(X&rsquo;)] + \delta)ds  \cr
+&amp;= \int_{0}^{d} e^\epsilon\underset{X&rsquo;,Z}{\P}[F(Z,X&rsquo;) \ge s]ds + \delta d  \cr
+&amp;= e^\epsilon\E{X&rsquo;,Z}F(Z,X&rsquo;) + \delta d
 \end{aligned}
 $$</p>
 <p>Then, using the bound on the range of $F$,</p>
 <p>$$
-\E{X,Z}[F(Z,X)] - \E{X',Z}[F(Z,X')] \le (e^\epsilon - 1)\E{X',Z}[F(Z,X')] + \delta d \le (e^\epsilon - 1 + \delta)d
+\E{X,Z}[F(Z,X)] - \E{X&rsquo;,Z}[F(Z,X&rsquo;)] \le (e^\epsilon - 1)\E{X&rsquo;,Z}[F(Z,X&rsquo;)] + \delta d \le (e^\epsilon - 1 + \delta)d
 $$</p>
 <p>The other direction follows similarly.</p>
 </div>
@@ -268,20 +268,20 @@ $$</p>
 <p>The secret to try to rewrite the left hand side of $\htmlClass{eq-ref eq-main-lem}{}$ in terms of $F : \X \times \X \to [0,d]$, similarly to the proof of the previous lemma,
 $$
 \tag{\htmlId{eq-dest}{}}
-\left|\E{X,Z}[F(Z,X)] - \E{X,Z'}[F(Z',X)]\right|
+\left|\E{X,Z}[F(Z,X)] - \E{X,Z&rsquo;}[F(Z&rsquo;,X)]\right|
 $$
-but where $Z$ and $X$ are <em>identically distributed</em>. This will allow us to swap the role of $Z$ with $X$ and $X'$ respectively, thus enabling the use of the previous lemma. Most of the work in the proof involves a sequence of steps toward this end, most of which can be seen as types of symmetrizations.</p>
-<p>The first symmetrization comes at no cost. We simply introduce an $X' \sim \D^{nT}$, independent of $X$, and observe that because of this independence</p>
-<p>$$\left|\E{X,\W} [q(\D)|(q,t) = \W(X)] \right| =  \left|\E{X,X',\W} [q(\x_t)|(q,t) = \W(X)] \right|.$$</p>
+but where $Z$ and $X$ are <em>identically distributed</em>. This will allow us to swap the role of $Z$ with $X$ and $X&rsquo;$ respectively, thus enabling the use of the previous lemma. Most of the work in the proof involves a sequence of steps toward this end, most of which can be seen as types of symmetrizations.</p>
+<p>The first symmetrization comes at no cost. We simply introduce an $X&rsquo; \sim \D^{nT}$, independent of $X$, and observe that because of this independence</p>
+<p>$$\left|\E{X,\W} [q(\D)|(q,t) = \W(X)] \right| =  \left|\E{X,X&rsquo;,\W} [q(\x_t)|(q,t) = \W(X)] \right|.$$</p>
 <p>Then, from linearity of expecation, the left hand size of $\htmlClass{eq-ref eq-main-lem}{}$ becomes</p>
-<p>$$\left|\E{X,X',\W} [q(\x'_t) - q(\x_t)|(q,t) = \W(X)] \right|$$</p>
-<p>This doesn&rsquo;t yet admit expression in the form of $\htmlClass{eq-ref eq-dest}{}$ since we haven&rsquo;t constrained $X$ and $X'$ to be neighbors. To move forward we need some notation. For $\ell \in \{0,1,&hellip;,n\}$ and $m \in \{0,1,&hellip;,T\}$, let the entries of $X^{\ell,m}$ be given by</p>
-<p>$$X_{i,t}^{\ell,m} = \begin{cases} X'_{i,t} &amp; t &gt; m \text{ or } (t = m \text{ and } i \le \ell)  \\ X_{i,t} &amp; \text{otherwise} \end{cases}.$$</p>
-<p>That is, $X^{\ell,m}$ is equal to $X'$ up to $\ell$&lsquo;th row of the $m$&lsquo;th column, and equal to $X$ beyond that. Notice that, while $X^{\ell,m}$ may in general depend on both $X$ and $X&rsquo;$, it is identically distributed to both $X&rsquo;$ and $X$, $(\text{i.e. }X' \sim X \sim X^{\ell,m})$. Also, by construction $X^{\ell,m}$ and $X^{\ell-1,m}$ differ by just a single element.</p>
+<p>$$\left|\E{X,X&rsquo;,\W} [q(\x&rsquo;_t) - q(\x_t)|(q,t) = \W(X)] \right|$$</p>
+<p>This doesn&rsquo;t yet admit expression in the form of $\htmlClass{eq-ref eq-dest}{}$ since we haven&rsquo;t constrained $X$ and $X&rsquo;$ to be neighbors. To move forward we need some notation. For $\ell \in \{0,1,&hellip;,n\}$ and $m \in \{0,1,&hellip;,T\}$, let the entries of $X^{\ell,m}$ be given by</p>
+<p>$$X_{i,t}^{\ell,m} = \begin{cases} X&rsquo;_{i,t} &amp; t &gt; m \text{ or } (t = m \text{ and } i \le \ell)  \\ X_{i,t} &amp; \text{otherwise} \end{cases}.$$</p>
+<p>That is, $X^{\ell,m}$ is equal to $X&rsquo;$ up to $\ell$&lsquo;th row of the $m$&lsquo;th column, and equal to $X$ beyond that. Notice that, while $X^{\ell,m}$ may in general depend on both $X$ and $X&rsquo;$, it is identically distributed to both $X&rsquo;$ and $X$, $(\text{i.e. }X&rsquo; \sim X \sim X^{\ell,m})$. Also, by construction $X^{\ell,m}$ and $X^{\ell-1,m}$ differ by just a single element.</p>
 <p>Letting $\x^{\ell,m}_t$ denote the $t$&lsquo;th column of $X^{\ell,m}$, we notice that (a) if $t = m$ then $\x_t^{0,m} = \x_t$ and $\x_t^{n,m} = \x&rsquo;_t$, and (b) if $t \neq m$ then  $\x_t^{\ell,m} = \x_t^{\ell-1,m}$, we have that for any $t \in [T]$</p>
 <p>$$
 \begin{aligned}
-&amp;q(\x'_t) - q(\x_t) \cr
+&amp;q(\x&rsquo;_t) - q(\x_t) \cr
 \text{from (a)} \quad &amp;= q(\x_t^{n,t}) - q(\x_t^{0,t}) \cr
 \text{telescoping sum} \quad &amp;= \sum_{\ell \in [n]}q(\x_t^{\ell,t}) - q(\x_t^{\ell-1,t}) \cr
 \tag{}\text{from (b)} \quad &amp;= \sum_{m \in[T]}\sum_{\ell \in [n]}q(\x_t^{\ell,m}) - q(\x_t^{\ell-1,m}) \cr
@@ -294,7 +294,7 @@ $$
 $$
 and we would have
 $$
-\tag{\htmlId{eq-Fhat}{}}\E{X,X',\W} [q(\x_t^{\ell,m}) - q(\x_t^{\ell-1,m})|(q,t) = \W(X)] = \E{X,X',\W}[\hat{F}(X^{\ell,m},X) - \hat{F}(X^{\ell-1,m},X)].
+\tag{\htmlId{eq-Fhat}{}}\E{X,X&rsquo;,\W} [q(\x_t^{\ell,m}) - q(\x_t^{\ell-1,m})|(q,t) = \W(X)] = \E{X,X&rsquo;,\W}[\hat{F}(X^{\ell,m},X) - \hat{F}(X^{\ell-1,m},X)].
 $$</p>
 <p>The problem is that, unlike in the previous lemma, we have not required that $q$ be bounded, and thus $\hat{F}$ is not necessarily non-negative or upper-bounded. To handle this, we need to be more careful. Instead, we define $F^{\ell,m}: \X \times \X \to [0,2\Delta]$ as
 $$
@@ -307,7 +307,7 @@ $$
 where $\mathbf{z}_{t,-\ell}$ is $\mathbf{z}_t$ with it&rsquo;s $\ell$&lsquo;th element replaced by a fixed element of $\X$. It is actually possible to replace $\hat{F}$ with $F^{\ell,m}$ by adding $0 = \big(\Delta - q(\x_{t,-\ell}^{\ell,m}) \big) -  \big(\Delta - q(\x_{t,-\ell}^{\ell-1,m})\big)$ to the left hand side of $\htmlClass{eq-ref eq-Fhat}{}$. (Notice that $\x_{t,-\ell}^{\ell,m} = \x_{t,-\ell}^{\ell-1,m}$, since the only differing element in the original samples is replaced by a fixed element.)</p>
 <p>Thus, combining our progress so far, we have that
 $$
-\E{X,X&rsquo;,\W} [q(\x'_t) - q(\x_t)|(q,t) = \W(X)]  = \sum_{m \in[T]}\sum_{\ell \in [n]}\E{X,X',\W}[F^{\ell,m}(X^{\ell,m},X) - F^{\ell,m}(X^{\ell-1,m},X)]
+\E{X,X&rsquo;,\W} [q(\x&rsquo;_t) - q(\x_t)|(q,t) = \W(X)]  = \sum_{m \in[T]}\sum_{\ell \in [n]}\E{X,X&rsquo;,\W}[F^{\ell,m}(X^{\ell,m},X) - F^{\ell,m}(X^{\ell-1,m},X)]
 $$</p>
 <p>We&rsquo;ve now achieved the destination that we defined in $\htmlClass{eq-ref eq-dest}{}$. By recalling that $X \sim X^{\ell,m} \sim X^{\ell-1,m}$, we can work through the steps of the previous lemma to achieve the bound (for exact details, see the paper).</p>
 </div>
@@ -318,9 +318,9 @@ $$</p>
 
 <div class="flash bg-gray mb-3 p-2">
 <p><strong>Algorithm (Non-interactive wrapper):</strong>  $\W[\M,\A] : \X^n \to (Q \times \mathcal{R})^k$</p>
-<p><strong>Input</strong>: A sample $\x \in \X^n$<br>
-For $j= 1,&hellip;,k$<br>
-$\quad$ Feed $a_{j-1}$ to $\A$ and get a query $q_j \in Q$.<br>
+<p><strong>Input</strong>: A sample $\x \in \X^n$ <br>
+For $j= 1,&hellip;,k$ <br>
+$\quad$ Feed $a_{j-1}$ to $\A$ and get a query $q_j \in Q$. <br>
 $\quad$ Feed $q_j$ to $\M$ and get an answer $q_j \in \mathcal{R}$.</p>
 <p><strong>Output</strong>: $((q_1,a_1),&hellip;,(q_k,a_k))$</p>
 
@@ -332,9 +332,9 @@ $\quad$ Feed $q_j$ to $\M$ and get an answer $q_j \in \mathcal{R}$.</p>
 
 <div class="flash bg-gray mb-3 p-2">
 <p><strong>Algorithm (Monitoring Algorithm):</strong>  $\W_M[\M,\A] : \X^{nT} \to Q \times \N$</p>
-<p><strong>Input</strong>: $X = (\x_1,&hellip;,\x_T) \in \X^{nT}$<br>
-For $t= 1,&hellip;,T$<br>
-$\quad$ Let $(q_{t,1},a_{t,1}),&hellip;,q_{t,k},a_{t,k}) = \W[\M,\A](\x_t)$<br>
+<p><strong>Input</strong>: $X = (\x_1,&hellip;,\x_T) \in \X^{nT}$ <br>
+For $t= 1,&hellip;,T$ <br>
+$\quad$ Let $(q_{t,1},a_{t,1}),&hellip;,q_{t,k},a_{t,k}) = \W[\M,\A](\x_t)$ <br>
 Let<br>
 $$
 (j^\star,t^\star) = \underset{j \in [k],t \in [T]}{\text{arg,max}}\left|\errp(q_{t,j},a_{t,j})\right|

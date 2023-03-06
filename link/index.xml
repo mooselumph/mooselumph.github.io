@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Exploratory Writing</title>
+      <link>http://rayncloud.com/link/mooselumph/</link>
+      <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/link/mooselumph/</guid>
+      <description>Convergent and Divergent Thinking Blog.</description>
+    </item>
+    
+    <item>
       <title>Publications</title>
       <link>http://rayncloud.com/link/publications/</link>
       <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
@@ -26,12 +35,21 @@
     </item>
     
     <item>
-      <title>Exploratory Writing</title>
-      <link>http://rayncloud.com/link/mooselumph/</link>
+      <title>Other featured writing</title>
+      <link>http://rayncloud.com/link/cat-other/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://rayncloud.com/link/mooselumph/</guid>
-      <description>Convergent and Divergent Thinking Blog.</description>
+      <guid>http://rayncloud.com/link/cat-other/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>On Statistical Learning</title>
+      <link>http://rayncloud.com/link/cat-ml/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://rayncloud.com/link/cat-ml/</guid>
+      <description></description>
     </item>
     
   </channel>

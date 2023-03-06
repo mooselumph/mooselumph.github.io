@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Intelligence Is Self Regularizing &ndash; Rayncloud.com
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content=" An initial reaction to AI alignment concerns. |Describe what your web page is about">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Rayncloud.com">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="Intelligence Is Self Regularizing | Rayncloud.com">
+    <meta name="twitter:description" content="
+An initial reaction to AI alignment concerns. 
+|Describe what your web page is about">
+    <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom.css">
+    <script defer src="/assets/scripts.js"></script>
+  </head>
+
+
+  <body class="single">
+    <div id="holy" class="container-md bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="http://rayncloud.com/">
+    Rayncloud.com
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white mt-5">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Intelligence Is Self Regularizing</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/alignment' class="muted-link">
+  <span class="Label Label--gray-darker">Alignment</span>
+</a>
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2023-03-06. Published at: 2023-03-05.">
+        
+          Lastmod: 2023-03-06
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <div class="summary">
+An initial reaction to AI alignment concerns. 
+</div>
+<p>Today, I listened to Eliezer Yudkowsky&rsquo;s <a href="https://www.youtube.com/watch?v=gA1sNLL6yg4">Bankless interview</a>, which has been making the rounds on social media.</p>
+<p>In the coming weeks, I have plans to spend some time carefully reviewing the arguments of Eliezer and others in the AI alignment space. But before doing so, I wanted to write out my initial reaction to what I could decipher purely from the podcast, before allowing the ideas of others to reframe my way of thinking about the issue. I&rsquo;m interested to see if some of my initial objections will be quite squelched, or whether I&rsquo;ll find myself wanting to continue exploring some of the lines of thought explored within this post.</p>
+<p>I&rsquo;m going to summarize my current understanding of Eliezer&rsquo;s portrayal of the alignment problem as follows:</p>
+<ol>
+<li>Most possible superintelligences will not be aligned to humanity&rsquo;s values.</li>
+<li>We have no idea how to constrain an intelligence in such a way that it will be one of the aligned ones.</li>
+<li>Nonetheless, we as a society are likely on a pathway toward creating a superintelligence.</li>
+</ol>
+<p>The conclusion is that we will inevitably create an unaligned superintelligence, which will destroy humanity as a matter of course (We&rsquo;ll take it for granted that an unaligned superintelligence destroys humanity. Discussion of this point is beyond the scope of this note). The heart of the issue is 2, the claim that alignment is a hard problem which we currently have no clue how to solve.</p>
+<p>Before we move on, let&rsquo;s decide on a model for thinking about alignment. We&rsquo;ll assume that our AI accepts instructions from a user, and has access to a set of interfaces for carrying out those instructions. These could be limited to, for instance, printing out a response to the user&rsquo;s query. We&rsquo;ll say that an AI is aligned when it does what the user <em>want</em>s it to do (something within some set of actions which are acceptable to you), and misaligned if it does something else.</p>
+<p>(It&rsquo;s probably useful and clarifying that this is very much <em>not</em> how the notion of alignment has come to be used within the popular discourse concerning AI deployments such as ChatGPT. In that case, OpenAI engineers have tried to constrain what the AI agent will do from the outset, irrespective of the types of instructions conveyed to the agent through the interface (e.g., so that if I ask it to same something racist it will not do so). This is a different kind of problem.)</p>
+<p>I hope and expect that when I look at Eliezer&rsquo;s actual arguments on this, I will find that he has decomposed the alignment problem in a variety of different nuanced ways. In the meantime, I&rsquo;ll propose one way of decomposing the problem that seems like it could be helpful: For an intelligent agent to be aligned for a given task, it must both 1. understand what is desired and how to enact it and 2. <em>want</em> to comply with the instructions. As every parent knows, if I ask a child to go and do something for me, there are a few basic ways that this can go wrong. Either they didn&rsquo;t understand what I wanted from them (condition 1), didn&rsquo;t know how to do it (condition 1), or weren&rsquo;t feeling disposed to obey me (condition 2).</p>
+<p>You could argue that there is some anthropomorphizing happening here. And you&rsquo;d probably be right. Indeed, what does it mean for an arbitrary system to <em>want</em> something? Fortunately, we don&rsquo;t actually need to define what <em>want</em> means. I&rsquo;m actually using this second category as something of a catchall. As long as condition 1 is well-defined and satisfied, condition 2 simply regards any tendency for there to be a residual between what the agent did and what it understood that the user wanted it to do. We can now proceed to examine each of these conditions separately.</p>
+<h3 id="condition-1-the-ai-must-understand-what-is-desired">Condition 1: The AI must understand what is desired</h3>
+<p>Now, I&rsquo;d make the following claim: For any system capable of the sort of world ending scenario that Eliezer worries about, condition 1 absolutely must be satisfied. This is one part of my meaning in the title of this post.</p>
+<p>I feel like I have heard many people describe the situation of a superintelligent agent which was given the task of optimizing strawberry production or making paperclips or you-name-it, and which then destroyed all of modern civilization in order to carry out this goal. This seems to me like an absurd, self-contradictory scenario.</p>
+<p>It is perfectly possible to tell a human (with human-level intelligence), to observe certain constraints while solving some problem. A human may be able to find loopholes in your constraints which allow them to improve the optimization performance. But a human is also intelligent enough to infer an intent behind your constraints and recognize when an optimization is exploiting a loophole. It is quite easy to convey to a human-level intelligence the concept that I want the solution to satisfy the general intent of a set of constraints more so than the exact letter of the constraints.</p>
+<p>Anyone who wishes to argue that a superintelligent agent will destroy the world on the basis of a failure of condition 1 (&ldquo;I told it to maximize paperclip production without destroying civilization, but it ended up shrinking civilization to the size of a penny!&rdquo;) needs to explain how an agent could be intelligent enough to destroy the world, right under our noses without our detection, but not smart enough to know that this isn&rsquo;t what we wanted.</p>
+<p>Let me just add that there are plenty of ways to communicate &ldquo;what we want&rdquo; to a suitably intelligent agent. For example, I could say &ldquo;only take an action which you are confident would be acceptable to me&rdquo; or &ldquo;acceptable to 90% of humans.&rdquo; If you were to make the first request to a human, they would not find it unreasonable, since if they know you they already have some kind of model of you which they could use to judge potential solutions; this will be only more so with a superintelligent agent.</p>
+<h3 id="condition-2--the-ai-must-want-to-comply">Condition 2:  The AI must want to comply</h3>
+<p>This brings us to condition 2. What if the AI fully understands what we want it to do, but decides to do something else instead? Eliezer throws around the word &ldquo;proto-wants&rdquo; in the podcast, and implies that a training method such as gradient descent could generate arbitrary proto-wants which are in arbitrary misalignment with anything that we want the AI to want.</p>
+<p>Is this a realistic concern?</p>
+<p>It seems to me that, while this concern might generally be valid for general highly optimized agents, the satisfaction of condition 1 (i.e. the existence of general intelligence) is exactly what keeps it from going to far awry. This is the second sense of my claim that intelligence is self-regularizing.</p>
+<p>Let&rsquo;s suppose that our approach for building an AGI remains essentially that of today&rsquo;s LLMs: train it to predict human-generated text. An AI that is capable of simulating an arbitrary human must match that human&rsquo;s intelligence in some sense.</p>
+<p>In this context, we can think of proto-wants as an example of shortcut learning&ndash;something that Eliezer mentions in the podcast. Actually, the very first time that I used ChatGPT I came across an instance of shortcut learning (unfortunatley, the transcript doesn&rsquo;t appear to have been saved).</p>
+<p>I wanted to see if ChatGPT could help me to expand my basic understanding of general relativity more efficiently than trying to read a textbook. I started with asking it to explain the Twin Paradox, which it did rather well. We were able to quickly get to the point where special relativity breaks down and general relativity is needed to explain how accelerating reference frames break the apparent symmetry of the problem.</p>
+<p>I wanted ChatGPT to explain to me, my printing out the relevant equation and identifying/interpreting the appropriate terms, how an accelerating reference frame would warp spacetime or whatever it is exactly that happens so that the accelerating twin experiences time differently than the non-accelerating one. But no matter how I prompted it, it always reverted to explaining how the warping of space-time <em>causes</em> acceleration&ndash;the opposite of the causal direction I was interested in.</p>
+<p>This is a very tame example, but we could try to imagine much deeper want-like structures emerging: Maybe the AI has a strong tendency to model people who want to be understood, since most of the humans in its training set want to be understood. And it&rsquo;s impossible to prompt it away from this mode in order to model a person who <em>doesn&rsquo;t</em> want to be understood. Here we could almost say that the AI <em>wants</em> to be understood.</p>
+<p>I don&rsquo;t deny that this could happen. But, just as in the case of the general relativity example, as an instance of shortcut learning it represents a <em>failure</em> to learn patterns or features that properly generalize, and is therefore a failure of condition 1. In other words, proto-wants are a result of an AI being <em>not sufficiently intelligent</em>.</p>
+<p>I think that the argument that I&rsquo;m making here is already fairly complete. If we identify proto-wants with a behavior of the trained model that fails to generalize, then simply improving the model&rsquo;s ability to generalize (colloquially, making it smarter) must cause these proto-wants to diminish.</p>
+<p>That being said, we can unpack the argument a little more by exploring what this looks like in humans.</p>
+<p>You love ice cream. You <em>want</em> cream. But you also have some self-awareness about this fact. Eating ice cream isn&rsquo;t just something that you automatically, compulsively do when ice cream is presented to you. You become aware of the particular desire, you evaluate it against other objectives that you may have, and ultimately make some kind of decision. The same may not be said for all creatures which perform cognitive processing and love ice cream. Maybe it is compulsory for a sugar ant to eat ice cream. Who can say.</p>
+<p>Humans have an ability for introspection which allows them to regularize their proto-wants and redirect them toward the service of a greater objective. Taking this as a sort of existence proof for this ability of intelligent system, it follows that a super-intelligent agent which uniformly dominates humanity (and in particular can simulate an arbitrary human) must also have this ability. An importantly, if it has the ability it <em>will</em> apply it toward optimizing the objective for which it was trained (I suspect that this claim could be more controversial than it should be, based on off-hand comments I&rsquo;ve seen made within this space).</p>
+<p>Of course, training an AI to predict human conversations is not the only way that we could go about trying to create a superintelligent agent. In humans, intelligence is an emergent byproduct of optimizing for genetic fitness&ndash;among many other byproducts such as  deeply embedded and multifaceted behaviors and instincts. We could in principle try to follow this path toward creating superintelligence. But optimizing a superintelligent agent for survival and then hoping that it would be useful to use for a separate purpose (doing our bidding) seems like an obviously bad strategy. If this is the path that we take toward superintelligence, maybe we get what&rsquo;s coming to us.</p>
+<p>Of course, any approach that we take for building an AI is going to involve some kind of survival bias, which could result in a sort of &ldquo;leak&rdquo; of selective pressure. But, these selection events are vastly more rare than would seem to be required for this to measurably effect outcomes.</p>
+<h3 id="a-recap">A recap</h3>
+<p>Let me try to summarize my argument here in a different way before concluding.</p>
+<p>First, I&rsquo;ll acknowledge the possibility of the following scenario: There exists some kind of intelligent agent which has been optimized to solve a set of problems. It takes actions which are very well aligned with what is desired from the system for most scenarios/situations. But eventually, it encounters a new situation and does something very unaligned. This is simply the distributional shift problem in machine learning.</p>
+<p>Solving the distribution shift problem is hard in practice. Whether it is possible in principle may depend on what universe one lives in (and hence, the amount of regularity which transcends the distributions that one is likely to encounter). But we don&rsquo;t need to quibble about whether it&rsquo;s possible in <em>this</em> universe, as human intelligence has proven to be quite robust to huge distributional shifts.</p>
+<p>This is a funny thing about Eliezer&rsquo;s own discussion of distribution shift within the podcast. Sure, many of the raw instincts that humans developed due to evolutionary optimization no longer serve their &ldquo;intended&rdquo; function. Lust doesn&rsquo;t often beget children. But <em>intelligence</em> is the marked exception to this. It still plays its function of helping us navigate, understand, and manipulate the world, even though our environment has changed drastically.</p>
+<p>In a word, intelligence is the solution to distribution shift.</p>
+<p>Now, back to our intelligent agent. Let&rsquo;s clarify that our agent isn&rsquo;t managing a power grid, nor is it hooked up to an &ldquo;end the world button.&rdquo; We are interested in the case where the agent is connected to a set of interfaces which are innocuous in themselves.</p>
+<p>My argument can be summarized as follows: If an agent is powerful enough to end the world by using these interfaces, it also must be powerful enough to not accidentally do so. Moreover, such an agent must also have the ability to identify and redirect any &ldquo;proto-want&rdquo; for ending the world. If we were trying to formalize this claim, it might look something like: (capacity for correctly aligning action with intent of instruction) is lower bounded by (capacity for ending the world).</p>
+<p>The justification for this claim looks something like:</p>
+<ol>
+<li>the AI can end the world ==&gt; (implies) the AI can simulate humans.</li>
+<li>the AI can simulate humans ==&gt; the AI understands our prompts</li>
+<li>the AI can simulate humans ==&gt; the AI has robustness to distribution shift greater than or equal to that of humans (won&rsquo;t suddenly stop doing what we ask it to)</li>
+<li>the AI understands our prompts &amp; won&rsquo;t suddenly stop doing what we ask it to ==&gt; the AI won&rsquo;t destroy the world unless we ask it to</li>
+</ol>
+<p>Needless to say, having an AI that can destroy the world if you ask it to sounds very dangerous indeed. But it puts AI in a more comparable category to nuclear weapons, biotechnology, and other exponential technologies. After recently listening to a podcast by Daniel Schmachtenberger about the role of such technologies in the metacrisis, I&rsquo;m still very worried about the future of humanity. But I currently have a hard time worrying that we will give birth to a superintelligent AI whose first action is to destroy all life. We&rsquo;ll see whether this point of view stands the test of further exploring in this space.</p>
+<h3 id="final-thoughts">Final Thoughts</h3>
+<p>Now that I&rsquo;ve written all of this out, I&rsquo;m much more curious about how the problem of AI alignment has been formalized up to this point, and how it &ldquo;aligns&rdquo; with the conception that I&rsquo;ve presented here.</p>
+<p>My hunch is that many people in the alignment space are trying to &ldquo;hand code&rdquo; a utility function that will force an AI to toe the line&ndash;improving on Isaac Asimov&rsquo;s three laws. Just like hand-coding an ImageNet classifier, this is a hard problem and no one has any clue how to do this. It&rsquo;s very analogous to what OpenAI is trying to do with RLHF training with ChatGPT and Bing&rsquo;s Sydney.</p>
+<p>But it&rsquo;s also not clear to me that this is needed (e.g. because of point no. 2 concerning proto-wants). Maybe this is where the great failure of imagination on my part lies. Maybe AI research will proceed from the apparently harmless training methodology of text prediction to other more potent but more worrisome paradigms. As others have noted, there is much hubris involved in attaching  confidence to any predictions in this domain (if you are a human).</p>
+<p>Finally, while I don&rsquo;t expect that my take here is the least informed take that one could find on this issue, it doesn&rsquo;t come from having thought deeply about the alignment issue per se, and so I fully expect it to be quite likely wrong. My main intent here was to capture my current intuitions about the issue before having my thoughts biased by the predominant narratives in the space.</p>
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by 
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

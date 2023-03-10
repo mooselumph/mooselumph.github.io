@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://rayncloud.com/categories/alignment/</loc>
+    <lastmod>2023-03-10T13:10:29-08:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/notes/intelligence-is-self-regularizing/</loc>
+    <lastmod>2023-03-10T13:10:29-08:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/categories/</loc>
+    <lastmod>2023-03-10T13:10:29-08:00</lastmod>
+  </url><url>
     <loc>http://rayncloud.com/link/cv/</loc>
     <lastmod>2023-03-05T20:51:04-08:00</lastmod>
   </url><url>
@@ -31,9 +40,6 @@
   </url><url>
     <loc>http://rayncloud.com/link/cat-ml/</loc>
     <lastmod>2023-03-05T21:29:34-08:00</lastmod>
-  </url><url>
-    <loc>http://rayncloud.com/categories/</loc>
-    <lastmod>2023-03-05T20:50:56-08:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/categories/statistical-learning/</loc>
     <lastmod>2023-03-05T20:50:56-08:00</lastmod>

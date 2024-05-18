@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Alignment on Rayncloud.com</title>
+    <title>Alignment on Robert Raynor</title>
     <link>http://rayncloud.com/categories/alignment/</link>
-    <description>Recent content in Alignment on Rayncloud.com</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Alignment on Robert Raynor</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Mar 2023 21:24:23 -0800</lastBuildDate><atom:link href="http://rayncloud.com/categories/alignment/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 May 2024 21:46:54 -0700</lastBuildDate>
+    <atom:link href="http://rayncloud.com/categories/alignment/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How intelligence helps (and hurts) alignment</title>
       <link>http://rayncloud.com/notes/intelligence-and-alignment/</link>
       <pubDate>Sun, 05 Mar 2023 21:24:23 -0800</pubDate>
-      
       <guid>http://rayncloud.com/notes/intelligence-and-alignment/</guid>
-      <description>&lt;div class=&#34;summary&#34;&gt;
-An initial reaction to AI alignment concerns. 
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;summary&#34;&gt;&#xA;An initial reaction to AI alignment concerns. &#xA;&lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

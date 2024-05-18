@@ -1,124 +1,109 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Robert Raynor on Rayncloud.com</title>
+    <title>Home on Robert Raynor</title>
     <link>http://rayncloud.com/</link>
-    <description>Recent content in Robert Raynor on Rayncloud.com</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://rayncloud.com/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Home on Robert Raynor</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://rayncloud.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How intelligence helps (and hurts) alignment</title>
       <link>http://rayncloud.com/notes/intelligence-and-alignment/</link>
       <pubDate>Sun, 05 Mar 2023 21:24:23 -0800</pubDate>
-      
       <guid>http://rayncloud.com/notes/intelligence-and-alignment/</guid>
-      <description>&lt;div class=&#34;summary&#34;&gt;
-An initial reaction to AI alignment concerns. 
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;summary&#34;&gt;&#xA;An initial reaction to AI alignment concerns. &#xA;&lt;/div&gt;</description>
     </item>
-    
+    <item>
+      <title>Annotated Bibliography</title>
+      <link>http://rayncloud.com/link/anotatedbib/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/link/anotatedbib/</guid>
+      <description>My public tab manager, or An annotated bibliography of my life, or An ongoing experiment with modes of relating to the world of knowledge and information</description>
+    </item>
     <item>
       <title>Curiculum Vitae</title>
       <link>http://rayncloud.com/link/cv/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/link/cv/</guid>
       <description>A work in progress.</description>
     </item>
-    
     <item>
       <title>Exploratory Writing</title>
-      <link>http://rayncloud.com/link/mooselumph/</link>
-      <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://rayncloud.com/link/mooselumph/</guid>
-      <description>Convergent and Divergent Thinking Blog.</description>
+      <link>http://rayncloud.com/link/appromoximate/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/link/appromoximate/</guid>
+      <description>Convergent and Divergent Thinking Blog. Experimental. Unofficial. Proceed with caution.</description>
     </item>
-    
     <item>
       <title>Publications</title>
       <link>http://rayncloud.com/link/publications/</link>
       <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/link/publications/</guid>
       <description>Publications on Google Scholar.</description>
     </item>
-    
     <item>
       <title>Other featured writing</title>
       <link>http://rayncloud.com/link/cat-other/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/link/cat-other/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Research</title>
       <link>http://rayncloud.com/blurbs/research/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/blurbs/research/</guid>
       <description>I am currently working with Prof. Sreeram Kannan, who is a visionary with respect to the role that modern decentralized information systems can play in improving societal equilibria. Our current research looks at the key barrier of trust bottlenecks which inhibit the efficient exchange of high quality data between those who can access/produce it and those who need it for a machine learning task. A key part of this research concerns using the combined discriminative power of a small validation set with the inductive bias of a well-selected model to valuate data from untrusted sources.</description>
     </item>
-    
     <item>
       <title>Interests</title>
       <link>http://rayncloud.com/blurbs/interests/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/blurbs/interests/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>On Statistical Learning</title>
       <link>http://rayncloud.com/link/cat-ml/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/link/cat-ml/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>About Me</title>
+      <link>http://rayncloud.com/about/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/about/</guid>
+      <description>What I&amp;rsquo;m doing with my life.</description>
+    </item>
     <item>
       <title>Why Deep Learning is Cool</title>
       <link>http://rayncloud.com/notes/why-deep-learning-is-cool/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/notes/why-deep-learning-is-cool/</guid>
       <description>&lt;p&gt;Some thoughts about why deep learning is interesting.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Differential Privacy and Generalization</title>
       <link>http://rayncloud.com/notes/differential-privacy-generalization/</link>
       <pubDate>Sun, 13 Dec 2020 14:31:55 -0800</pubDate>
-      
       <guid>http://rayncloud.com/notes/differential-privacy-generalization/</guid>
-      <description>&lt;div class=&#34;summary&#34;&gt;
-How differential privacy can be used to help solve problems of overfitting in adaptive data analysis. 
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;summary&#34;&gt;&#xA;How differential privacy can be used to help solve problems of overfitting in adaptive data analysis. &#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Learning and Uniform Convergence</title>
       <link>http://rayncloud.com/notes/learning-uniform-convergence/</link>
       <pubDate>Wed, 11 Nov 2020 21:25:28 -0800</pubDate>
-      
       <guid>http://rayncloud.com/notes/learning-uniform-convergence/</guid>
-      <description>&lt;div class=&#34;summary&#34;&gt;
-First post in a series on generalization in machine learning. 
-&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;summary&#34;&gt;&#xA;First post in a series on generalization in machine learning. &#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Plenoptic Camera Notes</title>
       <link>http://rayncloud.com/notes/plenoptic-camera-notes/</link>
       <pubDate>Mon, 01 Jul 2019 19:30:13 -0700</pubDate>
-      
       <guid>http://rayncloud.com/notes/plenoptic-camera-notes/</guid>
       <description>&lt;p&gt;Working notes related to the use of a plenoptic camera for estimating depth within a scene.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

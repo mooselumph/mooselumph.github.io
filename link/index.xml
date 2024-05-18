@@ -1,56 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Links on Rayncloud.com</title>
+    <title>Links on Robert Raynor</title>
     <link>http://rayncloud.com/link/</link>
-    <description>Recent content in Links on Rayncloud.com</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Links on Robert Raynor</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://rayncloud.com/link/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 May 2024 18:35:00 -0700</lastBuildDate>
+    <atom:link href="http://rayncloud.com/link/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Annotated Bibliography</title>
+      <link>http://rayncloud.com/link/anotatedbib/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/link/anotatedbib/</guid>
+      <description>My public tab manager, or An annotated bibliography of my life, or An ongoing experiment with modes of relating to the world of knowledge and information</description>
+    </item>
     <item>
       <title>Curiculum Vitae</title>
       <link>http://rayncloud.com/link/cv/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/link/cv/</guid>
       <description>A work in progress.</description>
     </item>
-    
     <item>
       <title>Exploratory Writing</title>
-      <link>http://rayncloud.com/link/mooselumph/</link>
-      <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://rayncloud.com/link/mooselumph/</guid>
-      <description>Convergent and Divergent Thinking Blog.</description>
+      <link>http://rayncloud.com/link/appromoximate/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/link/appromoximate/</guid>
+      <description>Convergent and Divergent Thinking Blog. Experimental. Unofficial. Proceed with caution.</description>
     </item>
-    
     <item>
       <title>Publications</title>
       <link>http://rayncloud.com/link/publications/</link>
       <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/link/publications/</guid>
       <description>Publications on Google Scholar.</description>
     </item>
-    
     <item>
       <title>Other featured writing</title>
       <link>http://rayncloud.com/link/cat-other/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/link/cat-other/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>On Statistical Learning</title>
       <link>http://rayncloud.com/link/cat-ml/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://rayncloud.com/link/cat-ml/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

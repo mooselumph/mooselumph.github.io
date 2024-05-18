@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Rayncloud.com</title>
+    <title>Tags on Robert Raynor</title>
     <link>http://rayncloud.com/tags/</link>
-    <description>Recent content in Tags on Rayncloud.com</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Tags on Robert Raynor</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Dec 2020 14:31:55 -0800</lastBuildDate><atom:link href="http://rayncloud.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 May 2024 21:46:54 -0700</lastBuildDate>
+    <atom:link href="http://rayncloud.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Generalization-Sequence</title>
       <link>http://rayncloud.com/tags/generalization-sequence/</link>
-      <pubDate>Sun, 13 Dec 2020 14:31:55 -0800</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://rayncloud.com/tags/generalization-sequence/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

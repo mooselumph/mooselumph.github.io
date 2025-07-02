@@ -2,10 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://rayncloud.com/categories/alignment/</loc>
-    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
-  </url><url>
     <loc>http://rayncloud.com/categories/</loc>
+    <lastmod>2025-07-01T18:40:24-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/categories/fep/</loc>
+    <lastmod>2025-07-01T18:40:24-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/notes/fep-intuitions/</loc>
+    <lastmod>2025-07-01T18:40:24-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/categories/alignment/</loc>
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/notes/intelligence-and-alignment/</loc>
@@ -15,7 +21,7 @@
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/link/</loc>
-    <lastmod>2024-05-07T08:02:16-07:00</lastmod>
+    <lastmod>2025-07-01T18:01:24-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/notes/</loc>
     <lastmod>2024-05-12T18:33:31-07:00</lastmod>
@@ -32,6 +38,9 @@
     <loc>http://rayncloud.com/blurbs/research/</loc>
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
   </url><url>
+    <loc>http://rayncloud.com/link/cat-fep/</loc>
+    <lastmod>2025-07-01T18:01:24-07:00</lastmod>
+  </url><url>
     <loc>http://rayncloud.com/blurbs/interests/</loc>
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
   </url><url>
@@ -41,16 +50,13 @@
     <loc>http://rayncloud.com/about/</loc>
     <lastmod>2024-05-19T21:42:12-07:00</lastmod>
   </url><url>
-    <loc>http://rayncloud.com/categories/statistical-learning/</loc>
-    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
-  </url><url>
-    <loc>http://rayncloud.com/notes/why-deep-learning-is-cool/</loc>
-    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
-  </url><url>
     <loc>http://rayncloud.com/notes/differential-privacy-generalization/</loc>
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/tags/generalization-sequence/</loc>
+    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/categories/statistical-learning/</loc>
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/tags/</loc>

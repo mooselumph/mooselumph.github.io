@@ -6,21 +6,21 @@
     <description>Recent content in Notes on Robert Raynor</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 May 2024 21:46:54 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 01 Jul 2025 18:40:24 -0700</lastBuildDate>
     <atom:link href="http://rayncloud.com/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes on Active Inference</title>
+      <link>http://rayncloud.com/notes/fep-intuitions/</link>
+      <pubDate>Wed, 28 May 2025 15:50:58 -0700</pubDate>
+      <guid>http://rayncloud.com/notes/fep-intuitions/</guid>
+      <description>&lt;div class=&#34;summary&#34;&gt;&#xA;Disentangling the properties of the Active Inference algorithm.&#xA;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>How intelligence helps (and hurts) alignment</title>
       <link>http://rayncloud.com/notes/intelligence-and-alignment/</link>
       <pubDate>Sun, 05 Mar 2023 21:24:23 -0800</pubDate>
       <guid>http://rayncloud.com/notes/intelligence-and-alignment/</guid>
       <description>&lt;div class=&#34;summary&#34;&gt;&#xA;An initial reaction to AI alignment concerns. &#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Why Deep Learning is Cool</title>
-      <link>http://rayncloud.com/notes/why-deep-learning-is-cool/</link>
-      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>http://rayncloud.com/notes/why-deep-learning-is-cool/</guid>
-      <description>&lt;p&gt;Some thoughts about why deep learning is interesting.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Differential Privacy and Generalization</title>

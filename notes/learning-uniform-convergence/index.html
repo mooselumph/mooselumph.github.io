@@ -118,15 +118,17 @@ $
 </div>
 <h2 id="introduction">Introduction</h2>
 <p>A general machine learning problem starts with an known domain of interest, $\Z$, and an unknown distribution over that domain, $\D$. Our access to $\D$ consists only in the ability to generate a finite number of i.i.d. samples from it. In addition to the distribution, we have a class of hypotheses, $\H$, from which we hope to choose an element which characterizes the distribution. Finally, we have a risk functional, $f: \H \times \Z \to \R$, to quantify the goodness of fit between our hypothesis and an individual sample from $\D$. We wish to find the hypothesis which minimizes the population risk, defined as</p>
-<p>$$\tag{}R(h) = \mathbb{E}_{z\sim\mathcal{D}}[f(h;z)]$$</p>
+$$\tag{}R(h) = \mathbb{E}_{z\sim\mathcal{D}}[f(h;z)]$$
 <p>We denote the risk of this optimal solution as $R(h^\star) = \inf_{h \in \mathcal{H}}R(h)$. For the special cases of classification and regression, we let $\Z = \X \times \Y$, where $\X \subseteq \R^d$ and $\Y \subseteq \R$ are respectively the input and output domains. Then, naturally $\H \subseteq \Y^\X$ and $f(h,z) \equiv \ell(h(x),y)$ for a suitable loss function $\ell : \Y \times \Y \to \R$.</p>
 <p>A machine learning task may be identified with the pair $(\H,f)$. The distribution $\D$ is excluded from the task definition since, formally, we know nothing about the distribution before we begin to sample it. Thus, the questions that we seek to ask and answer with respect to the learnability of a task must apply over all possible distributions. (When a practitioner does have access to some knowledge about the structure of $\D$, she can make use of this by judiciously choosing $\H$.)</p>
-<p>Given a machine learning task, a learning algorithm is a function $\mathcal{A}: \bigcup_{n=1}^\infty \Z^n \to \mathcal{H}$, from a set of points $S = \{z_1,&hellip;,z_n\}$ to a hypothesis. Ideally, the learning algorithm outputs a hypothesis whose risk is close to optimal. An algorithm producing hypothesis whose risks converge toward the minimum risk is called a <em>consistent</em> algorithm, and a problem or which a consistent algorithm exists is called a <em>learnable</em> problem.</p>
+<p>Given a machine learning task, a learning algorithm is a function $\mathcal{A}: \bigcup\_{n=1}^\infty \Z^n \to \mathcal{H}$, from a set of points $S = \\{z_1,...,z_n\\}$ to a hypothesis. Ideally, the learning algorithm outputs a hypothesis whose risk is close to optimal. An algorithm producing hypothesis whose risks converge toward the minimum risk is called a <em>consistent</em> algorithm, and a problem or which a consistent algorithm exists is called a <em>learnable</em> problem.</p>
 
 
 <div class="flash bg-gray mb-3 p-2">
-<p><strong>Definition (Learnability and Consistency):</strong> An algorithm is called consistent if for any $\epsilon &gt; 0$,
-$$\tag{}\lim_{m \to 0}\P_{S \sim \D^m} [R(\A[S]) - R(h^\star) &gt; \epsilon] = 0$$
+<p><strong>Definition (Learnability and Consistency):</strong> An algorithm is called consistent if for any $\epsilon > 0$,
+</p>
+$$\tag{}\lim_{m \to 0}\P_{S \sim \D^m} [R(\A[S]) - R(h^\star) > \epsilon] = 0$$
+<p>
 and a task is called learnable if a consistent algorithm exists for that task.</p>
 
 </div>
@@ -140,21 +142,21 @@ and a task is called learnable if a consistent algorithm exists for that task.</
 <li>VC Dimension and Related concepts</li>
 </ul>
 <p>We will show that</p>
-<p>$$ \begin{matrix}\text{Finite VC} \\ \text{Dimension}\end{matrix} \implies \begin{matrix}\text{Uniform} \\ \text{Convergence}\end{matrix} \implies \begin{matrix}\text{Learnable} \\ \text{with ERM}\end{matrix} \implies \text{Learnable}$$</p>
+$$ \begin{matrix}\text{Finite VC} \\\\ \text{Dimension}\end{matrix} \implies \begin{matrix}\text{Uniform} \\\\ \text{Convergence}\end{matrix} \implies \begin{matrix}\text{Learnable} \\\\ \text{with ERM}\end{matrix} \implies \text{Learnable}$$
 <h2 id="uniform-convergence-and-empirical-risk-minimization">Uniform Convergence and Empirical Risk Minimization</h2>
 <p>First, let us introduce the notion of empirical risk minimization (ERM). ERM is a strategy for learning, which selects the member of $\H$ which displays the smallest empirical risk, $R_S(h)$ on the training set, S:</p>
-<p>$$\tag{} R_S(h) = \frac{1}{|S|}\sum_{z \in S} f(h;z)$$</p>
+$$\tag{} R_S(h) = \frac{1}{|S|}\sum_{z \in S} f(h;z)$$
 <p>Since ERM is simply a specific type of learning algorithm, clearly if a task is learnable with ERM, then it is learnable. Note that the ERM algorithm directly gives us a form of convergence via the law of large numbers (LLN). Specifically, we have that for any $h \in \H$, as $m \to \infty$, $R_S(h) \to R(h)$ in probability. Sadly, this isn&rsquo;t enough: since each $f(h,z)$ in the sum depends on $h$, and $h$ in turn depends on $S$, we lose statistical independence in the sum, and LLN no longer applies. Thus, we need to consider the stronger uniform convergence guarantee that as $m \to \infty$</p>
-<p>$$\tag{\htmlId{eq-uniform}{}}P_{S \sim \D^m}( \exists h \in \H,\text{ s.t. }|R_S(h) - R(h)| &gt; \epsilon) = P_{S \sim \D^m}\left( \sup_{h \in \H}|R_S(h) - R(h)| &gt; \epsilon\right) \to 0$$</p>
+$$\tag{\htmlId{eq-uniform}{}}P_{S \sim \D^m}( \exists h \in \H,\text{ s.t. }|R_S(h) - R(h)| > \epsilon) = P_{S \sim \D^m}\left( \sup_{h \in \H}|R_S(h) - R(h)| > \epsilon\right) \to 0$$
 <p>We now have our first basic result:</p>
 
 
 <div class="flash bg-gray mb-3 p-2">
 <p><strong>Proposition (Uniform Convergence implies ERM Learnability):</strong> If uniform convergence holds for a given hypothesis class, $\H$, then that class is ERM learnable.</p>
-<p><em>Proof:</em> Let $h_S$ denote $\A[S]$. Since $h_S$ is the minimizer of $R_S$, it follows that $R_S(h^\star) - R_S(h_S) &gt; 0$. Thus</p>
-<p>$$
+<p><em>Proof:</em> Let $h_S$ denote $\A[S]$. Since $h_S$ is the minimizer of $R_S$, it follows that $R_S(h^\star) - R_S(h_S) > 0$. Thus</p>
+$$
 \tag{}R(h_S) - R(h^\star)  \leq R(h_s) - R_s(h_s) + R_S(h^\star) - R(h^\star) \leq 2 \sup_{h\in \H} |R(h) - R_S(h)|
-$$</p>
+$$
 
 </div>
 
@@ -167,10 +169,10 @@ $$</p>
 
 
 <div class="flash bg-gray mb-3 p-2">
-<p><strong>Definition (Growth Function):</strong> For a given sample, $S = \{z_1,&hellip;,z_m\}$, let $\H(S)$ be the set of &lsquo;projections&rsquo; of $h \in \H$ onto $S$:</p>
-<p>$$\tag{} \H(S) = \{(h(z_1),&hellip;h(x_m)),h \in \H\}$$</p>
+<p><strong>Definition (Growth Function):</strong> For a given sample, $S = \\{z_1,...,z_m\\}$, let $\H(S)$ be the set of &lsquo;projections&rsquo; of $h \in \H$ onto $S$:</p>
+$$\tag{} \H(S) = \\{(h(z_1),...h(x_m)),h \in \H\\}$$
 <p>The growth function is defined to be the maximum size of $\H(S)$ over all samples $S$:</p>
-<p>$$\tag{} S_{\H}(m) = \sup_{S \in \Z^m} |\H(S)|$$</p>
+$$\tag{} S_{\H}(m) = \sup_{S \in \Z^m} |\H(S)|$$
 
 </div>
 
@@ -178,8 +180,8 @@ $$</p>
 
 
 <div class="flash bg-gray mb-3 p-2">
-<p><strong>Theorem (Vapnik and Chervonenkis):</strong> For any $\delta &gt; 0$, with probability at least $1 - \delta$ over $S \sim \D^m$:</p>
-<p>$$\tag{\htmlId{eq-gf-bound}{}} \sup_{h \in \H}|R_S(h) - R(h)| \le 2\sqrt{2\frac{\log(S_\H(2m)) + \log(2/\delta)}{m}}$$</p>
+<p><strong>Theorem (Vapnik and Chervonenkis):</strong> For any $\delta > 0$, with probability at least $1 - \delta$ over $S \sim \D^m$:</p>
+$$\tag{\htmlId{eq-gf-bound}{}} \sup_{h \in \H}|R_S(h) - R(h)| \le 2\sqrt{2\frac{\log(S_\H(2m)) + \log(2/\delta)}{m}}$$
 
 </div>
 
@@ -188,28 +190,29 @@ $$</p>
 <div class="flash bg-white mb-3 p-2">
     <div class="toggle-proof">&#9656; Proof</div>
     <div class='proof  active }'><p>The quantity $\sup_{h \in \H}|R_S(h) - R(h)|$ seems to depend on the full object $\H$ which could be uncountable; this isn&rsquo;t appropriate for the use of the union bound. We need to upper bound this quantity (probabilistically) in a way that depends only on a finite &ldquo;sampling&rdquo; or &ldquo;projection&rdquo; of $\H$&mdash;i.e. on $\H_S$. We do this by using the symmetrization lemma:</p>
-<p><strong>Lemma (Symmetrization)</strong>: For any $t &gt; 0$, such that $nt^2 \ge 2$,
-$$\tag{\htmlId{eq-symmetric}{}} \P_{S \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; t\right] \le 2\P_{S,S&rsquo; \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R_{S&rsquo;}(h) &gt; t/2\right]$$</p>
+<p><strong>Lemma (Symmetrization)</strong>: For any $t > 0$, such that $nt^2 \ge 2$,
+</p>
+$$\tag{\htmlId{eq-symmetric}{}} \P_{S \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R(h)  > t\right] \le 2\P_{S,S' \sim \D^m} \left[\sup_{h \in \H}R_S(h) - R_{S'}(h) > t/2\right]$$
 <p><em>Proof of lemma:</em>
-Fix $S$ and $S&rsquo;$, and let $h&rsquo;$ be the hypothesis achieving the supremum on the left hand side. Then</p>
-<p>$$ \I_{R(h&rsquo;) - R_S(h&rsquo;) &gt; t}\I_{R(h&rsquo;) - R_{S&rsquo;}(h&rsquo;) &lt; t/2} =  \I_{R(h&rsquo;) - R_S(h&rsquo;) &gt; t \; \land \;  R_{S&rsquo;}(h&rsquo;) - R(h&rsquo;) \ge -t/2} \le \I_{R_{S&rsquo;}(h&rsquo;) - R_S(h&rsquo;) &gt; t/2}$$</p>
+Fix $S$ and $S'$, and let $h'$ be the hypothesis achieving the supremum on the left hand side. Then</p>
+$$ \I_{R(h') - R_S(h') > t}\I_{R(h') - R_{S'}(h') < t/2} =  \I_{R(h') - R_S(h') > t \\; \land \\;  R_{S'}(h') - R(h') \ge -t/2} \le \I_{R_{S'}(h') - R_S(h') > t/2}$$
 <p>Taking expecation with respect to the second sample gives</p>
-<p>$$ \I_{R(h&rsquo;) - R_S(h&rsquo;) &gt; t}\P_{S&rsquo;}(R(h&rsquo;) - R_{S&rsquo;}(h&rsquo;) &lt; t/2) \le \E_{S&rsquo;}[\I_{R_{S&rsquo;}(h&rsquo;) - R_S(h&rsquo;) &gt; t/2}]$$</p>
-<p>But by Chebyshev&rsquo;s inequality and that for binary classification, $\text{range}(h&rsquo;) \subseteq [0,1] \implies \textrm{var}(h&rsquo;) \le 1/4$</p>
-<p>$$\P&rsquo;(R(h&rsquo;) - R_{S&rsquo;}(h&rsquo;) \ge t/2) \le \frac{4 \textrm{var}(h&rsquo;)}{nt^2} \le \frac{1}{nt^2} \le 1/2$$</p>
+$$ \I_{R(h') - R_S(h') > t}\P_{S'}(R(h') - R_{S'}(h') < t/2) \le \E_{S'}[\I_{R_{S'}(h') - R_S(h') > t/2}]$$
+<p>But by Chebyshev&rsquo;s inequality and that for binary classification, $\text{range}(h') \subseteq [0,1] \implies \textrm{var}(h') \le 1/4$</p>
+$$\P'(R(h') - R_{S'}(h') \ge t/2) \le \frac{4 \textrm{var}(h')}{nt^2} \le \frac{1}{nt^2} \le 1/2$$
 <p>Thus taking expectation with respect to $S$, we have</p>
-<p>$$\tag{} \P_S(R(h&rsquo;) - R_{S&rsquo;}(h&rsquo;) &gt; t) \le 2 \P_{S,S&rsquo;}(R_{S&rsquo;}(h&rsquo;) - R_S(h&rsquo;) &gt; t/2)$$</p>
-<p>But by the choice of $h&rsquo;$, the left hand side $\htmlClass{eq-ref eq-symmetric}{}$ is equal to the left hand side of this equation and the right hand side of $\htmlClass{eq-ref eq-symmetric}{}$ is less than or equal to the right hand side of this equation.  $\blacksquare$</p>
-<p>With the symmetrization lemma in hand, our desired result follows quite quickly. We need merely make note that because $\H_{S \cup S&rsquo;}$ contains all possible projections of $h \in \H$ onto the sets $S$ and $S&rsquo;$,</p>
-<p>$$ \sup_{h \in \H}R_S(h) - R_{S&rsquo;}(h) = \sup_{h \in \H_{S \cup S&rsquo;}}R_S(h) - R_{S&rsquo;}(h)$$</p>
-<p>But $\H_{S \cup S&rsquo;}$ has bounded size! We will also make use of a symmetric form of Hoeffding&rsquo;s inequality for a random variable bounded by $[0,1]$ (This can be derived via minor adjustments in the derivation of the usual form):</p>
-<p>$$\P_{S,S&rsquo; \sim \D^m} [R_S - R_{S&rsquo;} &gt; \epsilon] \le e^{-m\epsilon^2}$$</p>
+$$\tag{} \P_S(R(h') - R_{S'}(h') > t) \le 2 \P_{S,S'}(R_{S'}(h') - R_S(h') > t/2)$$
+<p>But by the choice of $h'$, the left hand side $\htmlClass{eq-ref eq-symmetric}{}$ is equal to the left hand side of this equation and the right hand side of $\htmlClass{eq-ref eq-symmetric}{}$ is less than or equal to the right hand side of this equation.  $\blacksquare$</p>
+<p>With the symmetrization lemma in hand, our desired result follows quite quickly. We need merely make note that because $\H_{S \cup S'}$ contains all possible projections of $h \in \H$ onto the sets $S$ and $S'$,</p>
+$$ \sup_{h \in \H}R_S(h) - R_{S'}(h) = \sup_{h \in \H_{S \cup S'}}R_S(h) - R_{S'}(h)$$
+<p>But $\H_{S \cup S'}$ has bounded size! We will also make use of a symmetric form of Hoeffding&rsquo;s inequality for a random variable bounded by $[0,1]$ (This can be derived via minor adjustments in the derivation of the usual form):</p>
+$$\P_{S,S' \sim \D^m} [R_S - R_{S'} > \epsilon] \le e^{-m\epsilon^2}$$
 <p>With these two facts, along with the symmetrization lemma, we have,</p>
-<p>$$
+$$
 \begin{aligned}
-\P_S \left[\sup_{h \in \H}R_S(h) - R(h)  &gt; \epsilon \right] &amp;\le 2 \P_{S,S&rsquo;} \left[\sup_{h \in \H}R_S(h) - R_{S&rsquo;}(h)  &gt; \epsilon/2 \right] \\  &amp;= 2 \P_{S,S&rsquo;} \left[\sup_{h \in \H_{S\cup S&rsquo;}}R_S(h) - R_{S&rsquo;}(h)  &gt; \epsilon/2 \right] \\ &amp;\le 2 S_\H(2m) \P_{S,S&rsquo;} \left[R_S(h) - R_{S&rsquo;}(h)  &gt; \epsilon/2 \right] \\ &amp;\le 2 S_\H(2m)e^{-m\epsilon^2/4}
+\P_S \left[\sup_{h \in \H}R_S(h) - R(h)  > \epsilon \right] &\le 2 \P_{S,S'} \left[\sup_{h \in \H}R_S(h) - R_{S'}(h)  > \epsilon/2 \right] \\\\  &= 2 \P_{S,S'} \left[\sup_{h \in \H_{S\cup S'}}R_S(h) - R_{S'}(h)  > \epsilon/2 \right] \\\\ &\le 2 S_\H(2m) \P_{S,S'} \left[R_S(h) - R_{S'}(h)  > \epsilon/2 \right] \\\\ &\le 2 S_\H(2m)e^{-m\epsilon^2/4}
 \end{aligned}
-$$</p>
+$$
 </div>
 </div>
 <p>How does this result help us? Notice that clearly, $S_\H(m) \le 2^m$, since there only $2^m$ distinct classifications of $m$ objects. But plugging this bound into (7) does not achieve uniform convergence: we need $S_\H(m)$ to have sub-exponential growth for the bound to be non-vacuous. This is where the VC dimension comes into play: The growth function of a hypothesis class with bounded VC dimension will exhibit polynomial growth for a high enough $m$.</p>
@@ -218,7 +221,7 @@ $$</p>
 
 <div class="flash bg-gray mb-3 p-2">
 <p><strong>Definition (VC Dimension):</strong> The VC dimension of a class $\H$ is the largest $m$ such that</p>
-<p>$$S_\H(m) = 2^m$$</p>
+$$S_\H(m) = 2^m$$
 
 </div>
 
@@ -227,21 +230,21 @@ $$</p>
 
 <div class="flash bg-gray mb-3 p-2">
 <p><strong>Lemma (Sauer, Vapnik and Chervonenkis):</strong> Let $\H$ be a class of functions with finite VC dimension $h$. Then for all $m \in \N$,</p>
-<p>$$S_\H(m) \le \sum_{i=0}^{h}{m \choose i}$$</p>
+$$S_\H(m) \le \sum_{i=0}^{h}{m \choose i}$$
 <p>and for $m \ge h$,</p>
-<p>$$S_\H(m) \le \left(\frac{em}{h}\right)^h$$</p>
+$$S_\H(m) \le \left(\frac{em}{h}\right)^h$$
 <p>We recommend [1] for the proof.</p>
 
 </div>
 
 <h2 id="learnability-and-bounded-hypothesis-complexity">Learnability and Bounded Hypothesis Complexity</h2>
 <p>We have now seen that a finite VC dimension implies learnability, via uniform convergence and the consistency of ERM. The final step is to show that</p>
-<p>$$\text{Learnability} \implies \text{Finite VC Dimension}$$</p>
+$$\text{Learnability} \implies \text{Finite VC Dimension}$$
 <p>The proof is a corollary of a particular version of the &ldquo;No Free Lunch Theorem&rdquo; given in [1].</p>
 
 
 <div class="flash bg-gray mb-3 p-2">
-<p><strong>Theorem (No Free Lunch)</strong>: Let $\A$ be any learning algorithm for the task of binary classification with respect to the 0-1 loss over domain $\X$. Let $m$ be any number smaller than $|\X|/2$, representing a training set size. Then, there exists a distribution $\D$ over $\X \times \{0,1\}$ such that $\P_{S\sim \D^m}(R(\A[S]) \ge 1/8) \ge 1/7$.</p>
+<p><strong>Theorem (No Free Lunch)</strong>: Let $\A$ be any learning algorithm for the task of binary classification with respect to the 0-1 loss over domain $\X$. Let $m$ be any number smaller than $|\X|/2$, representing a training set size. Then, there exists a distribution $\D$ over $\X \times \\{0,1\\}$ such that $\P_{S\sim \D^m}(R(\A[S]) \ge 1/8) \ge 1/7$.</p>
 
 </div>
 
@@ -250,35 +253,35 @@ $$</p>
 <div class="flash bg-white mb-3 p-2">
     <div class="toggle-proof">&#9656; Proof</div>
     <div class='proof  active }'><p>The proof depends on constructing a family of finite support distributions having the property $(P)$ that, on average, an &ldquo;unseen&rdquo; point is equally likely to belong either class. We then note that the maximum loss over this class of distributions is greater than the average loss, and thus there must exist a distribution in this class which achieves a large loss.</p>
-<p>Recall that since our context is binary classification, $\Y = \{0,1\}$, and $\ell(h(x),y) = \I_{h(x) \neq y}$.</p>
-<p>Let $C \subseteq \X$ with $|C| = 2m$. We let $\Y^C = \{h_1,&hellip;,h_T\}$ denote the $T = 2^{2m}$ possible functions from $C$ to $\Y$. With each $i \in [T]$ we associate a distribution $\D_i$ such that</p>
-<p>$$ \D_i(\{(x,y)\}) \equiv \P_{(s,t) \sim \D_i}(s=x,t=y) = \begin{cases} 1/|C| &amp;\text{if } x \in C \land y=h_i(x) \\ 0 &amp;\text{o.w.} \end{cases}$$</p>
+<p>Recall that since our context is binary classification, $\Y = \\{0,1\\}$, and $\ell(h(x),y) = \I_{h(x) \neq y}$.</p>
+<p>Let $C \subseteq \X$ with $|C| = 2m$. We let $\Y^C = \\{h_1,...,h_T\\}$ denote the $T = 2^{2m}$ possible functions from $C$ to $\Y$. With each $i \in [T]$ we associate a distribution $\D_i$ such that</p>
+$$ \D_i(\\{(x,y)\\}) \equiv \P_{(s,t) \sim \D_i}(s=x,t=y) = \begin{cases} 1/|C| &\text{if } x \in C \land y=h_i(x) \\\\ 0 &\text{o.w.} \end{cases}$$
 <p>Notice that under this family of distributions, the learning algorithm will never see points outside of $C$.</p>
 <p>We now consider the quantity</p>
-<p>$$\tag{} \max_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])]  \ge \frac{1}{T} \sum_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])],  $$</p>
+$$\tag{} \max_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])]  \ge \frac{1}{T} \sum_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])],  $$
 <p>which we want to show to be large. Our goal is to make use the of property, $P$, to be formalized later. But to do this, we will need bring the summation over $i$ inside of the expectations that depend on it. We progress in this direction by expanding these expectations.</p>
-<p>Notice that there are $k = (2m)^m$ possible sequences of length $m$ contained in $C$. We denote these sequences $X_j = (x^j_1,&hellip;,x^j_m)$, for $j \in [k]$. For a given distribution $\D_i$, we let $Z_j^i = ((x^j_1,f_i(x^j_1)),&hellip;,(x^j_m,f_i(x^j_m)))$ denote the labeled sequence corresponding to $X_j$. Each such sequence has equal probability $1/k$ under $\D_i$. Thus, we have</p>
-<p>$$\tag{} \E_{S \sim D_i^m} [ R_{D_i}(A[S])] = \frac{1}{k}\sum_{j\in[k]}R_{D_i}(\A[Z_j^i])$$</p>
+<p>Notice that there are $k = (2m)^m$ possible sequences of length $m$ contained in $C$. We denote these sequences $X_j = (x^j_1,...,x^j_m)$, for $j \in [k]$. For a given distribution $\D_i$, we let $Z_j^i = ((x^j_1,f_i(x^j_1)),...,(x^j_m,f_i(x^j_m)))$ denote the labeled sequence corresponding to $X_j$. Each such sequence has equal probability $1/k$ under $\D_i$. Thus, we have</p>
+$$\tag{} \E_{S \sim D_i^m} [ R_{D_i}(A[S])] = \frac{1}{k}\sum_{j\in[k]}R_{D_i}(\A[Z_j^i])$$
 <p>We also have that for each $i$,</p>
-<p>$$\tag{} R_{D_i}(h) = \frac{1}{2m}\sum_{x\in C}\I_{h(x)\neq h_i(x)}$$</p>
+$$\tag{} R_{D_i}(h) = \frac{1}{2m}\sum_{x\in C}\I_{h(x)\neq h_i(x)}$$
 <p>Combining (12) and (13) with (11), and interchanging the orders of the summations, we have,</p>
-<p>$$\tag{}
+$$\tag{}
 \begin{aligned}
-\max_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])] &amp;\ge  \frac{1}{k}\sum_{j\in[k]}\frac{1}{2m}\sum_{x\in C}\frac{1}{T} \sum_{i \in [T]}\I_{\A[Z_j^i](x)\neq h_i(x)} \\ &amp;\ge \frac{1}{k}\sum_{j\in[k]}\frac{1}{2m}\sum_{x\in C\setminus X_j}\frac{1}{T} \sum_{i \in [T]}\I_{\A[Z_j^i](x)\neq h_i(x)}
-\end{aligned}$$</p>
+\max_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])] &\ge  \frac{1}{k}\sum_{j\in[k]}\frac{1}{2m}\sum_{x\in C}\frac{1}{T} \sum_{i \in [T]}\I_{\A\[Z_j^i\](x)\neq h_i(x)} \\\\ &\ge \frac{1}{k}\sum_{j\in[k]}\frac{1}{2m}\sum_{x\in C\setminus X_j}\frac{1}{T} \sum_{i \in [T]}\I_{\A\[Z_j^i\](x)\neq h_i(x)}
+\end{aligned}$$
 <p>In the second equality, we make it so that $\A[Z_j^i]$ is only evaluated on unseen points. Now we are ready to formally state property $P$: for any $\A$ and $x \notin X_j$,</p>
-<p>$$\tag{} \frac{1}{T}\sum_{i\in[T]} \I_{\A[Z_j^i](x) \neq h_i(x)}  = \frac{1}{2}$$</p>
-<p>To see this, note that there exists a bijection $\pi : [T] \to [T]$, such that $h_i$ and $h_{\pi(i)}$ differ only at $x$. Since $x \notin X_j$, we must have $\A[Z_j^i](x) = \A[Z_j^{\pi(i)}](x)$. Thus, we must have</p>
-<p>$$\I_{\A[Z_j^i](x) \neq h_i(x)} + \I_{\A[Z_j^{\pi(i)}](x) \neq h_{\pi(i)}(x)} = 1$$</p>
+$$\tag{} \frac{1}{T}\sum_{i\in[T]} \I_{\A\[Z_j^i\](x) \neq h_i(x)}  = \frac{1}{2}$$
+<p>To see this, note that there exists a bijection $\pi : [T] \to [T]$, such that $h_i$ and $h_{\pi(i)}$ differ only at $x$. Since $x \notin X_j$, we must have $\A\[Z_j^i\](x) = \A\[Z_j^{\pi(i)}\](x)$. Thus, we must have</p>
+$$\\I_{\A\[Z_j^i\](x) \neq h_i(x)} + \\I_{\A\[Z_j^{\pi(i)}\](x) \neq h_{\pi(i)}(x)} = 1$$
 <p>or</p>
-<p>$$2\sum_{i\in[T]} \I_{\A[Z_j^i](x) \neq h_i(x)} = \sum_{i\in[T]}\I_{\A[Z_j^i](x) \neq h_i(x)} + \sum_{i\in[T]}\I_{\A[Z_j^{\pi(i)}](x) \neq h_{\pi(i)}(x)} = T$$</p>
+$$2\sum_{i\in[T]} \I_{\A\[Z_j^i\](x) \neq h_i(x)} = \sum_{i\in[T]}\\I_{\A\[Z_j^i\](x) \neq h_i(x)} + \sum_{i\in[T]}\\I_{\A\[Z_j^{\pi(i)}\](x) \neq h_{\pi(i)}(x)} = T$$
 <p>which gives (14). Combining (14) and (13), we have</p>
-<p>$$\tag{}
+$$\tag{}
 \max_{i \in [T]} \E_{S \sim D_i^m} [ R_{D_i}(A[S])] \ge  \frac{1}{k}\sum_{j\in[k]}\frac{1}{2m}\sum_{x\in C\setminus X_j}\frac{1}{2} \ge \frac{1}{4}
-$$</p>
+$$
 <p>since $|C\setminus X_j| \ge m$.</p>
 <p>We have shown that there exists a distribution $\D$ such that $\E_{S \sim D^m} [ R(A[S])] \ge \frac{1}{4}$. To get the statement of the theorem, we need only apply a proper form of Markov&rsquo;s inequality. Since $R(A[S]) \in [0,1]$, $Y = 1 - R(A[S])$ is a positive random variable with $\E[Y] \le 3/4$. We thus have,</p>
-<p>$$P(R(A[S]) \ge 1/8) = P(Y &lt; 7/8) = 1 - P(Y \ge 7/8) \ge 1 - \frac{\E[Y]}{7/8} \ge 1 - \frac{3/4}{7/8} = \frac{1}{7}$$</p>
+$$P(R(A[S]) \ge 1/8) = P(Y < 7/8) = 1 - P(Y \ge 7/8) \ge 1 - \frac{\E[Y]}{7/8} \ge 1 - \frac{3/4}{7/8} = \frac{1}{7}$$
 </div>
 </div>
 <p>We can use the no free lunch theorem to show that a hypothesis class having unbounded VC dimension is not learnable.</p>
@@ -287,11 +290,11 @@ $$</p>
 <div class="flash bg-gray mb-3 p-2">
 <p><strong>Corollary:</strong> Let $\H$ be a class of functions with unbounded VC dimension $h$. Then $\H$ is not learnable.</p>
 <p><em>Proof</em>: Suppose to the contrary that $\H$ is learnable and has unbounded VC dimension. Since $\H$ is learnable, there exists an algorithm $\A$ and $m \in \N$ such that for $\epsilon = 1/8$ and $\delta = 1/7$,</p>
-<p>$$\P_{S \sim \D^m}[R(\A[S]) - R(h^\star) &gt; \epsilon] &lt; \delta$$</p>
+$$\P_{S \sim \D^m}[R(\A[S]) - R(h^\star) > \epsilon] < \delta$$
 <p>Since $\H$ has unbounded VC dimension, there exists a set denoted $C \in Z^{2m}$ which $\H$ shatters. But by the no free lunch theorem, there exists a distribution $\D$ having support $C$ such that</p>
-<p>$$\P_{S \sim \D^m}[R(\A[S]) &gt; \epsilon] \ge \delta$$</p>
+$$\P_{S \sim \D^m}[R(\A[S]) > \epsilon] \ge \delta$$
 <p>furthermore since $\H$ shatters $C$, $R(h^\star) = 0$. Thus, we have</p>
-<p>$$\P_{S \sim \D^m}[R(\A[S]) - R(h^\star) &gt; \epsilon] \ge \delta$$</p>
+$$\P_{S \sim \D^m}[R(\A[S]) - R(h^\star) > \epsilon] \ge \delta$$
 <p>which gives the contradiction.</p>
 
 </div>
@@ -304,7 +307,7 @@ $$</p>
 <li>We need enough samples to ensure that each time we independently test a hypothesis, we get a good estimate of loss with high probability. This requirement corresponds to the second term in the radical on the right hand side of $\htmlClass{eq-ref eq-gf-bound}{}$.</li>
 <li>We need enough samples to ensure that, among the &ldquo;independent&rdquo; hypothesis that we wish to test, there is not a coincidental match between the hypothesis and our sample. We can roughly equate this requirement to the first term in the radical.</li>
 </ul>
-<p>It is interesting to observe that either of these terms may potentially dominate the sample complexity bounds implied by $\htmlClass{eq-ref eq-gf-bound}{}$. For example, the VC dimension of the set of half-spaces in $\R^d$ is $d+1$. Thus, taking $\delta = 0.001$ and $d = 5$, we have $d \approx \log(2/\delta)$. Thus we might suggest that for $d &lt; 5$, most of sample complexity requirement comes from concentration requirements on a single hypothesis; whereas for $d \gg 5$, the need to avoid overfitting is the biggest driver of sample complexity.</p>
+<p>It is interesting to observe that either of these terms may potentially dominate the sample complexity bounds implied by $\htmlClass{eq-ref eq-gf-bound}{}$. For example, the VC dimension of the set of half-spaces in $\R^d$ is $d+1$. Thus, taking $\\delta = 0.001$ and $d = 5$, we have $d \approx \log(2/\delta)$. Thus we might suggest that for $d < 5$, most of sample complexity requirement comes from concentration requirements on a single hypothesis; whereas for $d \gg 5$, the need to avoid overfitting is the biggest driver of sample complexity.</p>
 <h2 id="further-reading">Further Reading</h2>
 <p>[1] S. Shalev-Shwartz and S. Ben-David, <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf"><em>Understanding Machine Learning: From Theory to Algorithms</em></a>. Cambridge: Cambridge University Press, 2014.</p>
 <p>[2] O. Bousquet, S. Boucheron, and G. Lugosi, <a href="http://www.econ.upf.edu/~lugosi/mlss_slt.pdf"><em>Introduction to Statistical Learning Theory</em></a>, vol. 3176. Berlin, Heidelberg: Springer Berlin Heidelberg, 2004.</p>

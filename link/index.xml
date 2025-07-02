@@ -6,7 +6,7 @@
     <description>Recent content in Links on Robert Raynor</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 May 2024 08:02:16 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 01 Jul 2025 18:01:24 -0700</lastBuildDate>
     <atom:link href="http://rayncloud.com/link/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Curiculum Vitae</title>
@@ -27,6 +27,13 @@
       <link>http://rayncloud.com/link/cat-other/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       <guid>http://rayncloud.com/link/cat-other/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Free Energy Principle</title>
+      <link>http://rayncloud.com/link/cat-fep/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/link/cat-fep/</guid>
       <description></description>
     </item>
     <item>

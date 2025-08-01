@@ -83,9 +83,9 @@ Disentangling the properties of the Active Inference algorithm.
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2025-07-01. Published at: 2025-05-28.">
+      <span title="Lastmod: 2025-07-31. Published at: 2025-05-28.">
         
-          Lastmod: 2025-07-01
+          Lastmod: 2025-07-31
         
       </span>
     </div>
@@ -317,6 +317,16 @@ $$\begin{aligned}
 <p>Given these observations, any deviation from using the observational entropy as an objective for planning purposes should be motivated from a computational perspective. There is some argument to be made here. The EFE only requires us to take an expectation w.r.t. $\mathbb{E}_{Q^*(s_{\tau:T},o_{\tau:T}|\pi)}$. Directly using the observational entropy would require an expectation w.r.t. $\mathbb{E}_{Q^*(s_{\tau:T}})$ to obtain $P(o_{\tau:T}|\pi)$ and then a separate expectation with respect to $P(o_{\tau:T}|\pi)$ to calculate the entropy. Thus, it&rsquo;s seemingly more appropriate to see the behavior of the EFE as an acceptable and practically beneficial planning bias that arises from a computational simplification.</p>
 <h3 id="planning-as-inference-1">Planning as inference</h3>
 <p>Left for the future.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>After working through the content of this post, I came across some articles which appear to make a similar case about the expected free energy and its information seeking behavior:</p>
+<ul>
+<li><a href="https://arxiv.org/abs/2004.08128">Whence the Expected Free Energy?</a></li>
+<li><a href="https://arxiv.org/abs/2103.06859#">Understanding the Origin of Information-Seeking Exploration in Probabilistic Objectives for Control</a></li>
+</ul>
+<p>From an RL standpoint, what makes active inference interesting is that it uses probabilistic inference as a framework rather than utility maximization. This is fundamentally, what gives the framework a principled approach to epistemics. The following paper gives a good introduction to the probabilistic framework for RL&ndash;sans the specific active inference framing:</p>
+<ul>
+<li><a href="https://arxiv.org/pdf/1805.00909">Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review</a></li>
+</ul>
   </section>
 
   <section>

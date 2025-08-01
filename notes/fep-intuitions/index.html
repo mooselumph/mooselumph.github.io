@@ -83,9 +83,9 @@ Disentangling the properties of the Active Inference algorithm.
 
     
     <div class="float-md-right">
-      <span title="Lastmod: 2025-07-31. Published at: 2025-05-28.">
+      <span title="Lastmod: 2025-08-01. Published at: 2025-05-28.">
         
-          Lastmod: 2025-07-31
+          Lastmod: 2025-08-01
         
       </span>
     </div>
@@ -109,16 +109,16 @@ Disentangling the properties of the Active Inference algorithm.
 <p>This post addresses the prescriptive claim represented by the Active Inference algorithm which is often attached to presentations of the FEP. In the spirit of disentangling different layers of the theory, the post aims to distinguish different aspects of the Active Inference algorithm and how each of them relates to its final properties. In particular, we approach the algorithm layer-by-layer, starting with a presentation centered around vanilla inference building toward the AI algorithm, e.g. by adding variational approximations or constructing the expected free energy (EFE) objective.</p>
 <h2 id="the-entropy-minimization-objective">The Entropy Minimization Objective</h2>
 <p>One of the compelling aspects of the FEP is that it aims to describe the behaviors that must apply to any object which persists over time.</p>
-<p>As a basic tautology, in order of an object to persist over time, the world must remain in the set of states where the object exists. A more complex, adaptive object may make observations about the state of the world and exert control actions to keep the state from entering a region where the object ceases to exist.</p>
-<p>An object&rsquo;s portals to the world are typically formalized using the concept of a Markov Blanket, which is simply a conditional independence structure which seems to match up nicely with the structure of of a Partially Observable Markov Decision Process (POMDP).</p>
-<p>The object is usually allowed generative model which connects the actions, observations, and hidden environmental state variables.  </p>
-$$P(o_{1:T},s_{1:T},a_{1:T}) = P(a_{1:T})\prod P(o_t|s_t)\prod P(s_t|s_{t-1},a_t)$$
+<p>As a basic tautology, in order for an object to persist over time, the world must remain in the set of states where the object exists. A more complex, adaptive object may make observations about the state of the world and exert control actions to keep the state from entering a region where the object ceases to exist.</p>
+<p>An object&rsquo;s portals to the world are typically formalized using the concept of a Markov Blanket, which is simply a conditional independence structure which seems to match up nicely with the structure of a Partially Observable Markov Decision Process (POMDP).</p>
+<p>The object is usually allowed a generative model which connects the actions, observations, and hidden environmental state variables:  </p>
+$$P(o_{1:T},s_{1:T},a_{1:T}) = P(a_{1:T})\prod P(o_t|s_t)\prod P(s_t|s_{t-1},a_t).$$
 <p>
 Given access to this generative model, in principle the agent can select a sequence of actions in order to control distribution over environmental states. For instance, to choose the action at time step $\tau$, the agent might consider the distribution, </p>
 $$P(s_{\tau:T}|a_{1:T},o_{1:\tau-1}).$$
 <p>It is commonly supposed that the agent will wish to do something like minimize long term average of surprisal over time, </p>
 $$\frac{1}{T}\sum_{t=1}^T-\log(P(o_t|a_{1:T},o_{1:t-1})),$$
-<p> but this quantity is somewhat notional, and we will need to specify a more exact form. Also, at more detailed level of consideration, we&rsquo;ll see that more opinionated objectives enter the picture.</p>
+<p> but this quantity is somewhat notional, and we will need to specify a more exact form. Also, at a more detailed level of consideration, we&rsquo;ll see that more opinionated objectives enter the picture.</p>
 <h2 id="perceptionprediction-as-inference">Perception/Prediction as Inference</h2>
 <p>Active Inference attempts to unify perception and planning into a single form factor of inference. This is potentially powerful, because it allows for the application of many powerful and principled tools of approximate inference to problems like planning which tend to be more driven by heuristics.</p>
 <p>Before attempting to face this unification, we&rsquo;ll start with a more narrow walkthrough of perception and prediction as viewed through the lens of inference.</p>
@@ -151,7 +151,7 @@ $$P(o_{1:T},s_{1:T},a_{1:T},\theta) = P(\theta)P(a_{1:T})\prod P(o_t|s_t)\prod P
 <p>But we could actually represent this same distribution in the original representation by letting $\mathcal{S}^* = \mathcal{S}\times\mathcal{\Theta}$ and requiring for any $(s_1,\theta_1) \in \mathcal{S}^*$ and $(s_2,\theta_2) \in \mathcal{S}^*$ with $\theta_1 \neq \theta_2$ that the transition probability $P(s_t=(s_1,\theta_1)|s_{t-1}=(s_2,\theta_2)) = 0$.</p>
 <p>Thus, in principle, there is a possibility that the agent can learn something about &ldquo;the kind of world it is in&rdquo; as it collects more observations over time.</p>
 <h3 id="variational-inference">Variational Inference</h3>
-<p>Performing exact inference is generally computational intractable. In this section, we&rsquo;ll look at how Variational Inference can be used to address this problem.</p>
+<p>Performing exact inference is generally computationally intractable. In this section, we&rsquo;ll look at how Variational Inference can be used to address this problem.</p>
 <ul>
 <li>Basic Variational Inference</li>
 <li>Simplifying approximations</li>
@@ -159,7 +159,7 @@ $$P(o_{1:T},s_{1:T},a_{1:T},\theta) = P(\theta)P(a_{1:T})\prod P(o_t|s_t)\prod P
 <p>Variational inference is a reframing of Bayesian inference as an optimization problem. It utilizes the property of the KL-divergence, defined as </p>
 $$D_{KL}(Q(s)||P(s)) = \int \log\left(\frac{Q(s)}{P(s|o)}\right)d Q(s) = \mathbb{E}_{Q(s)}[ \log(Q(s)) - \log(P(s|o))]$$
 <p>that it is minimized when $P(s) = Q(s)$.</p>
-<p>Supposing we want to find $P(s|o)$, we can therefore do so by performing the optimization $\min_Q D_{KL}(Q(s)||P(s|o))$. This may not look particularly helpful, as we seem to already need to  have calculated $P(s|o)$. However, upon rewriting the KL divergence as
+<p>Supposing we want to find $P(s|o)$, we can therefore do so by performing the optimization $\min_Q D_{KL}(Q(s)||P(s|o))$. This may not look particularly helpful, as we seem to already need to have calculated $P(s|o)$. However, upon rewriting the KL divergence as
 </p>
 $$
 D_{KL}(Q(s)||P(s|o)) = \mathbb{E}_{Q(s)}[ \log(Q(s)) - \log(P(s,o))] +\log(P(o))
@@ -187,11 +187,11 @@ $$P(o_{\tau+1:T}|\pi,o_{1:\tau-1}) = E_{Q^*(s_{1:T})}[P(o_{\tau+1:T}|s_{\tau+1:T
 <p>One of the most common approximations that shows up in the VI and Active Inference literature is to factorize $Q$, which corresponds to an independence assumption on this variables in its domain: </p>
 $$Q(s_{1:T}) =\prod_{t=1}^TQ_t(s_t).$$
 <p>
-Assuming that $P$ is Markovian, the effect of this factorization is reduce the complexity of the various integrals from $\mathcal{|S|}^2$ to $\mathcal{|S|}$ (where $\mathcal{S}$ is the state space).</p>
-<p>Some basic questions that we can ask about this approximation:</p>
+Assuming that $P$ is Markovian, the effect of this factorization is to reduce the complexity of the various integrals from $|\mathcal{S}|^2$ to $|\mathcal{S}|$ (where $\mathcal{S}$ is the state space).</p>
+<p>Some basic questions we can ask about this approximation:</p>
 <ul>
 <li>Do we properly recover the marginals of $P$?</li>
-<li>What is the impact of the factorization assumption on planning? I.e., do we actually need to capture the correlations in the dynamical model in order to do proper planning?</li>
+<li>What is the impact of the factorization assumption on planning? I.e., do we actually need to capture the correlations in the dynamical model to do proper planning?</li>
 </ul>
 <p>The answer to the first question is, in general, no. ChatGPT can supply a simple counter-example here, which shows that the KL-divergence will tend to promote mode-seeking behavior.</p>
 <p>The answer to the second question depends on the objective that we seek to optimize in planning. The general case that we will explore below does utilize these correlations, such that the mean field approximation will result in sub-optimal planning.</p>
@@ -199,7 +199,7 @@ Assuming that $P$ is Markovian, the effect of this factorization is reduce the c
 <p>Message passing and its variational variations are algorithms developed specifically for distributions which have a certain structure.</p>
 <p>My open questions: How does their complexity compare to the mean field approaches and what are their limitations? What happens if we try to apply these techniques to a real-world problem?</p>
 <h4 id="black-box-variational-inference">Black Box Variational Inference</h4>
-<p>There&rsquo;s a variety of techniques which mixes concepts from Monte Carlo sampling and amortized inference into the variational inference framework.</p>
+<p>There&rsquo;s a variety of techniques that mix concepts from Monte Carlo sampling and amortized inference into the variational inference framework.</p>
 <p>Suppose that we have an ansatz $Q(s_{1:T};\lambda)$, parameterized by $\lambda$ in a differentiable manner. We can construct the loss function </p>
 $$\ell(\lambda) =\mathbb{E}_{Q(s_{1:T;\lambda})}[ \log(Q(s_{1:T};\lambda)) - \log(P(s_{1:T},o_{1:\tau}|\pi))]$$
 <p> and note that its gradient also has the form of an expectation:
@@ -209,19 +209,19 @@ $$\nabla_\lambda\ell = \mathbb{E}_{Q(s_{1:T;\lambda})}[...]$$
 Thus, we can approximate the gradient by sampling trajectories $s_{1:T}$ from $Q$. This is particularly appropriate if we can amortize in some manner so that $Q$ has a better chance of being a good guess from the start.</p>
 <h2 id="planning-as-inference">Planning as Inference</h2>
 <p>There are a few interesting aspects of how Active Inference relates to planning.</p>
-<p>Most basically, active inference explicitly formulates its objectives in terms of probabilistic concepts such as entropy minimization, variational inference, and ultimately, expected free energy minimization. This approach has the potential to improve upon approaches in standard reinforcement learning (RL), which often lack the principled probabilistic framing. In particular, it is often claimed that Active Inference yields a prinicipled derivation of heuristics for balancing epistemic and pragmatic gains which arise in RL. We&rsquo;ll evaluate this idea.</p>
+<p>Most basically, active inference explicitly formulates its objectives in terms of probabilistic concepts such as entropy minimization, variational inference, and ultimately, expected free energy minimization. This approach has the potential to improve upon approaches in standard reinforcement learning (RL), which often lack the principled probabilistic framing. In particular, it is often claimed that Active Inference yields a principled derivation of heuristics for balancing epistemic and pragmatic gains which arise in RL. We&rsquo;ll evaluate this idea.</p>
 <p>Beyond this, active inference attempts to unify perception and planning into a single operation of inference. We&rsquo;ll try to understand this unification and what benefits it might provide.</p>
 <h3 id="exploration--exploitation-dynamics">Exploration / Exploitation Dynamics</h3>
 <p><strong>Exploration/Exploitation with Entropy Objectives</strong></p>
-<p>We saw previously that the inference process at the heart of active inference allows for learning in the the form of reducing uncertainty about the state of the environment or even the type of world that the agent is in.</p>
+<p>We saw previously that the inference process at the heart of active inference allows for learning in the form of reducing uncertainty about the state of the environment or even the type of world that the agent is in.</p>
 <p>With respect to this dynamic of uncertainty reduction, there is a possible narrative around the contrasting behaviors of exploration and exploitation, or the pragmatic and epistemic value of different actions as it is commonly put within the active inference literature. It is instructive to carefully consider this narrative within the context of vanilla inference, before moving to consider expected free energy minimization, both 1) to provide a relief against which we can clearly see what expected free energy adds and 2) to provide a basic starting perspective from which to view the overall set of claims made relative to the theory.</p>
-<p>If we start with a basic idea that we want to minimize surprisal, there are a number of different ways to translate this into a concrete objective. A common objective looks at the one-step entropy: </p>
-$$\sum_{t=\tau}^T\mathcal{H}(P(o_t|a_{1:T},o_{1:\tau})) = \sum_{t=\tau}^T\mathbb{E}_{P(o_t|a_{1:T},o_{1:\tau})}[-\log(P(o_t|a_{1:T},o_{1:\tau-1}))].$$
+<p>If we start with the basic idea that we want to minimize surprisal, there are a number of different ways to translate this into a concrete objective. A common objective looks at the one-step entropy: </p>
+$$\sum_{t=\tau}^T\mathcal{H}(P(o_t|a_{1:T},o_{1:\tau})) = \sum_{t=\tau}^T\mathbb{E}_{P(o_t|a_{1:T},o_{1:\tau})}[-\log(P(o_t|a_{1:T},o_{1:\tau}))].$$
 <p> But there are other possibilities. For instance, we can get a more complete sense of surprisal by looking at the entropy over the full trajectory of future observations: </p>
-$$\mathcal{H}(P(o_{\tau:T}|a_{1:T},o_{1:\tau})) =\mathbb{E}_{P(o_{\tau:T}|a_{1:T},o_{1:\tau})}[-\log(P(o_{\tau:T}|a_{1:T},o_{1:\tau-1}))].$$
+$$\mathcal{H}(P(o_{\tau:T}|a_{1:T},o_{1:\tau})) =\mathbb{E}_{P(o_{\tau:T}|a_{1:T},o_{1:\tau})}[-\log(P(o_{\tau:T}|a_{1:T},o_{1:\tau}))].$$
 <p>Another interesting possibility would be to look at the entropy, conditioned on possible observations: </p>
 $$\sum_{t=\tau}^T\mathbb{E}_{P(o_{\tau:t-1}|a_{1:T},o_{1:\tau})}[\mathcal{H}(P(o_t|a_{1:T},o_{1:t-1})))] = \sum_{t=\tau}^T\mathbb{E}_{P(o_{\tau:t-1}|a_{1:T},o_{1:\tau})}[\mathbb{E}_{P(o_t|a_{1:T},o_{1:t-1})}[-\log(P(o_t|a_{1:T},o_{1:t-1}))]].$$
-<p>We can try out these objectives in a simple scenario. Suppose there is a state $s_1$ which produces low entropy observations for all values of $\theta$, and a state $s_2$ which produces high entropy observations across all values of $\theta$ but low entropy observations once $\theta$ has been surmised. Suppose also that the agent has available an action which will reliably move it to state $s_1$ and an action which will reliably move into state $s_2$. In this scenario, there&rsquo;s a potential benefit to moving to $s_2$ so that I can learn $\theta$ and enjoy lower entropy observations. But we need to define the entropy objective carefully in order to enable the agent to select for this path.</p>
+<p>We can try out these objectives in a simple scenario. Suppose there is a state $s_1$ which produces low entropy observations for all values of $\theta$, and a state $s_2$ which produces high entropy observations across all values of $\theta$ but low entropy observations once $\theta$ has been determined. Suppose also that the agent has available an action which will reliably move it to state $s_1$ and an action which will reliably move into state $s_2$. In this scenario, there&rsquo;s a potential benefit to moving to $s_2$ so that I can learn $\theta$ and enjoy lower entropy observations. But we need to define the entropy objective carefully to enable the agent to select for this path.</p>
 <p>Here&rsquo;s a concrete version of this game (Thanks to GPT):</p>
 <table>
 <thead>
@@ -278,7 +278,7 @@ $$\sum_{t=\tau}^T\mathbb{E}_{P(o_{\tau:t-1}|a_{1:T},o_{1:\tau})}[\mathcal{H}(P(o
 </tr>
 </tbody>
 </table>
-<p>Notably, the one-step entropy objective fails to select the informative action. At time τ it evaluates each future time-slice with today’s posterior.  It never gives credit for the fact that tomorrow’s posterior will be sharper if today’s observation was useful.  Hence it drives <em>pure exploitation</em> (pick the state whose next observation looks easiest now).</p>
+<p>Notably, the one-step entropy objective fails to select the informative action. At time τ it evaluates each future time-slice with today&rsquo;s posterior. It never gives credit for the fact that tomorrow&rsquo;s posterior will be sharper if today&rsquo;s observation was useful. Hence it drives <em>pure exploitation</em> (pick the state whose next observation looks easiest now).</p>
 <p><strong>Introducing the Expected Free Energy</strong></p>
 <p>Now that we have an intuitive picture of a mode of uncertainty-seeking behavior that we might expect to arise in a form of planning guided by vanilla inference, it&rsquo;s interesting to ask whether this is the same as the oft-touted behavior that arises under the expected free energy (EFE) objective.</p>
 <p>The motivation for formulating something like an expected free energy is that <em>variational</em> free energy implicitly captures both the observational surprisal, $- \log P(o_{\tau:T}|\pi)$,  as the &ldquo;goodness of fit&rdquo; between the variational distribution and the hidden state posterior, $D_{KL}(Q^*(s_{\tau:T}|\pi)||P(s_{\tau:T}|o_{\tau:T},\pi))$:
@@ -287,7 +287,7 @@ $$
 \mathbb{E}_{Q^*(s_{\tau:T}|\pi)}[ \log(Q^*(s_{\tau:T}|\pi)) - \log(P(s_{\tau:T},o_{\tau:T}|\pi))] = D_{KL}(Q^*(s_{\tau:T})||P(s_{\tau:T}|o_{\tau:T},\pi)) - \log P(o_{\tau:T}|\pi).
 $$
 <p>
-Since this objective seems to capture two things that we care about, it seems intuitively plausible that we should use it&rsquo;s minimization as a basis for selecting a policy. (Here, in the planning context, we&rsquo;re minimizing the free energy by selecting $\pi$ and not by selecting $Q$; we&rsquo;ve already selected  $Q^*(s_{\tau:T}) \approx P(s_{\tau:T}|o_{1:\tau},\pi))$ by minimizing a separate variational free energy term. To simplify interpretation going forward, we can imagine that the predictive phase of the variational inference is highly accurate so that $Q^*(s_{\tau:T})  =P(s_{\tau:T}|o_{1:\tau},\pi))$ holds exactly.)</p>
+Since this objective seems to capture two things that we care about, it seems intuitively plausible that we should use its minimization as a basis for selecting a policy. (Here, in the planning context, we&rsquo;re minimizing the free energy by selecting $\pi$ and not by selecting $Q$; we&rsquo;ve already selected  $Q^*(s_{\tau:T}) \approx P(s_{\tau:T}|o_{1:\tau},\pi))$ by minimizing a separate variational free energy term. To simplify interpretation going forward, we can imagine that the predictive phase of the variational inference is highly accurate so that $Q^*(s_{\tau:T}) = P(s_{\tau:T}|o_{1:\tau},\pi)$ holds exactly.)</p>
 <p>However, we can&rsquo;t use this form of the free energy directly because it is a function of $o_{\tau:T}$. We need to take an expectation over this trajectory in order to remove the dependence. Arguably the most natural way to construct an expected free energy would be to take an expectation with respect to $P(o_{\tau:T}|\pi)$, to get: </p>
 $$\mathbb{E}_{P(o_{\tau:T}|\pi)}[D_{KL}(P(s_{\tau:T})||P(s_{\tau:T}|o_{\tau:T},\pi))] + \mathcal{H}(P(o_{\tau:T}|\pi)).$$
 <p>But the KL term here would essentially promote trajectories where observation tells us nothing new about the hidden state, which is generally undesirable from an epistemic standpoint.</p>
@@ -302,7 +302,7 @@ Fascinatingly, when we refactor this expression by breaking out $\log(P(s_{\tau:
 $$\mathcal{G}(\pi) =  \mathcal{H}(P(o_{\tau:T}|\pi))-\mathbb{E}_{P(o_{\tau:T}|\pi)}[D_{KL}(P(s_{\tau:T}|o_{\tau:T},\pi))||P(s_{\tau:T}|\pi))]$$
 <p>
 we find that this version of the EFE has precisely the opposite tendency&ndash;to promote trajectories which maximize the new information about the hidden state, $s_{\tau:T}$.</p>
-<p>In my perhaps uncharitable view, this appears to challenge the common claim that EFE allows us to recover an algorithm for managing exploration/exploitation tradeoffs from first principles. If anything, it looks to me that the favorable exploration/exploitation tradeoffs is serving as the basis for choosing this version of the EFE over other equally arbitrary alternatives.</p>
+<p>In my perhaps uncharitable view, this appears to challenge the common claim that EFE allows us to recover an algorithm for managing exploration/exploitation tradeoffs from first principles. If anything, it looks to me like the favorable exploration/exploitation tradeoffs are serving as the basis for choosing this version of the EFE over other equally arbitrary alternatives.</p>
 <p><strong>A decision-theoretic view of EFE</strong></p>
 <p>We can strengthen the above critique of the EFE by taking a broader decision theoretic view.</p>
 <p>If we look at the concrete examples above in which the basic entropy objective successfully favors near term loss in order to gain information, we can remind ourselves that favoring exploration only makes sense when we explicitly model planning and action over consecutive steps (over time). Exploration trades off a short-term loss for a larger long-term gain.</p>
@@ -312,9 +312,9 @@ $$\begin{aligned}
 &= \mathbb{E}_{P(s_{\tau:T}|\pi)}\mathcal{H}(P(o_{\tau:T}|s_{\tau:T},\pi))
 \end{aligned}$$
 <p>(Note that this version of the EFE is generally presented with another term penalizing KL divergence between the generative dynamical model and the true dynamics, but as noted before, we have assumed an exact fit here for the purpose of more plainly understanding the selective function of the EFE objective).</p>
-<p>Apparently, the EFE objective will select for trajectories which pass through states which correspond to low observational entropy. Note that this is <em>not</em> the same as minimizing the actual observational entropy, because it ignores uncertainty about the state itself. It&rsquo;s quite easy to construct an POMDP which emphasizes this discrepancy: Imagine a vast collection of states, each of which maps to a different unique observable, such that the state conditional entropy of observation for each state is 0. Suppose also that the dynamics will progress from each state to each of the other states in this collection with equal probability with equal probability.</p>
+<p>Apparently, the EFE objective will select for trajectories which pass through states which correspond to low observational entropy. Note that this is <em>not</em> the same as minimizing the actual observational entropy, because it ignores uncertainty about the state itself. It&rsquo;s quite easy to construct an POMDP which emphasizes this discrepancy: Imagine a vast collection of states, each of which maps to a different unique observable, such that the state conditional entropy of observation for each state is 0. Suppose also that the dynamics will progress from each state to each of the other states in this collection with equal probability.</p>
 <p>The reader can verify that both 1) the observational entropy of any trajectory which enters this collection will be quite high, due to the uniform distribution over states in each step, and 2) the EFE will give the highest possible preference to a trajectory which immediately enters this collection.</p>
-<p>Given these observations, any deviation from using the observational entropy as an objective for planning purposes should be motivated from a computational perspective. There is some argument to be made here. The EFE only requires us to take an expectation w.r.t. $\mathbb{E}_{Q^*(s_{\tau:T},o_{\tau:T}|\pi)}$. Directly using the observational entropy would require an expectation w.r.t. $\mathbb{E}_{Q^*(s_{\tau:T}})$ to obtain $P(o_{\tau:T}|\pi)$ and then a separate expectation with respect to $P(o_{\tau:T}|\pi)$ to calculate the entropy. Thus, it&rsquo;s seemingly more appropriate to see the behavior of the EFE as an acceptable and practically beneficial planning bias that arises from a computational simplification.</p>
+<p>Given these observations, any deviation from using the observational entropy as an objective for planning purposes should be motivated from a computational perspective. There is some argument to be made here. The EFE only requires us to take an expectation w.r.t. $\mathbb{E}_{Q^*(s_{\tau:T},o_{\tau:T}|\pi)}$. Directly using the observational entropy would require an expectation w.r.t. $\mathbb{E}_{Q^*(s_{\tau:T}})$ to obtain $P(o_{\tau:T}|\pi)$ and then a separate expectation with respect to $P(o_{\tau:T}|\pi)$ to calculate the entropy. Thus, it seems more appropriate to see the behavior of the EFE as an acceptable and practically beneficial planning bias that arises from a computational simplification.</p>
 <h3 id="planning-as-inference-1">Planning as inference</h3>
 <p>Left for the future.</p>
 <h2 id="further-reading">Further reading</h2>
@@ -323,7 +323,7 @@ $$\begin{aligned}
 <li><a href="https://arxiv.org/abs/2004.08128">Whence the Expected Free Energy?</a></li>
 <li><a href="https://arxiv.org/abs/2103.06859#">Understanding the Origin of Information-Seeking Exploration in Probabilistic Objectives for Control</a></li>
 </ul>
-<p>From an RL standpoint, what makes active inference interesting is that it uses probabilistic inference as a framework rather than utility maximization. This is fundamentally, what gives the framework a principled approach to epistemics. The following paper gives a good introduction to the probabilistic framework for RL&ndash;sans the specific active inference framing:</p>
+<p>From an RL standpoint, what makes active inference interesting is that it uses probabilistic inference as a framework rather than utility maximization. This is, fundamentally, what gives the framework a principled approach to epistemics. The following paper gives a good introduction to the probabilistic framework for RL—-sans the specific active inference framing:</p>
 <ul>
 <li><a href="https://arxiv.org/pdf/1805.00909">Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review</a></li>
 </ul>

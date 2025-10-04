@@ -6,8 +6,15 @@
     <description>Recent content in Notes on Robert Raynor</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Aug 2025 10:12:41 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 04 Oct 2025 16:04:38 -0700</lastBuildDate>
     <atom:link href="http://rayncloud.com/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digital Abstraction, Coordination, and Verifiable AI</title>
+      <link>http://rayncloud.com/notes/digital-abstraction-and-coordination/</link>
+      <pubDate>Sat, 04 Oct 2025 15:59:37 -0700</pubDate>
+      <guid>http://rayncloud.com/notes/digital-abstraction-and-coordination/</guid>
+      <description>Thesis: Digital abstraction simplifies coordination by dramatically reducing the complexity of verifiability and enforcement. It is primarily the progress of computation, not game theory, that fuels modern progress in coordination. Since AI happens to be digitally abstracted, it will enable a further revolution in coordination technology.&#xA;Suppose we want to cooperate in order to avoid some kind of prisoners&amp;rsquo;-dilemma-esque tragedy of the commons. A normal pattern here is to agree to cooperate optimistically, and also punish anyone who doesn&amp;rsquo;t cooperate.</description>
+    </item>
     <item>
       <title>Notes on Active Inference</title>
       <link>http://rayncloud.com/notes/fep-intuitions/</link>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+  
+
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  What Is Thinking? &ndash; Robert Raynor
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content=" Thought as a type of computation which is used by intelligent systems to trade between computational complexity and informational complexity. |Notes about machine learning, physics, and blockchain.">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Robert Raynor">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="What Is Thinking? | Robert Raynor">
+    <meta name="twitter:description" content="
+Thought as a type of computation which is used by intelligent systems to trade between computational complexity and informational complexity.
+|Notes about machine learning, physics, and blockchain.">
+    <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom.css">
+    <script defer src="/assets/scripts.js"></script>
+  </head>
+
+
+  <body class="single">
+    <div id="holy" class="container-md bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="http://rayncloud.com/">
+    Robert Raynor
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white mt-5">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">What Is Thinking?</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2026-01-05. Published at: 2025-12-31.">
+        
+          Lastmod: 2026-01-05
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <div class="summary">
+Thought as a type of computation which is used by intelligent systems to trade between computational complexity and informational complexity.
+</div>
+<h2 id="introduction">Introduction</h2>
+<blockquote>
+<p>“I am God, and I have no need to think. Up to now I’ve never thought, and I’ve never felt the need, not in the slightest. The reason human beings are in such a bad way is because they think; thought is by definition sketchy and imperfect—and misleading. To any thought one can oppose another, obverse thought, and to that yet another, and so forth and so on; and this inane cerebral yakety-yak is about as far from divine as you can get.”</p>
+<p>From &ldquo;I Am God,&rdquo; by Giacomo Sartori</p>
+</blockquote>
+<p>This quote is about God, but you might imagine that it could just as well be about some alien form of super-intelligence. On the other hand, perhaps it is uniquely a thing that could be said by God, since all other intelligent things must think.</p>
+<p>The implicit question here&ndash;namely, the question of what aspects of thought are essential for intelligence?&ndash;is a question about selection effects for intelligent systems. Questions of this sort ask: given that we know something is intelligent, what other inferences can we make about its structure or operation?</p>
+<p>I&rsquo;ve been pondering a progression of such questions for the past several years, and more intensively since I became interested in AI alignment. These are probably familiar questions to many: Does intelligence require a world model? Language? Knowledge of its goals? I&rsquo;d like to say that this post is the article that I wish had existed when I started pondering these questions. However, this is a bit disingenuous because an article like this may already exist, and I simply have a sizable preference for thinking about things for years instead of becoming more well-read.</p>
+<p>The essential insight that this article expresses is one which can hide very much in plain sight, dressed in language which is so ubiquitous that we sometimes forget (or never fully understand) what it means or entails. The essential point is that thought is a type of computation which is used by intelligent systems to trade between computational complexity and informational (sample) complexity. This can be tricky to behold if you spend too much of your time embedded entirely in either a computational or informational paradigm.</p>
+<p>That intelligent systems do this is one thing, and how they do it is another. I think there are a few types of structure which are very important, and I&rsquo;ve given conceptual discussions and hints at formalization for each.</p>
+<h2 id="computation-and-reduction-as-counterparts">Computation and Reduction as Counterparts</h2>
+<p>It is a remarkable fact that many patterns have their smallest form of expression in recursion. A tiny functional kernel can be used to generate a much more complicated functional pattern by recursing the kernel. In an informational sense, we can say that the complicated pattern fully reduces to the smaller kernel. But in another important sense, it is not reducible: without recursing the kernel, we cannot (not being God) know what is the larger pattern that it will create. We can think of this recursion as a resource&ndash;often referred to as time or computation&ndash;that is needed to translate from one representation of the pattern to another.</p>
+<p>The reduction of patterns via computation lies at the very center of the scientific project.</p>
+<p>The reason why science focuses on reduced patterns is because reduction facilitates better prediction. A useful summary result from statistical learning theory is that if we learn patterns from our experiences by choosing the best fitting ones from a pool that is &ldquo;too large&rdquo; in some sense, we will likely overfit to our experiential data and find that the selected pattern does not generalize well to unseen data. One way of keeping the pool sufficiently small is to bias toward patterns having small description length. And it turns out that the smallest description of a pattern often requires the resource of computation in order to translate from compressed representation to the realized pattern (the domain of experience data).</p>
+<p>I&rsquo;ve found that the aspect of reduction is at the forefront of my mind when I think about what it is that science is doing. What I have often failed to notice is the counterpart of computation that is implied by this reduction. Take physical theories: generally these theories describe reality only in a very local manner, and to enable them to describe the bigger patterns that we actually experience, we need to simulate them&ndash;a form of computation.</p>
+<p>A small nuance is worth addressing. In a sense, the universality property of computation divides all patterns or functions that we might care about into two groups: those which are computable and those which we don&rsquo;t care about. Thus, the mere fact that a function is or may be implemented via computation is not of interest. Of interest is the manner in which computation may allow us to compress the function (c.f. algorithmic information theory).</p>
+<h2 id="reducing-the-problem-of-existence">Reducing the problem of existence</h2>
+<p>Science is primarily concerned with reducing predictive patterns: <em>Given state of a system at time $t$, what will be the state of that system at some time $t' > t$?</em> Intelligent systems need to do more than this: <em>Given state of the world and some objective, what is the action that I should take now?</em></p>
+<p>Moreover, intelligent systems aren&rsquo;t merely constrained by data. They are also quite meaningfully constrained by compute in a way that the generation of scientific predictions may not be.</p>
+<p>When we observe our minds and find them wandering through weird thought loops and wonder <em>What the hell are they doing?</em> an appropriate description is the following: They are attempting to express a very complex learned pattern via a computation that has emerged under tight constraints on computational and informational resources.</p>
+<p>These constraints shape this computation into a form that is rather different than what most of us are used to when it comes to computation. In what follows, we&rsquo;ll try to understand something of this shape. First, we&rsquo;ll consider the two extremes of marginally minimizing computational and informational complexity. Then, we&rsquo;ll consider thought as the reduction respects them jointly.</p>
+<h2 id="separately-minimizing-complexities">Separately minimizing complexities</h2>
+<p>Previously, we alluded to general statistical learning results which seem to imply that computation is key to effective and efficient learning, e.g. in the domain of scientific prediction. Before moving onto our general consideration of the nature of thought, we will consider more specific statistical learning results which apply to the domain of intelligence. We&rsquo;ll be interested in showing that that for the most general problems efficient learning is possible if and if we are able to make use of the resource of computation during decision time.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Markov_decision_process">Markov Decision Process</a> (MDP) and its variants, such as the Partially Observable MPD (POMDP), provide a very general formalization of the types of problems commonly faced by intelligent systems. In the MDP literature, our distinction between methods which utilize decision-time compute and those which do not is captured by the distinction between model-based reinforcement learning methods and model-free methods. A model-based method is a learning method that explicitly attempts to learn a model of its environment and then makes decisions by utilizing this model. Model based methods naturally involve computation in order to interrogate the model for planning purposes, and when focused on sample complexity/learning efficiency, many papers will simply ignore computational constraints altogether, assuming oracle access to an optimal policy derived from a current model iteration.</p>
+<p>A model-free method is a method, such as Q-learning, which does not learn an explicit model of its environment. This abstraction can be tricky to define formally, since it requires us to put some subtle restriction on the way that the method is processing its environmental interactions. Often this restriction takes form of a constraint on the type of information that the learner is able to retains about the environment. Model-free methods tend to invoke very little compute at inference time, since what they learn is usually not far removed from a policy that directly maps observational state to a actuation output.</p>
+<p>It is possible (though surprisingly tricky) to show strong separation results between these two classes of methods. A good example is <a href="https://arxiv.org/pdf/1811.08540">Model-Based Reinforcement Learning in Contextual Decision Processes</a>. While we can take these results as good evidence of the claim that that computation can aid in reducing sample complexity for MDPs, the proof techniques are often not particularly useful for building intuition about why this might be true. In this case, they present an MDP in which reward is tied to a pattern in the state representation which a non-world-modeling learner is forbidden from learning&ndash;a trick that to be of little more than technical interest.</p>
+<p>A more intuitive picture of how world modeling assists with sample complexity may be available by considering an extension to the standard MDP in which the agent must be able to adapt to variations in the environment and reward function over time. The mapping between these parameters of the environment and an optimal (or even viable) policy is likely to be highly unstable or chaotic. On the other hand, the mapping from these environmental parameters and the optimal world model is very stable and well-behaved.</p>
+<p>If an agent has no decision-time computational resources and relies on maintaining an optimal policy for each variation of the environment, then it will need to learn a more or less independent policy for each sufficiently large variation of the environment. The total sample complexity will be something like (the number of independent optimal policies induced by environmental variation) times (the sample complexity of learning each policy), where either of these factors can be quite large.</p>
+<p>On the other hand, an agent with decision-time computational resources need only maintain a model of the world. Once the initial world model has been learned, subsequent updates to the world model  upon changes to the environment will typically only require a small number of observational samples. We might guess that the sample complexity is dominated by that of learning the initial world model.</p>
+<p>I think that the question of how to properly formalize this intuitive picture is an interesting one. A related approach to a similar problem can be found in <a href="https://www.lesswrong.com/posts/Dx9LoqsEh3gHNJMDk/fixing-the-good-regulator-theorem">Fixing the Good Regulator Theorem</a>.</p>
+<h2 id="jointly-minimizing-complexities">Jointly minimizing complexities</h2>
+<p>Model-based and model-free learners mark out two impractical ends of the spectrum: efficient learning coupled with inefficient computation vs. inefficient learning coupled with efficient computation. Real-world systems require a middle ground that achieves both reasonably efficient learning with a reasonable decision-time computational cost.</p>
+<p>How do intelligent systems systems jointly minimize the informational and computational complexity of thought? The answer must somehow address the basic dichotomy: Given complex enough problem spaces, it&rsquo;s inefficient to learn direct policies or other minimally computational mappings. On the other hand, brute-force search methods relying on minimal problem information are inefficient to compute. We must somehow mix together computation and patterning to keep the need for each in check.</p>
+<p>Structurally, the answer must have two parts:</p>
+<ul>
+<li>An algorithm that intelligent systems can use (perhaps some combination of model-based and model-free methods).</li>
+<li>Corresponding structure within the problem domain which renders this algorithm both learning-efficient and compute-efficient.</li>
+</ul>
+<p>We&rsquo;ll consider two (of perhaps many more) general types of structure on which intelligent systems likely rely in order to perform the joint reduction:</p>
+<ul>
+<li>Fractal problem structure</li>
+<li>Meta-level thought structure</li>
+</ul>
+<h3 id="fractal-problem-structure">Fractal problem structure</h3>
+<p>Many problems have a multi-scale nature, in that the problem can be broken up into sub-problems which are jointly easier to solve than the original problem. Generally, these sub-problems should be modular/independent, and successively simpler.  Such multi-scale problems may be amenable to solution via the following process:</p>
+<ul>
+<li>Recognize a high level problem.</li>
+<li>Propose a solution at the high level of abstraction.</li>
+<li>Identify the residual sub-problems at lower level of abstraction.</li>
+<li>Recurse into these sub-problems.</li>
+</ul>
+<p>It is noteworthy that such a procedure is obviously dependent on the ability of the pattern matcher to identify problems at a high level of abstraction. When a problem may exist at any layer of a nested, fractal problem structure, the other layers can constitute detail or noise which the pattern recognition capability must be able to see through. Thankfully, this capacity for abstraction&ndash;finding signal by throwing out irrelevant detail&ndash;is exactly what modern learning methods have proven powerfully able to do.</p>
+<p>In terms of our overall narrative regarding computation and information tradeoffs, we can see that the use of fractal patterning maintains the need for both pattern and computation, while containing the need for either one. Computation is still needed, since one application of pattern matching is insufficient to completely solve any given problem. But at the same time, the need for computation is reduced, since we are not blindly searching for solutions. Likewise, pattern matching is required in order to recognize problem decompositions and suggest solutions. But also, the complexity of the pattern space is reduced, since we don&rsquo;t need to explicitly learn patterns which are compositions of other patterns.</p>
+<p>An issue with this formulation is that in principle there may be many partial decompositions of the problem which don&rsquo;t lead to complete decompositions, or decompositions which are otherwise invalid (perhaps two sub-problems are not actually independent). This issue alludes to an additional need for computation, even after we have employed multi-scale pattern recognition, to search among some number of possible decompositions for a correct one. We will examine this computational difficulty again in our formal-ish treatment. The next structure of meta-level patterns is also relevant here.</p>
+<h3 id="meta-level-thought-structure-metacognition">Meta-level thought structure (metacognition)</h3>
+<p>A very general observation is that once we are solving problems via computation, there is a new class of patterns which becomes relevant: When a learning system is prohibited from computation, it must learn patterns which map directly from the input domain and to the output domain of interest. In contrast, a computational learner nominally learns patterns that map from the current computational state to the next computational state.</p>
+<p>When considering the space of such patterns, it&rsquo;s important to choose a computational model which explicitly elucidates the information flows corresponding to the patterns of interest. The autoregressive generator typified by transformer architectures is useful here because it allows us to think about more general, multi-scale patterns in computational state. An autoregressive learner can explicitly learn patterns mapping computational history to computational future (since the current computational state essentially subsumes previous computational states). Within this space exists a enormous slew of patterns that can be used to organize thought. We might call these strategies, tactics, principles, approaches, and so on, generally corresponding to elements of metacognition.</p>
+<p>One of the most important meta-level patterns is that of correcting failed chains of thought by forming an explanation for their failure and using this explanation to provide a direction in which to update (cf. syndrome in coding theory).</p>
+<p>Explanations are a form of counterfactual reasoning (what, if different, would lead to a different result) which can occur at the different scales of a fractal problem decomposition. But the important thing is that they provide a different (space, grabbing point, affordance) where problem-solution patterns can be reused.</p>
+<p>Try it: I start with a representation of a problem. I decompose it into parts, guess solutions to the parts, simulate the solution (using world model), and then observe the behavior which may be a kind of exception or failure to satisfy the problem constraint in a particular way, together with a computational trace. Given this new representation, new patterns may become applicable.</p>
+<h2 id="a-formal-ish-look-at-complexity">A Formal-ish Look at Complexity</h2>
+<p>From a formal perspective, our investigation sits at the intersection of learning theory and computational complexity theory. These theories have many existing natural points of intersection, which are largely distinct from what we have in mind here:</p>
+<ul>
+<li>Complexity theory considers the average case complexity achievable over a statistical distribution of problems.</li>
+<li>Computational learning theory often considers the feasibility of learning from a computational perspective, though the focus is typically on the learning runtime versus the inference/execution runtime.</li>
+</ul>
+<p>As a way of introducing the type of intersection that we have in mind, let&rsquo;s consider an optimization problem:
+</p>
+$$
+\text{maximize} \, f(x) \, s.t. \, g(x) =0
+$$
+<p>
+There are certain types of structure, such as convexity or linearity, which we can impose on $f$ and $g$ to make this optimization interesting. What these structures give us is the ability to use feedback generated from a solution candidate in order to modify that candidate in a way that gets us closer to an actual solution, such that the overall search problem becomes computational efficient.</p>
+<p>One way we can think about this example is that for a class $\mathcal{F}$ of convex optimization problems, we can write program $p$ which respects the following three objectives:</p>
+<ul>
+<li>$p$ solves $\mathcal{F}$</li>
+<li>$p$ has small computational complexity on $\mathcal{F}$</li>
+<li>$|p|$ is small, ($p$ is learnable)</li>
+</ul>
+<p>In the context of MDPs, we can think of model-free and model-based algorithms as two extreme points on a Pareto frontier of this multiobjective. Model-free methods have minimal computational complexity but large $|p|$, and vice versa for model-based methods.</p>
+<p>Characterizing the Pareto frontier of this multiobjective for interesting problem classes is, in my opinion, an large and interesting area of future work. The following two sections approach this problem from different directions. The first direction simplifies the problem by encoding the structure of $\mathcal{F}$ into learnability assumptions on $p$. The second direction is a more open-ended exploration of the type of structure in $\mathcal{F}$ itself that might be important for enabling a robust and interesting theory of joint learning and computation.</p>
+<h3 id="tree-search-with-backtracking">Tree Search with Backtracking</h3>
+<p>One way that we can proceed is to imbue $\mathcal{F}$ and $p$ with a very minimal explicit structure, and encode most of our structural assumptions implicitly via assumptions about the learnability of $p$. This is the approach taken in the recent work, <a href="https://arxiv.org/pdf/2507.15865">From Reasoning to Super-Intelligence: A Search-Theoretic Perspective</a>.</p>
+<p>The first step is to model the problem class $\mathcal{F}$: Each $f \in \mathcal{F}$ defines a language $L(f) \subseteq \Sigma^*$ containing all of the correct output strings corresponding to $f$. A program $p$ solves $\mathcal{F}$ if for each $f \in \mathcal{F}$, the operation of program $p$ on input $f$ yields an output $x$ in $L(f)$. The authors then show that two learnability conditions are sufficient both for $p$ to be learnable and for $p$ to be efficient. (While these are presented as learnability assumptions, we can think of them as encoding structural conditions on $\mathcal{F}$.)</p>
+<p><strong>Generation</strong>. The first assumption is that it is possible to learn a generator $\pi$ that sequentially generates the next element of a solution $x$ with sufficiently high probability.</p>
+<p>This assumption might be taken as a way of encoding of the fact that problems in $\mathcal{F}$ have fractal structure, such that it is possible to somewhat reliably pattern match problem to solution in a partial manner.</p>
+<p>Notice that the generation assumption alone isn&rsquo;t sufficient to fully contain the complexity of the search algorithm. If we assume that each step in the reasoning chain is correct with probability $(1-\epsilon)$, then the total probability of success of the full chain is only $\exp(-k \epsilon)$ meaning that an exponential number of chains will need to be trailed in order to find a correct chain.</p>
+<p><strong>Backtracking</strong>. The second assumption is that it is possible to learn a backtracking function which, if the generator generates the next step improperly, can eventually detect this divergence <em>and</em> identify the point where the sequence diverged from a correct one.</p>
+<p>The intuition for how this backtracking mechanism helps avoid the exponential blowup is the following:</p>
+<ul>
+<li>Whenever our intuition takes a correct step toward a solution, we generally get to keep that progress.</li>
+<li>When we take a wrong step toward a solution, we will realize the mistake and revert back to a correct path without performing exponential searching of the subtree built off of that step.</li>
+</ul>
+<p>Backtracking appears to exploit meta-level patterns, such as the pattern we identified involving explanations of failed chains-of-thought which yield pointers toward how these chains can be corrected. Whether the backtracking assumption implies additional structure in $\mathcal{F}$ or conversely whether there could be any structure in $\mathcal{F}$ which would warrant such a strong assumption seem to be open questions.</p>
+<h3 id="abstract-interpretation">Abstract Interpretation</h3>
+<p>In terms of the above formalism, we have been focusing on the fact that $p$ is a computed function rather than some kind of raw mapping. But I think another interesting observation is computation may be important to the structure of $\mathcal{F}$. For example, we might consider the problem of finding a program with certain characteristics or with a particular type signature.</p>
+<p>This choice for $\mathcal{F}$ may be convenient for formalizing many of the elements of structure which we have identified above.</p>
+<p><strong>Computation and Explanation</strong>. Computation supports causal reasoning, making it an appropriate setting to talk about things like explanations.</p>
+<p>It can be interesting to see this proclivity for causal reasoning as another instance of the dichotomy between information-theoretic and computational thinking which is at the heart of this exploration. The raw information perspective generally takes the most abstract possible view and asks simply: How are different variables related? The most global, totalizing answer to this question is a probability distribution. It tells us: Given the information that I have about X, what information can I have about Y?</p>
+<p>The informational perspective is incapable of answering causal questions, because it ignores the details of <em>how</em> information flows from X to Y and vice versa. This can be illustrated via a simple Bayesian network: X -&gt; Y -&gt; Z; X -&gt; Z. We can&rsquo;t intervene on Y.</p>
+<p>Computation can be thought of as expressing an explicit, mechanical model of this information flow. Given this mechanical model, we can perform operations like interventions and model exactly how they will impact outcomes. If you look at what distinguishes an SCM from a standard Bayesian Network, you&rsquo;ll see that this is the true difference that is hidden in plain sight: Bayesian Networks are platonic objects. SCMs are essentially computer programs.</p>
+<p><strong>Computation and Multi-scale Structure</strong>. Computation natively supports forms of coarse-graining and multi-scale analysis. Two approaches to this are Computational Mechanics and Abstract Interpretation (yet another AI&hellip;). Of the two, Abstract Interpretation seems to be the more relevant for our purposes as it allows the problem of program analysis or program synthesis at different levels of abstraction imposed externally, e.g. according to certain principles or patterns.</p>
+<p>Combining tools like abstract inference with the native causal reasoning supported by computational models can allow for expression of abstract explanations for why a given solution concept fails and what abstract action (counterfactual adjustment to a solution) we might take to fix it.</p>
+<p>There appear to be <a href="https://www.cis.upenn.edu/~stevez/papers/MZB24.pdf">some</a> <a href="https://arxiv.org/pdf/2302.13145">interesting</a> <a href="https://cseweb.ucsd.edu/~npolikarpova/publications/popl20.pdf">works</a> in this area. However, these likely do not correspond closely to what we are discussing here since they seem to rely mostly on the machinery of abstract interpretation rather than on pattern matching capabilities operating within an that context.</p>
+<h2 id="reflections">Reflections</h2>
+<p>I&rsquo;ve found the central thesis that thought is a form of computation formed from constraints on pattern recognition and computation to be illuminating in many ways.</p>
+<p>The thesis seems to hold up well to ongoing phenomenological inspection. When I&rsquo;m thinking about something brand new, I can observe that my mind is often only powerful enough to produce little bits of novelty at a time. Sometimes its a word, from which a cascade of other thoughts flow. Sometimes, I have to write out a statement before the implications of that statement come to mind or fully express a question before the I can start to think of answers to that question.</p>
+<p>I think that the model potentially provides some profound insights into the structure and function of language, which I haven&rsquo;t yet taken the time to think about.</p>
+<p>An interesting question to ponder is something like: What is the relative importance of pattern matching vs computation for the problems that typical challenging problem faced by humans? When I think about problems that I&rsquo;ve worked on, it doesn&rsquo;t feel like I&rsquo;m trying <em>very many</em> different branches of some kind of search tree; I usually only explicitly consider a very few interesting solutions to any problems. This would seem to imply that humans implicitly learn a very vast library of problem solving patterns and make use of these patterns to drastically reduce the solution space that they consider.</p>
+<p>On the other hand, for the very few solutions that I consider, I do spend quite a lot of time <em>thinking</em> about them. I think a lot of what is going on here is that a we need to represent a problem in a lot of different ways and ask a lot of different questions about it in order to fully recruit the library of patterns in our heads. Only when we see a problem in a certain light may some pattern recognition circuit fire. So a lot of our compute gets spent on transforming the problem and/or partial solution in different ways, performing the computation associated with a solution, etc. Interestingly, this is one of the only places in our model where something like a &ldquo;world model&rdquo; comes into play. For certain types of problems, this activity looks like mind wandering or imagination.</p>
+<p>I find it interesting that the structure of computational thought seems to provide something of an answer to some earlier questions which lead to this particular avenue of thought:</p>
+<ul>
+<li>Why does an intelligent agent need to be aware of its goals, its reasons, etc.?</li>
+<li>More generally, what are the ways that intelligence is self-intelligible and why is this important?</li>
+</ul>
+<p>Answering these questions in the most general manner was difficult for me until I began thinking properly about the role of computation. As we saw previously, computation moves the nominal domain of awareness and pattern recognition from the external domain of inputs and outputs to the internal domain of computational state (thoughts). Thus, there&rsquo;s a very basic and natural facet of self-awareness and understanding that comes with the joining of pattern recognition in a recursive, computational setting.</p>
+<p>Our narrative has focused on the idea that reduced patterns can be learned more efficiently. Paradoxically, it&rsquo;s common that humans often first learn some kind of heuristic shortcut which is useful in a commonly occurring situation, and only later learn to decompose this shortcut into reasoning process which derives the heuristic from smaller atoms of pattern. This paradox is removed by noticing that once this decomposition has been achieved, it generally unlocks an ability for the agent to navigate a much broader and more complex decision space&ndash;whereas an agent which is only aware of the shortcut pattern may apply it spuriously and disastrously.</p>
+<p>For humans, the process of decomposing our learned or instinctive responses into their parts is often a long process of mindful reflection and integration. It is a human-complete problem, just like any other that we might consider in the context of thinking.</p>
+<p>Current generations of large language models exist in an interesting corner of this space: They arise from such a data-rich regime that they may have a strong tendency to learn and to express many model-free, shortcut patterns which are unfamiliar to humans. Yet, they also likely have very little capacity to integrate this patterns into the basic, interpretable parts of a computational reasoning process.</p>
+<p>There is a potential lesson for interpretability research here: Paradigms such as mechanistic interpretability will be of limited usefulness in understanding (as opposed to identifying) patterns which LLMs have learned in a shortcut manner, since understanding of the patterns cannot be found anywhere within the LLMs. On the other hand, as LLMs become better at thinking and reasoning, they will likely be able to put these abilities to use in reflecting on their own patterns in order to find intelligible explanations and finer-grain representations.</p>
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by 
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+    
+ <script>
+    const event = new Event('KatexRendered');
+ 
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body,{trust:true,delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "@(", right: ")@", display: true},
+            {left: "$", right: "$", display: false},
+        ]});
+        document.dispatchEvent(event);
+    });
+</script>
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  About the NTK &ndash; Robert Raynor
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content=" NTK: From Zero to Hero |Notes about machine learning, physics, and blockchain.">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Robert Raynor">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="About the NTK | Robert Raynor">
+    <meta name="twitter:description" content="
+NTK: From Zero to Hero
+|Notes about machine learning, physics, and blockchain.">
+    <meta name="twitter:image" content="http://localhost:1313/twitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom.css">
+    <script defer src="/assets/scripts.js"></script>
+  </head>
+
+
+  <body class="single">
+    <div id="holy" class="container-md bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="http://localhost:1313/">
+    Robert Raynor
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white mt-5">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">About the NTK</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/statistical-learning' class="muted-link">
+  <span class="Label Label--gray-darker">Statistical Learning</span>
+</a>
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2024-05-06. Published at: 2022-04-22.">
+        
+          Lastmod: 2024-05-06
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <div class="summary">
+NTK: From Zero to Hero
+</div>
+<div style="overflow:hidden; height: 0;" >
+$
+\gdef\R{\mathbb{R}}
+\gdef\E{\mathbb{E}}
+\gdef\P{\mathbb{P}}
+\gdef\D{\mathcal{D}}
+\gdef\X{\mathcal{X}}
+\gdef\Y{\mathcal{Y}}
+\gdef\Z{\mathcal{Z}}
+\gdef\H{\mathcal{H}}
+\gdef\A{\mathcal{A}}
+\gdef\I{\mathbb{I}}
+$
+</div>
+<p>I want to try doing a thread on (demystifying) the Neural Tangent Kernel (NTK). When I first learned about the NTK, I felt like it was a completely unexpected and even bizarre result. And yet, I would sometimes see people characterize it as somewhat obvious. Happily, over time, things have popped into place so that the NTK now looks quite natural to me as well. In this thread, I&rsquo;d like to present that perspective.</p>
+<p>Before we begin, we need to understand something about kernels and kernel methods. The mathematics of kernel methods can look quite intimidating as it involves things like Reproducing Kernel Hilbert Spaces (RKHS&rsquo;s). However, the basic concepts can be made quite accessible. Any kernel method stars with a kernel, $k(x,y) : \X^2 \to \R$, where $\X$ is the domain on which our data lives. $k$ needs to satisfy certain properties which we will discuss later. Given a kernel $k$, we can define a family of functions having the form</p>
+$$
+f(x) = \sum_{i=1}^n a_i k(x,x_i).
+$$
+<p>This family of functions more or less constitutes the RKHS associated with the kernel. Associated with each function within the space, we have a norm, $||f||^2 = \sum_{i=1}^n\sum_{j=1}^n a_ia_j k(x_i,x_j).$</p>
+<p>Now, kernel (ridge) regression involves finding the (smallest norm) function within an RKHS that interpolates a set of data points. More precisely, finding the solution to the optimization problem</p>
+$$
+\min_{f \in \H(k)} \sum_{i=1}^n|f(x_i)-y_i|^2 + ||f||^2
+$$
+<p>But due to a result by the name of the representer theorem, we know that the solution to this optimization can always be represented using only the $x_i$&rsquo;s of the data we are trying to fit. Thus, kernel regression is really just trying to find an $a_i$ for each $x_i$ in the training data.</p>
+<p>Let&rsquo;s now return to the NTK. The NTK was introduced in [], where they showed that in a certain limit as a deep neural network becomes wide, training the network is the same as doing kernel ridge regression with a particular kernel, known as the neural tangent kernel. In particular, for a network $h: \Theta\times \X \to \R$ where $\theta$ is the parameter space for the network, they showed that the NTK had the form</p>
+$$
+k(x,y) = \nabla_w h(w;x)^T \nabla_w h(w;y).
+$$
+<p>You can see the basis of name neural <em>tangent</em> kernel in the fact that the kernel is constructed using gradients of the network.</p>
+<p>The interesting implication of this result is that it says that for very wide networks, the &ldquo;off-training-data&rdquo; behavior of the learned model will be goverend by the NTK. In particular, it says that if the gradient of the output of the network with respect to the network parameters is similar when evaluated at two different points (as measured by the inner product), we can expect the output of the trained network to be similar. In this way, the network is somewhat similar to a weighted nearest neighbors model, with the weighting determined by the similarity of the gradients.</p>
+<p>Now, this description may sound very surprising. It doesn&rsquo;t seem to line up with any of our typical mental models for understanding neural networks. So how do we resolve this suprise and make the result appear obvious?</p>
+<p>There are two things we need to understand:</p>
+<ol>
+<li>First, we need to note a correspondence between kernel methods and linear models. For every feature space associated with a linear model, there is a corresponding RHKS.</li>
+<li>Next, we &ldquo;simply&rdquo; need to show that as a network becomes wide, it also becomes linear.</li>
+</ol>
+<h1 id="the-kernel-view-of-linear-models">The Kernel View of Linear Models</h1>
+<h2 id="setup">Setup</h2>
+$$
+\phi(x) \in \R^m
+$$
+$$
+w \in \R^m
+$$
+$$
+\Phi = \begin{bmatrix} \phi(x_i),...,\phi(x_n)\end{bmatrix} \in \R^{m\times n}
+$$
+$$
+k(x,y) = \phi(x)^\top \phi(y)
+$$
+$$
+K = [k(x_i,x_j)]_{ij} = \Phi^\top \Phi \in \R^{n\times n}
+$$
+$$
+f_w(x) = \phi(x)^\top w 
+$$
+$$
+w = \Phi a
+$$
+$$
+f_w(x) = \phi(x)^\top \Phi a  = \sum_{i}a_i k(x,x_i)
+$$
+<h2 id="kernel-models-with-gradient-descent">Kernel Models with Gradient Descent</h2>
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by 
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+    
+ <script>
+    const event = new Event('KatexRendered');
+ 
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body,{trust:true,delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "@(", right: ")@", display: true},
+            {left: "$", right: "$", display: false},
+        ]});
+        document.dispatchEvent(event);
+    });
+</script>
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

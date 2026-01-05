@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  The Limits of Learning &ndash; Robert Raynor
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content=" How the no free lunch theorem fundamentally shapes the field of machine learning. |Notes about machine learning, physics, and blockchain.">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Robert Raynor">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="The Limits of Learning | Robert Raynor">
+    <meta name="twitter:description" content="
+How the no free lunch theorem fundamentally shapes the field of machine learning.
+|Notes about machine learning, physics, and blockchain.">
+    <meta name="twitter:image" content="http://localhost:1313/twitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom.css">
+    <script defer src="/assets/scripts.js"></script>
+  </head>
+
+
+  <body class="single">
+    <div id="holy" class="container-md bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="http://localhost:1313/">
+    Robert Raynor
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white mt-5">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">The Limits of Learning</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/statistical-learning' class="muted-link">
+  <span class="Label Label--gray-darker">Statistical Learning</span>
+</a>
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2024-05-06. Published at: 2022-04-22.">
+        
+          Lastmod: 2024-05-06
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <div class="summary">
+How the no free lunch theorem fundamentally shapes the field of machine learning.
+</div>
+<div style="overflow:hidden; height: 0;" >
+$
+\gdef\R{\mathbb{R}}
+\gdef\E{\mathbb{E}}
+\gdef\P{\mathbb{P}}
+\gdef\D{\mathcal{D}}
+\gdef\X{\mathcal{X}}
+\gdef\Y{\mathcal{Y}}
+\gdef\Z{\mathcal{Z}}
+\gdef\H{\mathcal{H}}
+\gdef\A{\mathcal{A}}
+\gdef\I{\mathbb{I}}
+$
+</div>
+<!-- #### tldr:
+- As in fields like information theory, so in learning theory, we can ask basic questions about what it is possible to learn. [&ldsh;](#the-information-theoretic-question-of-machine-learning)
+- Unfortunately, unless we properly condition the problem statement, these questions have very negative answers, typified by the "no free lunch" theorem. [&ldsh;](#the-no-free-lunch-theorem)
+- In some instances, we can condition the problem by explicitly providing a distribution over hypotheses, representing the prior knowledge which we bring to the problem (Of course, in philosophy of science, we have to be more conservative!) [&ldsh;](#what-the-nfl-theorem-means-for-learning)
+- But more commonly, machine learning practicioners fall back on heuristics such as cross-validation, which itself constitutes an interesting form of prior knowledge. [&ldsh;](#cross-validation)
+- Perhaps the most interesting project of modern deep learning theory is the attempt to explicitly understand the inductive biases present in modern deep learning models and training methods. The most promising attempts make use of ideas from theoretical physics such as renormalization. [&ldsh;](#the-inductive-bias-of-deep-learning) -->
+<h3 id="setup">Setup</h3>
+<p>In machine learning tasks, we are interested in learning something about a function or joint probability distribution, given only a set of random samples from that distribution. For example, supposing that there exists some function $f: \X \to \Y$, we might be interested in trying to learn  $f$ from a set of samples, $(x_i,f(x_i))_{i=1}^n \in (\X\times\Y)^n$. Here, we typically assume that the $x_i$&rsquo;s are drawn from some distribution $\mu_X$, which combined with the (degenerate) conditional distribution $P(Y=y|X=x) = \delta(y-f(x))$, gives us a joint distribution $\mu_Z$ over $\Z := \X\times \Y$.</p>
+<p>A machine learning algorithm is a rule $A$ which takes in a data set $(x_i,f(x_i))_{i=1}^n \in (\X\times\Y)^n$ and outputs a member of some hypothesis class, $\H$. Ideally, we would like to select $h$ to be equal to $f$. But this objective is far too strong in general; we need rather a statistically meaningful way of measuring how well $h$ approximates $f$. The following heuristic will guide us to such a metric: If we sample an unseen $(x_i,y_i)$ from $\mu_X$, we want this point to be &ldquo;close&rdquo; to the corresponding point $(x_i,h(x_i))$ constructed by our chosen hypothesis $h$. To quantify this &ldquo;closeness&rdquo;, we define a loss functional, $\phi: \Y \times \Y \to \R$, such as the common $\ell_2$ loss, $\phi(y,y') = |y-y'|^2$. The expected value of this loss, when $x_i$ and $y_i$ are sampled from the unknown joint distribution, $\mu_Z$, is known as its risk,</p>
+$$\tag{}R(h) = \mathbb{E}_{(x,y)\sim\mu_Z}[\phi(y,h(y))].$$
+<!-- The risk is a kind of norm -->
+<!-- Note that the risk cannot be evaluated, so we will need to look for statistical guarantees -->
+<h3 id="the-information-theoretic-and-computational-questions-of-machine-learning">The information-theoretic and computational questions of machine learning</h3>
+<p>Given the setup that we have considered, a basic question to ask is this: Given some (infinite) input domain $\X$, a simple output domain such as the set of binary outputs $\Y = \\{0,1\\}$, a loss functional $\phi$, and a set of samples from some unknown distribution $\mu_Z$, what can we learn? For example, ignoring computational considerations, can we identify the <strong>optimal</strong> hypothesis $h^*$ from the space of all possible functions $h: \X \to \Y$? And if so, what guarantees can we make about the goodness of this hypothesis in terms of the risk? For example, can we guarantee that the risk will approach zero with high probability as the size of our dataset (the number of samples from $\mu_Z$) becomes large?</p>
+<!-- This question is somewhat reminiscent of some of the basic questions and metrics encountered in information theory and estimation theory. Example: Mutual information, Cramer-Rao lower bound, etc.  -->
+<p>Starting from the problem statement that we have given, we quickly reach a very negative result in the form of the so-called &ldquo;No-free-lunch Theorem.&rdquo; The no-free-lunch theorem states that learning is simply impossible without introducing certain prior knowledge or assumptions.</p>
+<p>This sounds bad, but it has to be caveated. Indeed, if we think carefully about what the no-free-lunch theorem is saying, we will begin to question whether it is really telling us anything important or practical. This is because, of the full space of <em>possible</em> functions that we could in principle consider, we are never interested in a vast majority of them&mdash;almost all of them, to be more precise. These are the functions which have no actual <em>structure</em> to be learned. If we throw out these functions, things start to look a bit different.</p>
+<p>We can go a little further in this direction and start to acknowledge that not only do we want <em>some</em> structure, but we we are really only interested in functions which have <em>enough</em> structure to be compactly representable via a computer program. As soon as we set some maximum program length of interest, all of the problems of inference vanish.</p>
+<p>This understanding calls into question two of the main ways in which the no-free-lunch theorem is traditionally applied. It is common pedogogy to use the no-free-lunch theorem to motivate the idea that there is no universal learner, and therefore we we must use specific prior knowledge of a problem in order to select a learning algorithm which will not fail on that problem. In practice, when we restrict to real-world conditions, neither of these conclusions is true.</p>
+<p>On the other hand, it is a reality of machine learning practice that algorithms are tailored to their problem domains. We will finish the post by considering the practical reasons why this is the case, and how it allows us to understand the practice of modern machine learning as well as its long term prospects and limitations.</p>
+<h3 id="the-no-free-lunch-theorem-and-information-theoretic-limits-of-learning">The no-free-lunch theorem and information-theoretic limits of learning</h3>
+<p>The no-free-lunch theorm says that, given only the information contained in the problem statement as we have posed it, there is no optimal hypothesis. Said differently, there is no universally optimal learning algorithm. Moreover, for any particular learning algorithm that we choose, it is impossible to make guarantees about the convergence of the risk to zero. Instead of going through the formal theorem, let&rsquo;s try to convince ourselves intuitively that this result is to be expected.</p>
+<p>Let&rsquo;s restrict to the case where the data are samples from an unknown target function $f: \X \to \Y$. Whenever we select a hypothesis, $h \in \Y^\X$ (this notation denotes the space of all functions from $\Y$ to $\X$), on the basis of some finite number of samples from a target function $f$, we are making a choice about how to interpolate or extrapolate from the function&rsquo;s evaluations at those samples to its evaluations at an infinite number of other points, i.e. $\X \setminus \\{x_1,x_2,...,x_n\\}$. For this reason, the particular way in which a machine learning algorithm chooses or generates its hypothesis is known as its inductive bias, since the choice entails <strong>inducing</strong> the values of a function at unobserved points from its values at observed points. The choice of an inductive bias is not informed by the data itself. In fact, for the problem as we have defined it, there is no problem-specific basis for making the choice; we simply have to hope that there is a single choice that will work well enough for all problems.</p>
+<p>But is this a reasonable hope? It turns out that if we believe that it is reasonable&mdash;that is, if we believe that there should be a single way of doing induction that could work for all possible problems&mdash;then we are failing to consider the full space of possible functions (or more generally joint distributions). We have unwittingly made any number of assumptions about the smoothness of the target function, continuity of the joint probability distribution, etc. But if we could somehow rid our intuition of these accompanying ideas, the hope of a universal inductive bias would vanish.</p>
+<p>Perhaps the best way to update our intuition is to notice that almost all of the functions are such that learning is essentially impossible. Explain kolmogorov randomness.</p>
+<!-- We would instead see that each inductive bias is highly opinionated. Whenever we choose an inductive bias suitable for some set of problems, there is another set of problems on which the inductive bias will be inappropriate and learning will outright fail.  -->
+<!-- Figures -->
+<h3 id="solomonoff-induction-and-computational-limits-of-learning">Solomonoff induction and computational limits of learning</h3>
+<p>Let&rsquo;s now consider a different viewpoint on the idea of a universal learner.</p>
+<ul>
+<li>Define Solomonoff induction.</li>
+<li>Describe completeness.</li>
+<li>Describe incomputability.</li>
+</ul>
+<p>The incomputability of Solomonoff seems to be simply some manifestation of the impossibility expressed by the no-free-lunch theorem.</p>
+<h3 id="learning-bounded-size-hypotheses-practical-limits-of-learning">Learning bounded-size hypotheses: Practical limits of learning</h3>
+<p>Bounded-size hypotheses:</p>
+<ul>
+<li>If we restrict to a maximum program size, then there are a finite number of hypotheses, and we can easily define a universal prior.</li>
+</ul>
+<p>Practical considerations for defining tighter priors or smaller hypothesis classes</p>
+<ul>
+<li>Computational tractability</li>
+<li>Statistical efficiency</li>
+</ul>
+<p>Try to explain the state of machine learning today. Examples: kernel methods, deep learning.</p>
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by 
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+    
+ <script>
+    const event = new Event('KatexRendered');
+ 
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body,{trust:true,delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "@(", right: ")@", display: true},
+            {left: "$", right: "$", display: false},
+        ]});
+        document.dispatchEvent(event);
+    });
+</script>
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

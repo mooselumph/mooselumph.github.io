@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    
+  
+
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Digital Intelligence and Coordination &ndash; Robert Raynor
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content=" Digital abstraction simplifies coordination by dramatically reducing the complexity of verifiability and enforcement. |Notes about machine learning, physics, and blockchain.">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Robert Raynor">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="Digital Intelligence and Coordination | Robert Raynor">
+    <meta name="twitter:description" content="
+Digital abstraction simplifies coordination by dramatically reducing the complexity of verifiability and enforcement.
+|Notes about machine learning, physics, and blockchain.">
+    <meta name="twitter:image" content="http://localhost:1313/twitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom.css">
+    <script defer src="/assets/scripts.js"></script>
+  </head>
+
+
+  <body class="single">
+    <div id="holy" class="container-md bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="http://localhost:1313/">
+    Robert Raynor
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white mt-5">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Digital Intelligence and Coordination</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/alignment' class="muted-link">
+  <span class="Label Label--gray-darker">Alignment</span>
+</a>
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2026-04-27. Published: 2025-10-04.">
+        2025-10-04
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <div class="summary">
+Digital abstraction simplifies coordination by dramatically reducing the complexity of verifiability and enforcement.
+</div>
+<p>Outline</p>
+<ul>
+<li>Observability in digital systems</li>
+<li>Observability in principal agent problems</li>
+</ul>
+<p>In this post, we&rsquo;re going to talk about how certain common failure modes which occur within principal agent contexts arise to only a very limited degree when the agent is a digital one.</p>
+<p>We&rsquo;ll start by describing what makes digital systems remarkable, especially in the context of intelligent systems. Then we&rsquo;ll describe the principal agent problem and see how its failure mechanism line up directly with the defining characteristic of digital systems.</p>
+<h2 id="digital-abstraction-and-environmental-isolation">Digital Abstraction and Environmental Isolation</h2>
+<p>What makes a system digital? Typical answers to this question will say something like &ldquo;Digital systems perform operations on discrete domains instead of continuous operations on continuous domains.&rdquo; This is true, but it misses the bigger picture of what properties a digital system is designed to satisfy, which lead to the discrete design.</p>
+<p>The bigger picture that we will attempt to illustrate in this section is that a digital system is an attempt to realize a pure, abstract system&ndash;the kind that mathematicians reason about in their heads&ndash;in the real physical world. The major difficulty here is to construct a system whose dynamics are properly isolated from the vagaries of the environment in which the system must necessarily be embedded. Another way of putting this is that the system should be closed to influence or informational leakage from the environment. This section introduces a modeling framework and presents some stylized arguments for why environmental isolation tends to imply discretization. Readers less interested in mathematics can skip to the next section where we apply this perspective to look at what makes digital intelligence so novel relative to the forms of intelligence that we&rsquo;ve known heretofore.</p>
+<p>Our discussion will likely be applicable to various abstract systems, but we&rsquo;ll be particularly interested in computational systems, which we model as deterministic state machines. Such a system consists of a state space, $L$, and a state transition function, $\tau_L : L \to L$ , which takes a current state $\ell_t$ and maps it to the next state $\ell_{t+1}$ (A digital system will want for $L$ to be a finite/discrete domain, but we&rsquo;ll start continuous and see what happens).</p>
+<p>What does it mean for our abstract system to be implemented in the world? Let $U$ be a set representing the possible states of the world, and let $\tau : U \to U$ be the <em>world&rsquo;s</em> state transition function.</p>
+<p>We&rsquo;ll say that the world realizes an abstract state machine $\tau_L$ if there exists a mapping $m : U \to L$ such that the following commutation relationship holds:</p>
+<p><figure class="center"><img src="/images/commutation-1.png" width="350">
+</figure>
+
+</p>
+$$
+\tau_L(m(u)) = m(\tau(u))
+$$
+<p>
+This relationship implies a kind of causal closure; Any information about the world which is thrown away by $m$ cannot later influence $\ell$. To get a better picture about what this means, let&rsquo;s assume that $U$ has a product structure, $U = S \times E$ where $S$ represents the state of the system and $E$ represents its environment, and that $m$ only depends on the system state, i.e., $m = m_S \circ \pi_S$, where $\pi_S$ is a projector from $U$ onto $S$. Our digital abstraction relationship says that the environment cannot causally affect the behavior of the system since $m(\tau(s,e)) = \tau_L(m_S(s))$ $\forall e \in E$.</p>
+<p>We can make a stylized argument to show why it isn&rsquo;t possible to have this kind of causal closure when the abstract system is continuous.</p>
+<p>Let $\tau_S = \pi_S \circ \tau$ be the restriction of $\tau$ to $S$. We&rsquo;ll suppose $\tau_S$ decomposes into two sequential steps:
+</p>
+$$
+\tau_S = \tau_2 \circ \tau_1 
+$$
+<p>
+where $\tau_1 : S \times E \to S$ captures any coupling from the environment, and $\tau_2 : S \to S$ captures the internal system update. We&rsquo;ll also model $S$ and $L$ as metric spaces and assume that there exist $\epsilon_2 > \epsilon_1 > 0$ such that for any $s \in S$, the set $\{\tau_1(s,e) : e \in E\}$ contains a ball of size $\epsilon_1$ and is contained in a ball of size $\epsilon_2$. This essentially means that the environmental effect on the system state is isotropic; environmental effects can move the system state in any direction by at least $\epsilon_1$ but no further than $\epsilon_2$.</p>
+<p>If $m_S \circ \tau_S$ is a continuous, non-constant function, then our abstraction breaks. We just need to find an $s$ and $s'$ with $||s - s'|| < \epsilon_1$  where $\tau_S \circ m_S(s) \neq \tau_S \circ m_S(s')$ ) (these will exist since the composition is continuous and non-constant). Then we know that we can choose $e$ and $e'$ to make $||\tau_1(s,e) - s|| = 0$  and $||\tau_1(s,e') - s|| > \epsilon_1$ so that $m(s,e) \neq m(s,e')$.</p>
+<p>On the other hand, we can preserve the abstraction if we are willing to make $\tau_S$ discrete. We can define a mesh $G \subset S$ with spacing $\delta > 2\epsilon_2$, and let $r : S \to G$ be the nearest-point rounding function, which maps each point to its closest mesh point. We can then define a discretized system update:
+</p>
+$$\tau'_2 = r \circ \tau_2 \circ r$$
+<p>
+The rounding on the right erases any environmental perturbation stemming from $\tau_1$, assuming that $s$ started on a mesh point. The rounding on the left, ensures that the system state ends on a mesh point after the internal update, so that the commutation condition can be preserved as an inductive invariant. In this case, having made $\tau_S$ discrete, our abstraction is effectively discrete as well, since $m_S$ only sees values on the mesh $G$.</p>
+<p>In practice, this version of $\tau_S$ is unphysical. We can&rsquo;t snap the physical state to a specific point on a mesh. But we can create potential wells which form a basin of attraction to combat environmentally induced drift. Each full basin is then mapped by $m_S$ to a single point in the discrete abstraction space. The physical system can then implement the abstracted logic as long as it can manage to move the state into a vicinity corresponding to the target basin.</p>
+<p>To recap: The goal of this development is to shift the way that we think about digital systems from &ldquo;systems with discrete domains&rdquo; to &ldquo;systems with a shocking level of environmental isolation, which use discretization to achieve this.&rdquo;</p>
+<h2 id="informational-and-computational-closure">Informational and Computational Closure</h2>
+<p>Our formulation is a bit too restrictive to describe real systems, which may in fact have some form of interaction with the environment.</p>
+<p>However, we can replace the concept of environmental isolation with a related and equally powerful idea: informational closure. Informational closure says that the abstract model can only depend on a narrow information channel from the environment; specifically, one which transmits information at a finite and bounded rate.</p>
+<p>We can model this as follows: Let $i \in I$ be an input symbol that the abstract model is allowed to receive from the environment, selected by a channel $p : E \to I$. The abstract model now has the form $\tau_L : L \times I\to L$, and the generalized commutation condition is:</p>
+<figure class="center"><img src="/images/commutation-2.png" width="350">
+</figure>
+
+$$\tau_L(m(u), p(e)) = m(\tau(u))$$
+<p>The important sense in which I want to say that this is a closure is the following:</p>
+<ul>
+<li>For an informational closed / digital system, it is possible to know or certify that the system&rsquo;s behavior was only influenced by the information contained in $I$.</li>
+<li>In contrast, for an informationally open system, it is generally impossible to fully identify the information that influenced the behavior of the system.</li>
+</ul>
+<p>We can identify two somewhat distinct reasons why most systems which we might try to abstract are not informationally closed:</p>
+<ul>
+<li>The size of &ldquo;sensory&rdquo; information channels from the environment can&rsquo;t be easily bounded.</li>
+<li>Information leaks into the model via model underapproximation.</li>
+</ul>
+<p>The first point pertains to the fact that many abstract systems pertain to systems that purposefully couple to their environment via sensory channels. Because these are often analog or continuous channels, we would usually estimate the &ldquo;true&rdquo; information by looking at the signal to noise ratio and calculating the finite bit rate of the effective information channel. But for the purposes of our modeling, this is only valid if we know that the abstract system in question is not actually influenced by the noise, and it&rsquo;s not at all obvious that this is true.</p>
+<p>This points to a deeper issue, which is captured by the second point. Most analog systems will be affected by random noise&ndash;not just noise contained in explicit sensory information channels, but also noise in the actual operation of the system.</p>
+<p>We can usually think of this noise as a kind of underapproximation error. Usually, our models of systems are coarse-grainings of smaller scale dynamics (e.g. cellular biology coarse-grains molecular and atomic physics coarse grains various field theories coarse grain&hellip;). In such cases, dynamics from the lower scale tend to feed up into the higher scale in the form of noise. Provided that the system is not insulated against such noise in the form of some kind of digital error correction, it is difficult to quantity the amount of information that leaks into the system via such noise.</p>
+<p>This example can help us motivate the dual side of informational closure, which is computational closure. For a given abstraction, informational closure implies computational closure: There cannot be computations which both matter for the behavior of the abstract model and which are not part of the abstract model, except to the extent that the outputs of these computations are contained in the bounded environmental information channel.</p>
+<p>This takes us back to our original claim that digital computation is a way of realizing a pure, abstract system in the real world. A common adage is that all models are wrong but some are useful. Many models are obviously nothing more than models (though it&rsquo;s not uncommon for people to forget this in certain contexts). But informationally closed abstractions blur the line greatly. It&rsquo;s not uncommon, or terribly invalid, to treat digital systems as an exception to the rule. Digital abstractions can be <em>correct</em> models of the thing they are trying to model.</p>
+<h2 id="informational-closure-and-verifiability">Informational Closure and Verifiability</h2>
+<p>Above, we discussed the fact that information closure allows us to certify a statement such as the following:</p>
+<ul>
+<li>I put a digital system into state $\ell_0$ and ran it for $T$ steps (perhaps with information inputs $(i_t)_T$) and it reached state $\ell_T$ without using any information not contained in these inputs.</li>
+</ul>
+<p>I can certify this in the sense that if I know that the system satisfies my abstract model, then I can know that it is true. But what if I want to allow someone else to trustlessly verify my claim?</p>
+<p>It would be nice if I could just ask them to instantiate their own copy of the digital system, run it with the specified inputs, and check that it reaches the claimed outcome. Our formalism isn&rsquo;t rich enough to say that this should be possible&ndash;we haven&rsquo;t said that $i$ should be something that we can control or what that would even mean. But, as we all know, this is something that we can do with the digital systems that we all use.</p>
+<p>A basic reason why this is possible with digital systems is that the informational content of the model, the model state, and the model inputs are all closed/finite. This makes possible procedures for reliably and exactly transferring this finite quantity of information and transforming it into a working implementation. On the other hand, if we tried to perform verification in this manner for a informationally-open system (like a human), we would obviously run into horrible difficulty.</p>
+<h2 id="informational-closure-and-intelligence">Informational Closure and Intelligence</h2>
+<p>Up until now, there has never been a system which is both informationally closed and highly intelligent.</p>
+<p>Humans are intelligent and not digital. Computers are digital but heretofore, not very intelligent. Now, we seem to have something that is both: Intelligence implemented on a digital computer. What do we make of this?</p>
+<p>It would be surprising to me if the fact of informational closure wasn&rsquo;t transformative for the way that we reason about an intelligence in certain contexts. On the other hand, I haven&rsquo;t seen much discussion about the observation that the AI which has wrought happens to be digital.</p>
+<p>I think that the reason for this is that, while the digital nature of AI certainly <em>helps</em> with much of the reasoning that we want to do about AI, there are many questions that still feel very difficult or intractable; basic questions of alignment are here.</p>
+<p>On the other hand, if we restrict our focus to human-level (as opposed to vastly superhuman level) AI, and take a ceteris paribus stance on alignment questions&ndash;noting that alignment isn&rsquo;t a fully solved problem for humans either&ndash;we might find that informational closure in itself is a highly useful and perhaps revolutionary property for an intelligence to have in certain contexts. The remainder of this post addresses this.</p>
+<h2 id="informational-closure-in-game-theory">Informational closure in game theory</h2>
+<p>Many game-theoretic dilemmas are affected by the problem of information asymmetry, where the information available to individual participants is not all equal. Private information can easily translate to hidden actions, where a given participant is the only one who has complete information about their own actions.</p>
+<p>Often the existence of information asymmetry prevents the game from reaching a desirable equilibrium. Two important examples of such breakdown are the problem of Moral Hazard in principal agent contexts and the problem of Adverse Selection in market contexts. We&rsquo;ll focus on moral hazard for now, with a separate article devoted to the market problem.</p>
+<p>The principal agent problem concerns the context of principal who wishes to have an agent act on their behalf and in their best interests; the &ldquo;problem&rdquo; is that in the presence of conflicts of interest and the absence of additional incentives or structure, the agent will tend to pursue their own interests instead of those of the principal. To address the principal agent problem is then to find the additional incentives or structure that will align the agent&rsquo;s interests with the principal or otherwise induce them to act in the principal&rsquo;s interests.</p>
+<p>There are a few known ways to achieve the alignment required here:</p>
+<p><strong>Equity Sharing</strong>. When the principal&rsquo;s interests consists of the cultivation of some material good or profit, a degree of alignment can be achieved by giving the agent a share in this outcome. The alignment here isn&rsquo;t perfect, due in part to differences of magnitude. But equity sharing is still one of the best tools.</p>
+<p><strong>Enforceable Contracts</strong>. The bigger problem with equity sharing is that there is often no such material good that can be identified with the principal&rsquo;s interest. In these cases, the agent can enter into a contract to adhere to certain standards in how it services the principal.</p>
+<p>Very often the material content of such an agreement involves forbidden actions and sources of information:</p>
+<ul>
+<li>A public judge is prohibited from accepting bribes, or making decisions based on protected features.</li>
+<li>A government acquisitions officer is prohibited from accepting kick-backs from contractors.</li>
+<li>A consultant may be forbidden from sharing or acting on private information from one client with working with another one.</li>
+</ul>
+<p><strong>From monitoring to verifiable certification</strong></p>
+<p>In all of these situations, the contract is enforceable only to the extent that these actions can be detected. In practice, this is a very difficult monitoring problem and immense societal resources are expended in institutions that serve to detect such failures and police against them.</p>
+<p>When we talk about detection here, what we are talking about is the process of taking a natural information asymmetry between a human principal and human agent and trying to patch it up. This is difficult because information asymmetries among humans are naturally quite large. It&rsquo;s worth noting that part of the reason that information asymmetries are large is because organic intelligence is more or less evolved in order to enable a high amount of entanglement with local informational environments.</p>
+<p>Now, the punch line: What if, for the first conceivable time in history, the agent is not an intelligent human system but an intelligent digital system? If we make this transformation, then the information gap suddenly plummets down to nothing.</p>
+<p>As we&rsquo;ve seen above, this enables a qualitatively different form of contract enforcement, which is not based on monitoring but on certification. Unlike a human agent, a digital agent can produce a verifiable certificate consisting of the following items:</p>
+<ul>
+<li>The set of informational inputs which were used in making a set of decisions.</li>
+<li>The procedure or algorithm which was used in making the decision (for example, this may be a deterministic implementation of LLM inference).</li>
+<li>The outcome of the decision.</li>
+</ul>
+<p>In this case, ruling out a violation such as bribery is as simple as:</p>
+<ol>
+<li>Checking that no information about bribery is contained in the informational inputs.</li>
+<li>Checking that the decision procedure properly maps from the given inputs to the given outputs. (Note: We can often simplify the verification complexity for observers using formal verification techniques and notions of proof based on cryptographic assumptions / ZK proofs).</li>
+</ol>
+<p>One might quip here that the first problem&ndash;checking that no information about bribery has been slipped into a set of informational inputs&ndash;could be a difficult one. But it&rsquo;s not difficult to see how the same ideas that we&rsquo;re playing with here are part of the solution to that general problem. The nature of digital intelligence means that the very process of constructing the intelligent agent is also informationally closed, and so its informational inputs (e.g. the training procedure, training data, etc.) be verified by a separate entity.</p>
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by 
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+    
+ <script>
+    const event = new Event('KatexRendered');
+ 
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body,{trust:true,delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "@(", right: ")@", display: true},
+            {left: "$", right: "$", display: false},
+        ]});
+        document.dispatchEvent(event);
+    });
+</script>
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

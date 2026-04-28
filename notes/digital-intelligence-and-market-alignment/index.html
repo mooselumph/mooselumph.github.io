@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+  
+
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Digital Intelligence and Market Alignment &ndash; Robert Raynor
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content=" Digital abstraction simplifies coordination by dramatically reducing the complexity of verifiability and enforcement. |Notes about machine learning, physics, and blockchain.">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Robert Raynor">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="Digital Intelligence and Market Alignment | Robert Raynor">
+    <meta name="twitter:description" content="
+Digital abstraction simplifies coordination by dramatically reducing the complexity of verifiability and enforcement.
+|Notes about machine learning, physics, and blockchain.">
+    <meta name="twitter:image" content="http://rayncloud.com/twitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom.css">
+    <script defer src="/assets/scripts.js"></script>
+  </head>
+
+
+  <body class="single">
+    <div id="holy" class="container-md bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="http://rayncloud.com/">
+    Robert Raynor
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white mt-5">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Digital Intelligence and Market Alignment</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/alignment' class="muted-link">
+  <span class="Label Label--gray-darker">Alignment</span>
+</a>
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2026-04-27. Published: 2025-10-04.">
+        2025-10-04
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <div class="summary">
+Digital abstraction simplifies coordination by dramatically reducing the complexity of verifiability and enforcement.
+</div>
+<p>Outline</p>
+<ul>
+<li>The observability problem for markets. Markets pump damage into unobservables.</li>
+<li>Intelligence exacerbates the problem.</li>
+<li>Digital intelligence addresses the problem.</li>
+</ul>
+<h2 id="an-alignment-and-observability-frame-for-markets">An alignment and observability frame for markets</h2>
+<p>One of the compelling arguments for public markets is that they can organize activities such as the exchange of goods and services in a way that is optimal for the social welfare of the participants in certain context-specific senses. However, markets can famously fail to achieve efficient outcomes in the presence of imperfect information and externalities:</p>
+<ul>
+<li>When the participants in a market don&rsquo;t have perfect information about the goods that they are purchasing, they lose the opportunity to act according to their true preferences, and can make decisions that will reduce their utility.</li>
+<li>Externalities represent a situation where a particular form of a good or service would be excluded from a competitive market if the damages entailed in its production or performance had to be borne by its consumers (but can be instead be socialized to a broader set). Market participants can coordinate to limit the effect of externalities on markets, either through governmental regulation or by refusing to engage with companies that do not curb their externalities, but this is only possible to the extent that these externalities are visible and observable.</li>
+</ul>
+<p>If we focus on the informational component of these failure modes, it can be helpful to think of market inefficiencies as an instance of a general alignment problem that occurs in optimization contexts when there is a divergence between the de facto objective on which the optimizing process acts and the purported true objective which is meant to represent.</p>
+<p>In the market setting, we can think of the informational gaps as composing a divergence between the true utility of a market participant, and the component of their utility that they are aware of when they make decisions about actions to take within the market. That is, we can imagine that their true utility decomposes into an observable part and an unobservable part, as
+</p>
+$$
+U(x) = U_{obs}(x) + U_{unobs}(x).
+$$
+<p>
+To see the effect of the observable part in a general optimization context, we can ask what is the damage that we can incur by optimizing relative to the observable component instead of the full component? That is, if $x^\star$ is the true optimizer of $U$ and $\hat{x}$ is the optimizer of $U_{obs}$, what does the error
+</p>
+$$
+\Delta(U,U_{obs}) = U(x^*) - U(\hat{x})
+$$
+<p>
+look like? A simple bound is that  $\Delta(U,U_{obs}) \le \max_{x,y} U_{unobs}(x)-U_{unobs}(y)$. (Suppose to the contrary that it doesn&rsquo;t hold. Then $U(x^*) - U(\hat{x}) > U_{unobs}(x^*) - U_{unobs}(\hat{x})$ which implies that $U_{obs}(\hat{x}) < U_{obs}(x^*)$, a contradiction). Thus, the range of the unobservable utility gives us the exact range of the possible damage.</p>
+<h2 id="the-role-of-intelligence-in-alignment-problems">The role of intelligence in alignment problems</h2>
+<p>A separate question we might ask is whether there is any specific reason to think that the amount of damage will approach this bound or whether we might expect it to be small on average.</p>
+<p>In the nominal case, the answer is that a powerful optimizer <em>will</em> tend to amplify and exploit lapses of fidelity within an objective&rsquo;s representation.</p>
+<p>One reason for this, is that a standard objective will tend to have two components: A positive part, i.e. the thing that we want, and a negative part, i.e. the cost of getting it. Moreover, the positive part of an objective is often defined in a context where certain robust and stable correlations might make it appear that $U_{obs}$ and $U_{unobs}$ must also correlate.</p>
+<p>If this is true, we can observe what happens for various optimizers:</p>
+<ul>
+<li>A weak optimizer will tend to preserve these correlations, so that $U$ is well optimized. From the perspective of the explicit objective $U_{obs}$, we might colloquially call this &ldquo;underfitting.&rdquo;</li>
+<li>A powerful optimizer will find ways to break these correlations in order to reduce cost, so that $U_{obs}$ is optimized, but $U_{unobs}$ will be altered in any way that yields better efficiency. From the perspective of $U$, can call this &ldquo;overfitting.&rdquo;</li>
+</ul>
+<p>Thus, powerful optimizers will minimizing cost by successively overfitting to the explicit objective, sacrificing true utility.</p>
+<p>Before moving on, it&rsquo;s worth pointing out that there are some situations where this is not the result. In the above, we have been assuming that the optimizer is directly trying to optimize $U_{obs}$. But this isn&rsquo;t the only possibility: It could be that our optimizer is actually trying to optimize $U$, even though it only has knowledge of $U_{obs}$ or a representation thereof. Formally, this might look like maximizing $E[U(x) | U_{obs}]$, where the expectation is over $U$.</p>
+<p>In this scenario, we can assume that a more powerful optimizer (or more generically, intelligent agent) should be able to better model the relationship between $U$ and $U_{obs}$. Thus in this scenario, alignment failures tend to come from a lack of intelligence or optimization capacity. This is what happens when your boss asks you to do one thing and you do something different, even though perhaps you meant to satisfy their intent.</p>
+<p>So we have two scenarios:</p>
+<ul>
+<li>One in which intelligence tends to amplify misalignments, i.e. where the intelligence&rsquo;s goal is to optimize the nominal objective.</li>
+<li>One in which intelligence tends to minimize misalignments, i.e. where the intelligence&rsquo;s goal is to optimize the true objective.</li>
+</ul>
+<p>Unfortunately, market scenarios are overtly of the second type.</p>
+<h2 id="market-alignment-and-intelligence">Market alignment and intelligence</h2>
+<p>Let&rsquo;s look at the way that market efficiencies emerge from the interaction between a buyer and a seller (This will be a highly stylized picture).</p>
+<p>For a particular type of good, let $x$ be the sub-type of the good representing the detailed manufacturing process or other aspects. Then let $U(x)$ denote the buyers value of the good, and let $C(x)$ denote the cost to produce.</p>
+<p>If a single party were responsible for both producing and consuming the good, they would choose $x$ to maximize the total utility, $W(x) = U(x) - C(x)$. But the market tends to split this into two parts: A buyer, who gets utility gets utility $U(x) - p$ and the seller who gets utility $p - C(x)$ when a good $x$ is exchanged at price $p$. When the two sides of the market&ndash;production and consumption&ndash;are split across different sides of the market, do we still end up maximizing $W(x)$?</p>
+<p>Suppose that $x^\star$ is a configuration that maximizes $W(x)$, and that a producer chooses to produce some other $x \neq x^*$ with $W(x) < W(x^\star)$. Suppose that the market reaches a price $p$ for $x$ with the producer taking profit $P = p - C(x)$ and consumer taking utility $U(x) - p = W(x) - P$. Now, no matter what $p$ occurs, a different producer should be able to supplant the first producer by producing $x^\star$, since they can sell it at price $C(x^\star) + P$ for equal profit, while giving the consumer a higher utility $W(x^\star) - P > W(x) - P$.</p>
+<p>We conclude that competition by producers should push the market toward a configuration that optimizes the same <em>nominal</em> utility that a single party would optimize. Congratulations to the market!</p>
+<p>But actually, even though we preserved the nominal optimization objective, something important happened when we differentiated the sides of the market which will make this nominal congruence not quite satisfying. Let&rsquo;s think back to the framework of the previous section:</p>
+<ul>
+<li>A single party optimizing their own utility may have observable null spaces which impact their ability to determine the true utility of any given outcome, and so may make decisions based on a observable reduction of their true utility. Nonetheless, the true utility is that they are actually trying to optimize. In this sense, they will operate in the second mode, where their intelligence tends to minimize misalignments between true utility and observable utility.</li>
+<li>In a market context, the consumer and producer will generally care about different things. The consumer cares about true utility and price, which is generally driven by observable utility. The producer cares about cost and price.</li>
+</ul>
+<p>The market context sets up an adversarial game between the consumer, who will use their intelligence to minimize their own observational null spaces, and the producer who will use their intelligence to maximize the play allowed by the null space that remains. In terms of our models, we can think of the consumer as using their intelligence to minimize the difference between $U_{obs}$ and $U$, and the producer using their intelligence to overfit to $U_{obs}$.</p>
+<p>From this perspective, we should only expect that the market will globally pursue the same ends as a coherent individual when the space of unobservable utility has a small range, or maybe when the consumer&rsquo;s intelligence is much greater than that of the producer.</p>
+<p>So who is more intelligent? Consumers or producers?</p>
+<p>In the simple market picture that we have been considering, there is an important asymmetry from the standpoint of the role of capital. If I want to put capital somewhere and hope for it to generate a return, I can only do so on the production side.</p>
+<p>The need to efficiently convert capital into returns thus naturally leads to the organization of large scale firms and corporations on the side of production, while the side of consumption may remain in the format of unorganized collections of individual humans. To the extent that such corporations can aggregate individual human intelligence into a super-intelligent capacity&ndash;which is a famously large extent&ndash;this means that the intelligence of production will tend to exceed the intelligence of consumption.</p>
+<p>The result is that the market will tend to overtly optimize for the observable aspects of utility over the less observable ones.</p>
+<h2 id="the-unfolding-market-calamity">The unfolding market calamity</h2>
+<p>The imbalance of intelligence within the market has resulted in an unfolding misalignment which, arguably, is in the process of actively destroying the world.</p>
+<p>We can identify several patterns which characterize some of the ways that the market &ldquo;exploits&rdquo; unobservable modes of damage to the collective detriment.</p>
+<p><strong>Decoupling observable and unobservable utility</strong>. This is one of the basic modes of overfitting that we identified earlier. A consumer may use certain features as a way of inferring the quality of a good or service because they act as sufficient statistics relative to a &ldquo;naturally&rdquo; occurring distribution. A producer may specialize at satisfying these specific features while allowing quality to drift downward.</p>
+<p><strong>Transform observable harm to unobservable</strong>. Producers may attempt to hide their externalities.</p>
+<p><strong>Exploiting cognitive blind spots</strong>. Humans often fail to be optimal or rational in predictable ways. Functionally, these blind spots amount to large components of often negative unobservable utility (i.e., we act as if a certain activity like doomscrolling has more utility than it does). Producers can find these patterns and use them to steer behaviors.</p>
+<h2 id="digital-intelligence-and-market-alignment">Digital intelligence and market alignment</h2>
+<p>How does the advent of digital intelligence stand to affect the market alignment problem?</p>
+<p>If we constrain our focus on the fact that digital intelligence will inject more net intelligence into the market, the story is somewhat mixed. In principle, both producers and consumers can have access to this intelligence. Just as in the current market picture, we can expect the asymmetries of capitalism to lead to a piling up of intelligence on the side of production, favoring a net dynamic of extraction and exploitation. On the other hand, if we model most consumers as having little &ldquo;excess&rdquo; intelligence to use for converting their values into coherent market actions, then additional marginal intelligence may make a bigger difference for consumers than for producers which achieve excess intelligence via aggregation and organization.</p>
+<p>An additional lens is available if we focus on the digital nature of artificial intelligence, and the way in which this characteristic can shift the game-theoretic dynamics by enabling production companies to make commitments which were previously not possible.</p>
+<p>The post &ldquo;Digital AI and Game Theory&rdquo; makes the case that when a digital intelligence serves as the agent acting on behalf of a principal, the problems of moral hazard (hidden actions) and adverse selection (hidden information) which typically arise in the principal agent setup appear in only a radically subdued form for the digital agent. This is because digital systems are specially engineered to remove the environmental coupling which shows up as hidden information channels and action spaces in analog systems and agents (i.g. humans and human systems).</p>
+<p>It doesn&rsquo;t take too much work to frame the market breakdown problem in terms of the principal agent problem, since the two have the same basic failure mechanisms.</p>
+<p>We observe that companies are commonly viewed as principal agents for shareholders. The shareholders or owners vest the company with certain resources (capital) and expect that the company will act in the owner&rsquo;s interests in using this capital. But we can also often frame the relationship between a customer and a company as a principal agent context: The customer supplies a payment to the company and expects that the company will convert this payment into the product or service that the customer wants.</p>
+<p>Both of these relationships are subject to the characteristic problems of moral hazard and adverse selection. The difference is that only the company-shareholder relationship can address these problems via the classical tool-kit for solving principal agent problems, such as giving company executors equity in the company ownership.</p>
+<p>If we were to construct a purely digital company, then we get access to a fundamentally new and different toolkit. Digital companies bring the possibility of radical transparency that is fundamentally impossible with non-digital companies. This transparency can be thought of as an informational and computational closure, which allows a customer of the company to fully audit both:</p>
+<ul>
+<li>The full collection of informational inputs which the company used in order to make its decisions.</li>
+<li>The full computational path of any decision-making procedures.</li>
+</ul>
+<p>Subject to certain limitations (discussed in other article), this means that a company can commit to acting as an aligned agent for the customer principal, and the customer should be able to detect whenever the agent intentionally deviates from this commitment.</p>
+<p>Strong commitments from companies allow market selection and competition to function properly&ndash;as if the informational null spaces that normally hamper market functioning were not existent:</p>
+<ul>
+<li>If sellers know that a platform is not constitutionally capable of switching to an extractive mode once it has market capture, they will be incentivized to participate in that platform.</li>
+<li>Conscientious users of social media may be more interested in using a social media platform when they can have confidence that it&rsquo;s algorithms are not being engineered to induce doom-scrolling.</li>
+<li>If a consumer knows that a company has made all of its decisions placing a high priority on sustainability and quality, they may buy its products even if they are more expensive.</li>
+</ul>
+<p>The last point is interesting, because it highlights a very specific failure mode of current markets: Communication of any such purported values and practices is usually the responsibility of marketing functions of existing companies and firms. Consumers are rightly skeptical of marketing from any but the most reputable companies. Therefore, companies may expect that even if they were to focus on differentiated sustainability and quality in certain unobservable dimensions, having no good way to differentiate their marketing, they would be unable to compete within a market which does not appropriately price their good for its higher quality or sustainability.</p>
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    
+
+    Powered by 
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+    
+ <script>
+    const event = new Event('KatexRendered');
+ 
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body,{trust:true,delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "@(", right: ")@", display: true},
+            {left: "$", right: "$", display: false},
+        ]});
+        document.dispatchEvent(event);
+    });
+</script>
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

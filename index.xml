@@ -8,6 +8,41 @@
     <language>en-us</language>
     <atom:link href="http://rayncloud.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Projects</title>
+      <link>http://rayncloud.com/link/projects/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/link/projects/</guid>
+      <description>A collection of current and past projects.</description>
+    </item>
+    <item>
+      <title>Digital Intelligence and Coordination</title>
+      <link>http://rayncloud.com/projects/digital-intelligence-and-coordination/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/projects/digital-intelligence-and-coordination/</guid>
+      <description>We are usually most concerned with questions like how intelligent artificial systems are relative to humans, when we compare the two. But there are other structural points of comparison which are highly consequential for how humans and AI systems can function in various scenarios. One of these is the fact that AI systems, unlike humans, are digital. This project explores what this means.</description>
+    </item>
+    <item>
+      <title>Structure of Intelligence</title>
+      <link>http://rayncloud.com/projects/structure-of-intelligence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/projects/structure-of-intelligence/</guid>
+      <description>Intelligence is a solution to the problem of adapting across diverse environments. Fields like learning theory, computational complexity theory, game theory, and social choice theory each study what is theoretically possible for intelligent agents in certain contexts under specific sets of constraints (information, computation, trust, etc.).&#xA;But some rich structures of intelligent systems only emerge when these constraints are combined. I believe there is some low-hanging fruit to be found in taking underconstrained and the overly-abstracted models often used in these settings, and trying to give them flesh.</description>
+    </item>
+    <item>
+      <title>The Physics of Emergence</title>
+      <link>http://rayncloud.com/projects/physics-of-emergence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/projects/physics-of-emergence/</guid>
+      <description>We should expect that concrete intelligent systems will arise through dynamical optimization and selection processes. A priori, it&amp;rsquo;s quite surprising that many of the simple dynamics that we see at play in nature and in AI training would be able to find any of the complex structures that we observe or hypothesize.&#xA;Ideas from different parts of physics (statistical mechanics, non-equilibrium thermodynamics, etc.) as well as the general study of complex systems can help shed light on some of what is happening here.</description>
+    </item>
+    <item>
+      <title>Learning Theory Sequence</title>
+      <link>http://rayncloud.com/projects/learning-theory-sequence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://rayncloud.com/projects/learning-theory-sequence/</guid>
+      <description>A sequence of posts about learning theory and generalization.</description>
+    </item>
+    <item>
       <title>What Is Thinking?</title>
       <link>http://rayncloud.com/notes/what-is-thinking/</link>
       <pubDate>Wed, 31 Dec 2025 16:04:45 -0800</pubDate>
@@ -50,11 +85,11 @@
       <description>A work in progress.</description>
     </item>
     <item>
-      <title>Publications</title>
-      <link>http://rayncloud.com/link/publications/</link>
+      <title>Other Media</title>
+      <link>http://rayncloud.com/link/links/</link>
       <pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://rayncloud.com/link/publications/</guid>
-      <description>Publications on Google Scholar.</description>
+      <guid>http://rayncloud.com/link/links/</guid>
+      <description> Twitter LinkedIn Google Scholar GitHub Exploratory Writing </description>
     </item>
     <item>
       <title>Alignment</title>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Physics on Robert Raynor</title>
+    <link>http://rayncloud.com/tags/physics/</link>
+    <description>Recent content in Physics on Robert Raynor</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 May 2026 21:42:39 -0700</lastBuildDate>
+    <atom:link href="http://rayncloud.com/tags/physics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes on Active Inference</title>
+      <link>http://rayncloud.com/notes/fep-intuitions/</link>
+      <pubDate>Wed, 28 May 2025 15:50:58 -0700</pubDate>
+      <guid>http://rayncloud.com/notes/fep-intuitions/</guid>
+      <description>&lt;div class=&#34;summary&#34;&gt;&#xA;Disentangling the properties of the Active Inference algorithm.&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

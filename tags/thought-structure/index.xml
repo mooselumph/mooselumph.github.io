@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thought-Structure on Robert Raynor</title>
+    <link>http://rayncloud.com/tags/thought-structure/</link>
+    <description>Recent content in Thought-Structure on Robert Raynor</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 May 2026 21:38:01 -0700</lastBuildDate>
+    <atom:link href="http://rayncloud.com/tags/thought-structure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What Is Thinking?</title>
+      <link>http://rayncloud.com/notes/what-is-thinking/</link>
+      <pubDate>Wed, 31 Dec 2025 16:04:45 -0800</pubDate>
+      <guid>http://rayncloud.com/notes/what-is-thinking/</guid>
+      <description>&lt;div class=&#34;summary&#34;&gt;&#xA;Thought as a type of computation which is used by intelligent systems to trade between computational complexity and informational complexity.&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

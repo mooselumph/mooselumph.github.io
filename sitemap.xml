@@ -2,26 +2,53 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://rayncloud.com/link/projects/</loc>
+    <lastmod>2026-05-17T21:21:15-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/projects/digital-intelligence-and-coordination/</loc>
+    <lastmod>2026-05-17T21:21:12-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/projects/structure-of-intelligence/</loc>
+    <lastmod>2026-05-15T21:58:38-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/projects/physics-of-emergence/</loc>
+    <lastmod>2026-05-15T21:58:33-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/projects/learning-theory-sequence/</loc>
+    <lastmod>2026-05-15T21:33:34-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/tags/</loc>
+    <lastmod>2026-05-15T21:42:39-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/tags/thought-structure/</loc>
+    <lastmod>2026-05-15T21:38:01-07:00</lastmod>
+  </url><url>
     <loc>http://rayncloud.com/notes/what-is-thinking/</loc>
-    <lastmod>2026-01-05T11:58:08-08:00</lastmod>
+    <lastmod>2026-05-15T21:38:01-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/categories/alignment/</loc>
-    <lastmod>2026-04-27T17:51:53-07:00</lastmod>
+    <lastmod>2026-05-15T21:39:52-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/categories/</loc>
-    <lastmod>2026-04-27T17:51:53-07:00</lastmod>
+    <lastmod>2026-05-15T21:42:39-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/notes/digital-intelligence-and-coordination/</loc>
-    <lastmod>2026-04-27T17:51:41-07:00</lastmod>
+    <lastmod>2026-05-15T21:39:45-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/notes/digital-intelligence-and-market-alignment/</loc>
-    <lastmod>2026-04-27T17:51:53-07:00</lastmod>
+    <lastmod>2026-05-15T21:39:52-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/tags/digital-intelligence/</loc>
+    <lastmod>2026-05-15T21:39:52-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/categories/fep/</loc>
-    <lastmod>2025-08-01T10:12:41-07:00</lastmod>
+    <lastmod>2026-05-15T21:42:39-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/notes/fep-intuitions/</loc>
-    <lastmod>2025-08-01T10:12:41-07:00</lastmod>
+    <lastmod>2026-05-15T21:42:39-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/tags/physics/</loc>
+    <lastmod>2026-05-15T21:42:39-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/notes/intelligence-and-alignment/</loc>
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
@@ -30,16 +57,16 @@
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/link/</loc>
-    <lastmod>2025-10-04T15:59:02-07:00</lastmod>
+    <lastmod>2026-05-17T21:21:15-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/notes/</loc>
-    <lastmod>2024-05-12T18:33:31-07:00</lastmod>
+    <lastmod>2026-05-16T10:54:01-07:00</lastmod>
   </url><url>
-    <loc>http://rayncloud.com/link/publications/</loc>
-    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
+    <loc>http://rayncloud.com/link/links/</loc>
+    <lastmod>2026-05-16T11:27:21-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/link/cat-other/</loc>
-    <lastmod>2025-10-04T15:59:02-07:00</lastmod>
+    <lastmod>2026-05-15T21:43:25-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/blurbs/</loc>
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
@@ -48,31 +75,28 @@
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/link/cat-fep/</loc>
-    <lastmod>2025-07-01T18:01:24-07:00</lastmod>
+    <lastmod>2026-05-15T21:43:19-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/blurbs/interests/</loc>
     <lastmod>2024-05-06T21:46:54-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/link/cat-ml/</loc>
-    <lastmod>2024-05-07T08:02:16-07:00</lastmod>
+    <lastmod>2026-05-15T21:43:22-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/about/</loc>
-    <lastmod>2024-05-19T21:42:12-07:00</lastmod>
+    <lastmod>2026-05-15T21:43:51-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/notes/differential-privacy-generalization/</loc>
-    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
+    <lastmod>2026-05-15T21:42:17-07:00</lastmod>
   </url><url>
-    <loc>http://rayncloud.com/tags/generalization-sequence/</loc>
-    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
+    <loc>http://rayncloud.com/tags/learning-theory/</loc>
+    <lastmod>2026-05-15T21:42:17-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/categories/statistical-learning/</loc>
-    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
-  </url><url>
-    <loc>http://rayncloud.com/tags/</loc>
-    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
+    <lastmod>2026-05-15T21:42:17-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/notes/learning-uniform-convergence/</loc>
-    <lastmod>2024-05-06T21:46:54-07:00</lastmod>
+    <lastmod>2026-05-15T21:42:06-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/categories/inverse-problems/</loc>
     <lastmod>2025-07-09T09:33:01-07:00</lastmod>
@@ -81,6 +105,9 @@
     <lastmod>2025-07-09T09:33:01-07:00</lastmod>
   </url><url>
     <loc>http://rayncloud.com/</loc>
-    <lastmod>2024-05-12T19:33:01-07:00</lastmod>
+    <lastmod>2026-05-17T21:54:34-07:00</lastmod>
+  </url><url>
+    <loc>http://rayncloud.com/projects/</loc>
+    <lastmod>2026-05-16T11:04:52-07:00</lastmod>
   </url>
 </urlset>

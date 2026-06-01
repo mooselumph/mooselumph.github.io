@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coherence on Robert Raynor</title>
+    <link>http://rayncloud.com/tags/coherence/</link>
+    <description>Recent content in Coherence on Robert Raynor</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jun 2026 11:12:53 -0700</lastBuildDate>
+    <atom:link href="http://rayncloud.com/tags/coherence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intro to Coherence</title>
+      <link>http://rayncloud.com/notes/intro-to-coherence/</link>
+      <pubDate>Mon, 01 Jun 2026 11:00:32 -0700</pubDate>
+      <guid>http://rayncloud.com/notes/intro-to-coherence/</guid>
+      <description>Intro When humans reason about objects in our environments, we understand ourselves to be reasoning about abstractions of a purported &amp;ldquo;real thing.&amp;rdquo; These abstractions tend to be composed of high level properties and behavioral models which are incredibly useful as the basis of various types of deductive and inductive reasoning chains.&#xA;This type of reasoning is overtly present in mathematical thinking. In mathematics, not only to we abstract familiar objects into collections of axioms or properties.</description>
+    </item>
+  </channel>
+</rss>
